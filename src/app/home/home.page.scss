@@ -1,0 +1,31 @@
+.search-card img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+
+#logo {
+  max-width: 5rem;
+  max-height: 100%;
+  display: flex;
+}
+
+.col-logo {
+  display: flex; 
+  justify-content: center;
+}
+
+.row-logo {
+  margin-right: 48px;
+  padding: 0px 8px;
+}
+
+.busca {
+  position: absolute;
+  margin-top: 1rem;
+}
+
+.text {
+  font-family: 'Open Sans', sans-serif;
+  -webkit-text-stroke-width: thin;
+  color: #5D4B9D;
+}
