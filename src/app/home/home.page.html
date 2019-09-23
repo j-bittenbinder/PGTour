@@ -13,16 +13,29 @@
 
 <ion-content>
     <div>
-      <p style="width: 100%; text-align: -webkit-center; position: absolute; font-weight: bolder;
-        font-size: -webkit-xxx-large; -webkit-text-stroke-width: thin; margin-top: 35%; font-family: 'Open Sans', sans-serif;">MAPA PG</p>
+      <!--p style="width: 100%; text-align: -webkit-center; position: absolute; font-weight: bolder;
+        font-size: -webkit-xxx-large; -webkit-text-stroke-width: thin; margin-top: 35%; font-family: 'Open Sans', sans-serif;">MAPA PG</p-->
       <ion-searchbar class="busca" showCancelButton="focus" placeholder="Buscar"></ion-searchbar>
-      <img src="/assets/shapes.svg" alt="" style="width: 100%; height: 20rem;"/>
+      <img src="https://maps.googleapis.com/maps/api/staticmap?center=-24.0368107,-46.48620512&zoom=12&size=600x500&maptype=roadmap
+      &key={{ apikey }}" style="width: 100%; height: 100%;"/>
     </div>
     <ion-list lines="none">
       <ion-list-header style="justify-content: center; padding: 0px 0px;">
-        <ion-label class="text" style="font-size: 1.2rem; font-weight: bolder;">Oi, Cidinei ;)</ion-label>
+        <ion-label class="text" style="font-size: 1rem;">Oi, Cidinei ;)</ion-label>
       </ion-list-header>
       <p class="text" style="font-size: 0.8rem; text-align: center; margin: 0px 0px 20px 0px;">Que tal descobrir um pouco mais sua cidade?</p>
+      <hr style="height: 1px;border-width: 1px;margin: 10px;">
+      <ion-row>
+        <ion-col>
+          <ion-button class="btn-home" size="small">Todas</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button class="btn-home" size="small">Próximos</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button class="btn-home" size="small">Mais visitados</ion-button>
+        </ion-col>
+      </ion-row>
       <ion-item href="https://ionicframework.com/docs/">
         <ion-icon slot="start" color="medium" name="book"></ion-icon>
         <ion-label>Ionic Documentation</ion-label>
