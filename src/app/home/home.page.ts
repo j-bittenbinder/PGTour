@@ -10,5 +10,5 @@ export class HomePage {
   constructor() {}
 
   apikey = "AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw";
-
+  usuario = "Sidney";
 }
