@@ -19,7 +19,12 @@ export class AppComponent {
     {
       title: 'Loja',
       url: '/list',
-      icon: 'list'
+      icon: 'card'
+    },
+    {
+      title: 'Pontos',
+      url: '/ponto-turistico',
+      icon: 'map'
     }
   ];
 

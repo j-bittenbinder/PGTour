@@ -1,0 +1,100 @@
+#logo {
+    max-width: 5rem;
+    max-height: 100%;
+    display: flex;
+}
+
+.col-logo {
+    display: flex; 
+    justify-content: center;
+}
+
+.row-logo {
+    margin-right: 48px;
+    padding: 0px 8px;
+}
+
+.place {
+    font-family: 'Open Sans', sans-serif;
+    -webkit-text-stroke-width: thin;
+    color: #5D4B9D;
+}
+
+#photo {
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+}
+
+.photo {
+    padding: 0rem 2rem 1rem 2rem;
+    height: 260px;
+}
+
+.nome-ponto {
+    padding: 2rem 2rem 1rem 2rem;
+}
+
+.col-prov {
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+}
+
+#img-prov {
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+}
+
+.desc-ponto {
+    font-family: 'Open Sans', sans-serif;
+    -webkit-text-stroke-width: thin;
+    color: #5D4B9D;
+    font-size: 1rem;   
+    text-align: center;
+    padding: 1rem 0rem;
+}
+
+.text {
+    font-family: 'Open Sans', sans-serif;
+    -webkit-text-stroke-width: thin;
+    font-size: 12px;
+    padding: 0rem 2rem;
+    text-align: justify;
+}
+
+.rating {
+    background: #00AAE2;
+    width: 300px;
+    margin: 2rem;
+    border-radius: 2rem;
+}
+
+.header-rating {
+    padding: 2rem 2rem 1rem;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-text-stroke-width: thin;
+    font-size: 12px;
+    color: white;
+}
+
+.content-rating {
+    padding: 1rem 2rem;
+}
+
+.footer-rating {
+    padding: 1rem 2rem 2rem;
+    justify-content: center;
+    display: flex;
+} 
+
+#btn-rating {
+    --background: #5D4B9D;
+    --border-radius: 2rem;
+    --color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.8rem;
+    width: 100%;
+    text-transform: none;
+}

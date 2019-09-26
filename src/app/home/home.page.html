@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button style="color: #00AAE2; --background-activated: #028DBB;"></ion-menu-button>
+      <ion-menu-button style="color: #00AAE2;"></ion-menu-button>
     </ion-buttons>
     <ion-row class="row-logo">
       <ion-col class="col-logo">
-        <img id="logo" src="../../assets/logo.svg">
+        <img id="logo" src="../../assets/logo.svg"/>
       </ion-col>
     </ion-row>
   </ion-toolbar>
@@ -13,21 +13,18 @@
 
 <ion-content>
     <div>
-      <!--p style="width: 100%; text-align: -webkit-center; position: absolute; font-weight: bolder;
-        font-size: -webkit-xxx-large; -webkit-text-stroke-width: thin; margin-top: 35%; font-family: 'Open Sans', sans-serif;">MAPA PG</p-->
       <ion-searchbar class="busca" showCancelButton="focus" placeholder="Buscar"></ion-searchbar>
-      <img src="https://maps.googleapis.com/maps/api/staticmap?center=-24.0368107,-46.48620512&zoom=12&size=600x500&maptype=roadmap
-      &key={{ apikey }}" style="width: 100%; height: 100%;"/>
+      <img id="mapa-home" src="https://maps.googleapis.com/maps/api/staticmap?center=-24.0022245,-46.4814905&zoom=12&size=600x500&maptype=roadmap&key={{ apikey }}"/>
     </div>
     <ion-list lines="none">
-      <ion-list-header style="justify-content: center; padding: 0px 0px;">
-        <ion-label class="text" style="font-size: 1rem;">Olá, {{ usuario }} ;)</ion-label>
+      <ion-list-header class="name-user">
+        <ion-label class="hello-user" style="font-size: 1rem;">Olá, {{ usuario }} ;)</ion-label>
       </ion-list-header>
-      <p class="text" style="font-size: 0.8rem; text-align: center; color: black; margin: 0px 0px 20px 0px;">Que tal descobrir um pouco mais sua cidade?</p>
-      <hr style="height: 1px;border-width: 1px;margin: 10px;">
+      <p class="text-list">Que tal descobrir um pouco mais sua cidade?</p>
+      <hr style="height: 1px; border-width: 1px; margin: 10px;">
       <ion-row>
         <ion-col class="col-home">
-          <ion-button class="btn-default">Todas</ion-button>
+          <ion-button class="btn-default normal">Todas</ion-button>
         </ion-col>
         <ion-col class="col-home">
           <ion-button class="btn-default">Próximos</ion-button>
@@ -37,11 +34,11 @@
         </ion-col>
       </ion-row>
       <ion-item>
-        <ion-label class="text">Todos os locais</ion-label>
+        <ion-label class="hello-user">Todos os locais</ion-label>
       </ion-item>
       <ion-item href="">
         <img src="../../assets/local.png"/>
-        <ion-label>nome do ponto</ion-label>
+        <ion-label class="label-ponto">Visitar [nome-ponto]</ion-label>
       </ion-item>
     </ion-list>
 </ion-content>
