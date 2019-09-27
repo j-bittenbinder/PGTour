@@ -66,7 +66,7 @@
 
 .rating {
     background: #00AAE2;
-    width: 300px;
+    max-width: 100%;
     margin: 2rem;
     border-radius: 2rem;
 }
@@ -74,8 +74,7 @@
 .header-rating {
     padding: 2rem 2rem 1rem;
     font-family: 'Open Sans', sans-serif;
-    -webkit-text-stroke-width: thin;
-    font-size: 12px;
+    font-size: 13px;
     color: white;
 }
 
@@ -96,5 +95,28 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 0.8rem;
     width: 100%;
+    text-transform: none;
+}
+
+.user-img {
+    max-width: 50px;
+    max-height: 50px;
+    padding: 0rem;
+}
+
+.user-name {
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.8rem;
+    font-weight: bolder;
+    text-transform: none;
+    width: 100%;
+    height: 35%;
+}
+
+.user-comment {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.6rem;
     text-transform: none;
 }
