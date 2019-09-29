@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { NavController } from '@ionic/angular';
 import { PontoTuristicoPage } from 'src/app/ponto-turistico/ponto-turistico.page';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,14 +12,14 @@ import { PontoTuristicoPage } from 'src/app/ponto-turistico/ponto-turistico.page
 })
 export class HomePage {
   pontos: any;
+  apikey = 'AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw';
+  usuario = 'Sidney';
 
-  constructor(private http: HTTP, public navCtrl: NavController) {
-    
+  constructor(private http: HTTP, public navCtrl: NavController, public router: Router) {
     this.http.get('https://apipgtour.herokuapp.com/index.php/getPontoTuristico', {}, {})
     .then(data => {
       this.pontos = JSON.parse(data.data);
       console.log(this.pontos);
-      
     })
     .catch(error => {
       console.log(error.status);
@@ -26,14 +27,10 @@ export class HomePage {
       console.log(error.headers);
 
     });
-
-    
   }
 
-  apikey = "AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw";
-  usuario = "Sidney";
-  
-  visualizarPonto(id){
-
+  visualizarPonto(id) {
+    this.router.navigate(['/ponto-turistico']);
   }
 }
+
