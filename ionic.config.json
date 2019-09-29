@@ -1,5 +1,8 @@
 {
   "name": "PGTour",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
   "type": "angular"
 }
