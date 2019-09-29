@@ -27,12 +27,12 @@
 }
 
 .photo {
-    padding: 0rem 2rem 1rem 2rem;
+    padding: 0rem 1rem 1rem;
     height: 260px;
 }
 
 .nome-ponto {
-    padding: 2rem 2rem 1rem 2rem;
+    padding: 1rem;
 }
 
 .col-prov {
@@ -60,19 +60,19 @@
     font-family: 'Open Sans', sans-serif;
     -webkit-text-stroke-width: thin;
     font-size: 12px;
-    padding: 0rem 2rem;
+    padding: 0rem 1rem;
     text-align: justify;
 }
 
 .rating {
     background: #00AAE2;
     max-width: 100%;
-    margin: 2rem;
+    margin: 1rem;
     border-radius: 2rem;
 }
 
 .header-rating {
-    padding: 2rem 2rem 1rem;
+    padding: 2rem 1rem 1rem;
     font-family: 'Open Sans', sans-serif;
     font-size: 13px;
     color: white;
@@ -119,4 +119,38 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 0.6rem;
     text-transform: none;
+}
+
+.btn-quiz {
+    justify-content: center;
+    display: flex;
+    max-width: 100%;
+    padding: 0rem 1rem;
+    margin: 1rem 0rem;
+}
+
+#btn-quiz {
+    --background: #5D4B9D;
+    --border-radius: 2rem;
+    --color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    width: 100%;
+    text-transform: none;
+}
+
+#medal {
+    max-width: 50px;
+    max-height: 50px;
+    justify-content: center;
+    display: flex;
+}
+
+#note {
+    max-width: 50px;
+    --color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+    text-transform: none;
+    font-weight: bolder;
 }
