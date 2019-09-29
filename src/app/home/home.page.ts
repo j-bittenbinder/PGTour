@@ -15,7 +15,7 @@ export class HomePage {
   apikey = 'AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw';
   usuario = 'Sidney';
 
-  constructor(private http: HTTP, public navCtrl: NavController, public router: Router) {
+  constructor(private http: HTTP, public navCtrl: NavController, private router: Router) {
     this.http.get('https://apipgtour.herokuapp.com/index.php/getPontoTuristico', {}, {})
     .then(data => {
       this.pontos = JSON.parse(data.data);
@@ -30,7 +30,13 @@ export class HomePage {
   }
 
   visualizarPonto(id) {
-    this.router.navigate(['/ponto-turistico']);
+    console.log('id -> ', id);
+    /*let navigationId: NavigationId = {
+      queryParams: {
+        id: this.id;
+      }
+    }*/
+    this.router.navigate(['ponto-turistico'], {queryParams: id});
   }
 }
 

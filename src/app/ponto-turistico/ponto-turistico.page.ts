@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-ponto-turistico',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PontoTuristicoPage implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) {
+    this.route.queryParams.subscribe(params => {
+      console.log('pegou: ', params[0]);
+    });
+  }
 
   ngOnInit() {
   }
