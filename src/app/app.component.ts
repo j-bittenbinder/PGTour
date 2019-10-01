@@ -25,6 +25,16 @@ export class AppComponent {
       title: 'Pontos',
       url: '/ponto-turistico',
       icon: 'map'
+    },
+    {
+      title: 'Login',
+      url: '/login',
+      icon: 'log-in'
+    },
+    {
+      title: 'Cadastro',
+      url: '/cadastro',
+      icon: 'person-add'
     }
   ];
 

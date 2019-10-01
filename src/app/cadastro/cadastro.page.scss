@@ -1,0 +1,40 @@
+.col-logo {
+    display: flex; 
+    justify-content: center;
+}
+
+.row-logo {
+    margin-right: 48px;
+    padding: 0px 8px;
+}
+
+#logo {
+    max-width: 5rem;
+    max-height: 100%;
+    display: flex;
+}
+
+.font {
+    font-family: 'Open Sans', sans-serif;
+    color: #091E42;
+}
+
+.input-cadastro {
+    border-radius: 7px;
+    --padding-start: 1rem!important;
+    --padding-end: 0.6rem;
+    --padding-top: 1rem;
+    --padding-bottom: 1rem;
+    background-color: #F0F1F3;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+}
+
+.item-input {
+    --border-color: transparent; 
+    padding: 8px 0px;
+}
+
+.item-label {
+    --border-color: transparent;
+}

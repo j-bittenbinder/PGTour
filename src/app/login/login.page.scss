@@ -1,0 +1,37 @@
+ion-content{
+    --ion-background-color:#5D4B9D;
+}
+
+#logo {
+    padding: 6rem 5rem 1rem;
+}
+
+.row-login {
+    justify-content: center;
+    display: flex;
+}
+
+.input-login {
+    background-color: white;
+    border-radius: 2rem;
+}
+
+.div-form {
+    width: 100%;
+    padding: 1rem 2rem;
+}
+
+.input-login {
+    width: 100%;
+    border-radius: 2rem;
+    --padding-start: 1rem;
+    --padding-end: 0.6rem;
+    --padding-top: 7px;
+    --padding-bottom: 7px;
+}
+
+.label-form {
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}

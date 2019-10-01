@@ -3,20 +3,22 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: '', redirectTo: 'home', pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+    path: 'list', loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
   {
     path: 'ponto-turistico', loadChildren: './ponto-turistico/ponto-turistico.module#PontoTuristicoPageModule'
+  },
+  {
+    path: 'login', loadChildren: './login/login.module#LoginPageModule'
+  },
+  {
+    path: 'cadastro', loadChildren: './cadastro/cadastro.module#CadastroPageModule'
   }
 ];
 
