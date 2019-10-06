@@ -1,77 +1,83 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button style="color: #00AAE2;"></ion-menu-button>
-    </ion-buttons>
-    <ion-row class="row-logo">
-      <ion-col class="col-logo">
-        <img id="logo" src="../../assets/logo.svg"/>
-      </ion-col>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button style="color: #00AAE2;"></ion-menu-button>
+      </ion-buttons>
+      <ion-row class="row-logo">
+        <ion-col class="col-logo">
+          <img id="logo" src="../../assets/logo.svg"/>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+      <ion-item *ngFor="let ponto of pontos">
+    <div class="nome-ponto">
+    
+      <ion-label class="place">{{ponto.nome}}</ion-label>
+    
+    </div>
+  </ion-item>
+    <div class="photo">
+      <img id="photo" src="../../assets/shapes.svg"/>
+    </div>
+    <ion-row style="padding-left: 1rem; padding-right: 1rem;">
+      <ion-col class="col-prov"><img id="img-prov" src="../../assets/shapes.svg"/></ion-col>
+      <ion-col class="col-prov"><img id="img-prov" src="../../assets/shapes.svg"/></ion-col>
+      <ion-col class="col-prov"><img id="img-prov" src="../../assets/shapes.svg"/></ion-col>
     </ion-row>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <div class="nome-ponto">
-    <ion-label class="place">[Nome-do-ponto]</ion-label>
-  </div>
-  <div class="photo">
-    <img id="photo" src="../../assets/shapes.svg"/>
-  </div>
-  <ion-row style="padding-left: 1rem; padding-right: 1rem;">
-    <ion-col class="col-prov"><img id="img-prov" src="../../assets/shapes.svg"/></ion-col>
-    <ion-col class="col-prov"><img id="img-prov" src="../../assets/shapes.svg"/></ion-col>
-    <ion-col class="col-prov"><img id="img-prov" src="../../assets/shapes.svg"/></ion-col>
-  </ion-row>
-  <div class="desc-ponto">Histórico</div>
-  <div class="text">
-    <p>
-      LOREM ipsum lorem IPSUM LOREM ipsum lorem IPSUM LOREM ipsum lorem IPSUM LOREM ipsum lorem IPSUM LOREM ipsum 
-      LOREM ipsum lorem IPSUMLOREM ipsum lorem IPSUMLOREM ipsum lorem IPSUMLOREM ipsum lorem IPSUMLOREM ipsum lorem.
-    </p>
-    <p>
-      LOREM ipsum lorem IPSUM LOREMLOREM ipsum lorem IPSUM LOREMLOREM ipsum lorem IPSUM LOREMLOREM ipsum lorem IPSUM
-      LOREM ipsum lorem IPSUM LOREMLOREM ipsum lorem IPSUM LOREMLOREM ipsum lorem IPSUM LOREMLOREM ipsum lorem IPSUM LOREM.
-    </p>
-  </div>
-  <div class="rating">
-    <div class="header-rating">
-      <ion-row>
-        <ion-col id="medal">
-          <img src="../../assets/medal.png" style="width: 50px;"/>
-        </ion-col>
-        <ion-col>
-          <ion-row>Avaliação dos Visitantes</ion-row>
-          <ion-row style="color: gold;">
-            e*s*t*r*e*l*a*s
-          </ion-row>
-        </ion-col>
-        <ion-col id="note">
-          Nº
-        </ion-col>
-      </ion-row>
+    <div class="desc-ponto">Histórico</div>
+    <div class="text">
+      <p>
+        LOREM ipsum lorem IPSUM LOREM ipsum lorem IPSUM LOREM ipsum lorem IPSUM LOREM ipsum lorem IPSUM LOREM ipsum 
+        LOREM ipsum lorem IPSUMLOREM ipsum lorem IPSUMLOREM ipsum lorem IPSUMLOREM ipsum lorem IPSUMLOREM ipsum lorem.
+      </p>
+      <p>
+        LOREM ipsum lorem IPSUM LOREMLOREM ipsum lorem IPSUM LOREMLOREM ipsum lorem IPSUM LOREMLOREM ipsum lorem IPSUM
+        LOREM ipsum lorem IPSUM LOREMLOREM ipsum lorem IPSUM LOREMLOREM ipsum lorem IPSUM LOREMLOREM ipsum lorem IPSUM LOREM.
+      </p>
     </div>
-    <hr style="height: 1px; margin: 0rem 1rem; background-color: white;">
-    <div class="content-rating">
-      <ion-row>
-        <ion-col class="user-img">
-          <img src="../../assets/limdo.jpg" style="max-width: 50px; max-height: 50px; border-radius: 2rem;"/>
-        </ion-col>
-        <div style="padding-left: 1rem;">
-          <div class="user-name">
-            <p>GuiLIMDO Silveira</p>
+    <div class="rating">
+      <div class="header-rating">
+        <ion-row>
+          <ion-col id="medal">
+            <img src="../../assets/medal.png" style="width: 50px;"/>
+          </ion-col>
+          <ion-col>
+            <ion-row>Avaliação dos Visitantes</ion-row>
+            <ion-row style="color: gold;">
+              e*s*t*r*e*l*a*s
+            </ion-row>
+          </ion-col>
+          <ion-col id="note">
+            Nº
+          </ion-col>
+        </ion-row>
+      </div>
+      <hr style="height: 1px; margin: 0rem 1rem; background-color: white;">
+      <div class="content-rating">
+        <ion-row>
+          <ion-col class="user-img">
+            <img src="../../assets/limdo.jpg" style="max-width: 50px; max-height: 50px; border-radius: 2rem;"/>
+          </ion-col>
+          <div style="padding-left: 1rem;">
+            <div class="user-name">
+              <p>Guilherme Silveira</p>
+            </div>
+            <div class="user-comment">
+              <p>Ótimo lugar para visitar com a família!</p>
+            </div>
           </div>
-          <div class="user-comment">
-            <p>TIF</p>
-          </div>
-        </div>
-      </ion-row>
+        </ion-row>
+      </div>
+      <div class="footer-rating">
+        <ion-button id="btn-rating">Avaliar</ion-button>
+      </div>
     </div>
-    <div class="footer-rating">
-      <ion-button id="btn-rating">Avaliar</ion-button>
+    <div class="btn-quiz">
+      <ion-button id="btn-quiz">Quiz</ion-button>
     </div>
-  </div>
-  <div class="btn-quiz">
-    <ion-button id="btn-quiz">Quiz</ion-button>
-  </div>
-</ion-content>
+  </ion-content>
+  
+  

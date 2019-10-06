@@ -1,23 +1,26 @@
 <ion-content>
-  <ion-row class="row-login">
-    <img id="logo" src="../../assets/logo-purple.svg"/>
-  </ion-row>
-  <ion-row class="row-login">
-    <div class="div-form">
-      <ion-label class="label-form">Usuário</ion-label><br/>
-      <ion-input class="input-login" type="email"></ion-input>
-    </div>  
-    <br/>
-    <div class="div-form">
-      <ion-label class="label-form">Senha</ion-label><br/>
-      <ion-input class="input-login" type="password"></ion-input>
-    </div>
-  </ion-row>
-  <ion-row class="row-login">
-    <div class="label-form" style="width: 100%; text-align: right; padding: 1rem 2rem; font-size: 13px;">Esqueci a senha</div>
-    <div class="div-form">
-      <ion-button class="btn-default" style="width: 100%; height: 2.5rem; font-size: 12px;">ENTRAR</ion-button>
-    </div>
-    <div class="label-form" style="width: 100%; font-size: 1rem; padding: 2rem; text-align: center;">Cadastre-se</div>
-  </ion-row>
+  <div class="animatedFadeInUp fadeInUp animated">
+    <ion-row class="row-login">
+        <img id="logo" src="../../assets/logo-purple.svg"/>
+      </ion-row>
+      <ion-row class="row-login">
+        <div class="div-form">
+          <ion-label class="label-form" >Usuário</ion-label><br/>
+          <ion-input class="input-login" type="email" name="usuario" [(ngModel)]="usuario"></ion-input>
+        </div>  
+        <br/>
+        <div class="div-form">
+          <ion-label class="label-form">Senha</ion-label><br/>
+          <ion-input class="input-login" type="password" name="senha" [(ngModel)]="senha"></ion-input>
+        </div>
+      </ion-row>
+      <ion-row class="row-login">
+        <div class="label-form" style="width: 100%; text-align: right; padding: 1rem 2rem; font-size: 13px;">Esqueci a senha</div>
+        <div class="div-form">
+          <ion-button class="btn-default" style="width: 100%; height: 2.5rem; font-size: 12px;" (click)="logar()">ENTRAR</ion-button>
+        </div>
+        <div class="label-form" style="width: 100%; font-size: 1rem; padding: 2rem; text-align: center;">Cadastre-se</div>
+      </ion-row>
+  </div>
 </ion-content>
+  

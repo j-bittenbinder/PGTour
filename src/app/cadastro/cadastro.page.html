@@ -1,52 +1,53 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button style="color: #00AAE2;"></ion-menu-button>
-    </ion-buttons>
-    <ion-row class="row-logo">
-      <ion-col class="col-logo">
-        <img id="logo" src="../../assets/logo.svg"/>
-      </ion-col>
-    </ion-row>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="ion-padding">
-  <ion-label class="ion-padding" class="font" style="font-size: 1rem; padding-top: 1rem;"><b>Cadastre-se</b></ion-label><br/>
-  <ion-item style="--border-color: transparent;">
-    <ion-label class="ion-text-wrap font" id="text-1" style="font-size: 12px;">
-      Bem vindo ao PGTour, realize um rápido cadastro e desfrute de todas as maravilhas desta cidade.
-    </ion-label>
-  </ion-item>
-  <ion-item class="item-label">
-    <ion-label class="font" style="font-size: 14px;"><b>Dados pessoais</b></ion-label>
-  </ion-item>
-  <ion-item class="item-input">
-    <ion-input class="input-cadastro" type="text" placeholder="Nome completo"></ion-input>
-  </ion-item>
-  <ion-item class="item-input">
-    <ion-input class="input-cadastro" type="text" placeholder="Telefone"></ion-input>
-  </ion-item>
-  <ion-item class="item-label">
-    <ion-label class="font" style="font-size: 14px;"><b>Dados de acesso</b></ion-label>
-  </ion-item>
-  <ion-item class="item-input">
-    <ion-input class="input-cadastro" type="text" placeholder="Seu e-mail"></ion-input>
-  </ion-item>
-  <ion-item class="item-input">
-    <ion-input class="input-cadastro" type="text" placeholder="Confirme seu e-mail"></ion-input>
-  </ion-item>
-  <ion-item class="item-input">
-    <ion-input class="input-cadastro" type="text" placeholder="Sua senha"></ion-input>
-  </ion-item>
-  <ion-item class="item-input">
-    <ion-input class="input-cadastro" type="text" placeholder="Confirme sua senha"></ion-input>
-  </ion-item>
-  <ion-item class="item-label" style="justify-content: center; display: flex;">
-    <ion-checkbox id="termos" checked="false"></ion-checkbox>
-    <ion-label class="font" style="font-size: 12px; margin-left: 1rem;">Aceito os <a>termos e condições</a></ion-label>
-  </ion-item>
-  <ion-item class="item-label">
-    <ion-button class="btn-default" style="width: 100%; height: 3rem; font-size: 12px;">CADASTRAR</ion-button>
-  </ion-item>
-</ion-content>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button style="color: #00AAE2;"></ion-menu-button>
+      </ion-buttons>
+      <ion-row class="row-logo">
+        <ion-col class="col-logo">
+          <img id="logo" src="../../assets/logo.svg"/>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding">
+    <ion-label class="ion-padding" class="font" style="font-size: 1rem; padding-top: 1rem;"><b>Cadastre-se</b></ion-label><br/>
+    <ion-item style="--border-color: transparent;">
+      <ion-label class="ion-text-wrap font" id="text-1" style="font-size: 12px;">
+        Bem vindo ao PGTour, realize um rápido cadastro e desfrute de todas as maravilhas desta cidade.
+      </ion-label>
+    </ion-item>
+    <ion-item class="item-label">
+      <ion-label class="font" style="font-size: 14px;"><b>Dados pessoais</b></ion-label>
+    </ion-item>
+    <ion-item class="item-input">
+      <ion-input class="input-cadastro" type="text" name="nome" [(ngModel)]="nome" placeholder="Nome completo"></ion-input>
+    </ion-item>
+    <ion-item class="item-input">
+      <ion-input class="input-cadastro" type="text" name="telefone" [(ngModel)]="telefone" placeholder="Telefone"></ion-input>
+    </ion-item>
+    <ion-item class="item-label">
+      <ion-label class="font" style="font-size: 14px;"><b>Dados de acesso</b></ion-label>
+    </ion-item>
+    <ion-item class="item-input">
+      <ion-input class="input-cadastro" type="text" name="email" [(ngModel)]="email" placeholder="Seu e-mail"></ion-input>
+    </ion-item>
+    <ion-item class="item-input">
+      <ion-input class="input-cadastro" type="text" name="email2" [(ngModel)]="email2" placeholder="Confirme seu e-mail"></ion-input>
+    </ion-item>
+    <ion-item class="item-input">
+      <ion-input class="input-cadastro" type="text" name="senha" [(ngModel)]="senha" placeholder="Sua senha"></ion-input>
+    </ion-item>
+    <ion-item class="item-input">
+      <ion-input class="input-cadastro" type="text" name="senha2" [(ngModel)]="senha2" placeholder="Confirme sua senha"></ion-input>
+    </ion-item>
+    <ion-item class="item-label" style="justify-content: center; display: flex;">
+      <ion-checkbox id="termos" checked="false"></ion-checkbox>
+      <ion-label class="font" style="font-size: 12px; margin-left: 1rem;">Aceito os <a>termos e condições</a></ion-label>
+    </ion-item>
+    <ion-item class="item-label">
+      <ion-button class="btn-default" style="width: 100%; height: 3rem; font-size: 12px;" (click)="cadastrar()">CADASTRAR</ion-button>
+    </ion-item>
+  </ion-content>
+  
