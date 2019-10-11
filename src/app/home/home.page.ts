@@ -1,7 +1,7 @@
+import { PontoTuristicoService } from './../ponto-turistico/ponto-turistico.service';
 import { Component } from '@angular/core';
-import { HTTP } from '@ionic-native/http/ngx';
+import { HttpClient } from '@angular/common/http';
 import { NavController } from '@ionic/angular';
-import { PontoTuristicoPage } from 'src/app/ponto-turistico/ponto-turistico.page';
 import { Router } from '@angular/router';
 
 
@@ -11,32 +11,22 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
   pontos: any;
-  apikey = 'AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw';
   usuario = 'Sidney';
+  apikey = 'AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw';
 
-  constructor(private http: HTTP, public navCtrl: NavController, private router: Router) {
-    this.http.get('https://apipgtour.herokuapp.com/index.php/getPontoTuristico', {}, {})
-    .then(data => {
-      this.pontos = JSON.parse(data.data);
+  constructor(private service: PontoTuristicoService, private http: HttpClient,
+              public navCtrl: NavController, private router: Router) {
+    this.service.getListaPontos().subscribe( dados => {
+      this.pontos = dados;
+      console.log('lista:');
       console.log(this.pontos);
-    })
-    .catch(error => {
-      console.log(error.status);
-      console.log(error); // error message as string
-      console.log(error.headers);
-
     });
   }
 
   visualizarPonto(id) {
-    console.log('id -> ', id);
-    /*let navigationId: NavigationId = {
-      queryParams: {
-        id: this.id;
-      }
-    }*/
-    this.router.navigate(['ponto-turistico'], {queryParams: id});
+    this.router.navigate(['/ponto-turistico'], {queryParams: id});
   }
-}
 
+}

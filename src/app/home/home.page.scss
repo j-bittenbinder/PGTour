@@ -29,13 +29,14 @@
   font-family: 'Open Sans', sans-serif;
   -webkit-text-stroke-width: thin;
   color: #5D4B9D;
+  text-transform: none;
 }
 
 .text-list {
   font-size: 0.8rem; 
   text-align: center; 
   color: black; 
-  margin: 0px 0px 20px 0px;
+  margin: 0;
   font-family: 'Open Sans', sans-serif;
   -webkit-text-stroke-width: thin;
 }
@@ -43,6 +44,9 @@
 .col-home {
   justify-content: center;
   display: flex;
+  padding: 0;
+  margin: 0px 2px;
+  max-width: fit-content;
 }
 
 #mapa-home {

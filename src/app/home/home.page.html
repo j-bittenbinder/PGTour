@@ -12,33 +12,33 @@
 </ion-header>
 
 <ion-content>
-    <div>
-      <ion-searchbar class="busca" showCancelButton="focus" placeholder="Buscar"></ion-searchbar>
-      <img id="mapa-home" src="https://maps.googleapis.com/maps/api/staticmap?center=-24.0022245,-46.4814905&zoom=12&size=600x500&maptype=roadmap&key={{ apikey }}"/>
-    </div>
-    <ion-list lines="none">
-      <ion-list-header class="name-user">
-        <ion-label class="hello-user" style="font-size: 1rem;">Olá, {{ usuario }} ;)</ion-label>
-      </ion-list-header>
-      <p class="text-list">Que tal descobrir um pouco mais sua cidade?</p>
-      <hr style="height: 1px; border-width: 1px; margin: 10px;">
-      <ion-row>
-        <ion-col class="col-home">
-          <ion-button class="btn-default">Todas</ion-button>
-        </ion-col>
-        <ion-col class="col-home">
-          <ion-button class="btn-default">Próximos</ion-button>
-        </ion-col>
-        <ion-col class="col-home">
-          <ion-button class="btn-default">Mais visitados</ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-item>
-        <ion-label class="hello-user">Todos os locais</ion-label>
-      </ion-item>
-      <ion-item *ngFor="let ponto of pontos" routerDirection="root">
-        <img src="../../assets/local.png"/>
-        <ion-label class="label-ponto" (click)="visualizarPonto(ponto.id_ponto)">Visitar {{ponto.nome}}</ion-label>
-      </ion-item>
-    </ion-list>
+  <div>
+    <ion-searchbar class="busca" showCancelButton="focus" placeholder="Buscar"></ion-searchbar>
+    <img id="mapa-home" src="https://maps.googleapis.com/maps/api/staticmap?center=-24.0022245,-46.4814905&zoom=12&size=600x500&maptype=roadmap&key={{ apikey }}"/>
+  </div>
+  <ion-list lines="none" style="margin: 0 0 12px; padding: 0; ">
+    <ion-list-header class="name-user">
+      <ion-label class="hello-user" style="font-size: 1rem;">Olá, {{ usuario }} ;)</ion-label>
+    </ion-list-header>
+    <p class="text-list">Que tal descobrir um pouco mais sua cidade?</p>
+    <hr style="height: 1px; border-width: 1px; margin: 10px;">
+    <ion-row style="display: flex; justify-content: center;">
+      <ion-col class="col-home">
+        <ion-button class="btn-default">Todas</ion-button>
+      </ion-col>
+      <ion-col class="col-home">
+        <ion-button class="btn-default">Próximos</ion-button>
+      </ion-col>
+      <ion-col class="col-home">
+        <ion-button class="btn-default">Mais visitados</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-item>
+      <ion-label class="hello-user">Todos os locais</ion-label>
+    </ion-item>
+    <ion-item *ngFor="let ponto of pontos" routerDirection="root">
+      <img src="../../assets/local.png"/>
+      <ion-label class="label-ponto" (click)="visualizarPonto(ponto.id_ponto)">Visitar {{ponto.nome}}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -7,18 +7,19 @@
       <ion-row class="row-login">
         <div class="div-form">
           <ion-label class="label-form" >Usuário</ion-label><br/>
-          <ion-input class="input-login" type="email" name="usuario" [(ngModel)]="usuario"></ion-input>
+          <ion-input class="input-login" type="email" name="usuario" [(ngModel)]="usuario" required></ion-input>
         </div>  
         <br/>
         <div class="div-form">
           <ion-label class="label-form">Senha</ion-label><br/>
-          <ion-input class="input-login" type="password" name="senha" [(ngModel)]="senha"></ion-input>
+          <ion-input class="input-login" type="password" name="senha" [(ngModel)]="senha" required></ion-input>
         </div>
       </ion-row>
       <ion-row class="row-login">
         <div class="label-form" style="width: 100%; text-align: right; padding: 1rem 2rem; font-size: 13px;">Esqueci a senha</div>
         <div class="div-form">
-          <ion-button type="submit" class="btn-default" style="width: 100%; height: 2.5rem; font-size: 12px;" (click)="logar()">ENTRAR</ion-button>
+          <ion-button type="submit" class="btn-default" style="-webkit-appearance: none; width: 100%; height: 2.5rem; font-size: 12px;" 
+          (click)="logar()" [disabled]="flogin.invalid">ENTRAR</ion-button>
         </div>
         <div class="label-form" style="width: 100%; font-size: 1rem; padding: 2rem; text-align: center;">Cadastre-se</div>
       </ion-row>
