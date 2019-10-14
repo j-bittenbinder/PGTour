@@ -2,6 +2,7 @@ import { PontoTuristicoPageModule, PontoTuristicoImg } from './ponto-turistico.m
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,11 +29,11 @@ export class PontoTuristicoService {
 }
 
 export interface DadosPonto {
-  id_ponto?: string;
-  nome?: string;
-  descricao?: string;
-  latitude?: string;
-  longitude?: string;
-  endereco?: string;
-  quantidade_visita?: string;
+  id_ponto: string;
+  nome: string;
+  descricao: string;
+  latitude: string;
+  longitude: string;
+  endereco: string;
+  quantidade_visita: string;
 }
