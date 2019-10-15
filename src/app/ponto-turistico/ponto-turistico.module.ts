@@ -1,3 +1,4 @@
+import { ModalonePage } from './../modalone/modalone.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +22,8 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PontoTuristicoPage]
+  declarations: [PontoTuristicoPage, ModalonePage],
+  entryComponents: [ModalonePage]
 })
 export class PontoTuristicoPageModule {}
 export class PontoTuristicoImg {}

@@ -2,11 +2,10 @@ import { PontoTuristicoService } from './../ponto-turistico/ponto-turistico.serv
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Session } from '../sessions';
-import { Storage } from "@ionic/storage";
+import { Storage } from '@ionic/storage';
 import { LoadingController } from '@ionic/angular';
-
 
 @Component({
   selector: 'app-home',
@@ -16,20 +15,25 @@ import { LoadingController } from '@ionic/angular';
 export class HomePage {
 
   pontos: any;
-  loading:any;
+  loading: any;
   usuario = {};
   apikey = 'AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw';
 
-  constructor(private service: PontoTuristicoService, private http: HttpClient,
-              public navCtrl: NavController, private router: Router, public session: Session, 
-              public storage: Storage, public loadingController: LoadingController) {
-   
-  }
+  constructor(
+    private service: PontoTuristicoService,
+    private http: HttpClient,
+    public navCtrl: NavController,
+    private router: Router,
+    private route: ActivatedRoute,
+    public session: Session,
+    public storage: Storage,
+    public loadingController: LoadingController
+  ) {}
 
   async presentLoadingWithOptions() {
     this.loading = await this.loadingController.create({
-      spinner: "circles",
-      message: 'Carregando..',
+      spinner: 'crescent',
+      message: 'Carregando...',
       translucent: true,
       cssClass: 'custom-class custom-loading'
     });
@@ -37,30 +41,24 @@ export class HomePage {
     return this.loading.present();
   }
 
+  // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
     this.service.getListaPontos().subscribe( dados => {
       this.pontos = dados;
     });
-    
+
     // this.session.get()
     //     .then(res => {
     //         this.usuario = res;
     //         if(this.usuario==null)
     //           this.router.navigate(['/login']);
-              
+
     //         }
     //     });
+  }
 
-
-}
-
-
-visualizarPonto(id) {
-  this.router.navigate(['/ponto-turistico'], {queryParams: id});
-}
-
-
-
-
+  visualizarPonto(id) {
+    this.router.navigate(['/ponto-turistico', id], { relativeTo: this.route });
+  }
 
 }

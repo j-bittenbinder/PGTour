@@ -1,6 +1,6 @@
-import { Storage } from "@ionic/storage";
+import { Storage } from '@ionic/storage';
 
-//pacote para transformar nossa classe em injetável
+// pacote para transformar nossa classe em injetável
 import { Injectable } from '@angular/core';
 
 
@@ -8,13 +8,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class Session {
 
-    constructor(public storage: Storage){
+    constructor(public storage: Storage) {
 
     }
     // setando uma seção e passando o tipo de usuário
     create(usuario) {
         this.storage.set('usuario', usuario);
-        //console.log('usuario do storage fodase ', this.storage.set('usuario', usuario));
+        // console.log('usuario do storage fodase ', this.storage.set('usuario', usuario));
     }
 
     get(): Promise<any> {

@@ -12,42 +12,45 @@
   </ion-header>
   
   <ion-content>
-    <ion-label class="font" style="font-size: 1rem; padding-top: 1rem;"><b>Cadastre-se</b></ion-label><br/>
-    <ion-item style="--border-color: transparent;">
-      <ion-label class="ion-text-wrap font" id="text-1" style="font-size: 12px;">
+    <div class="font" style="font-size: 1rem; margin: 1rem 1rem 0;"><b>Cadastre-se</b></div>
+    <div style="margin: 1rem; text-align: center;">
+      <ion-label class="ion-text-wrap font" style="font-size: 12px; text-align: center;">
         Bem vindo ao PGTour, realize um rápido cadastro e desfrute de todas as maravilhas desta cidade.
       </ion-label>
-    </ion-item>
-    <ion-item class="item-label">
-      <ion-label class="font" style="font-size: 14px;"><b>Dados pessoais</b></ion-label>
-    </ion-item>
-    <ion-item class="item-input">
-      <ion-input class="input-cadastro" type="text" name="nome" [(ngModel)]="nome" placeholder="Nome completo"></ion-input>
-    </ion-item>
-    <ion-item class="item-input">
-      <ion-input class="input-cadastro" type="text" name="telefone" [(ngModel)]="telefone" placeholder="Telefone"></ion-input>
-    </ion-item>
-    <ion-item class="item-label">
-      <ion-label class="font" style="font-size: 14px;"><b>Dados de acesso</b></ion-label>
-    </ion-item>
-    <ion-item class="item-input">
-      <ion-input class="input-cadastro" type="text" name="email" [(ngModel)]="email" placeholder="Seu e-mail"></ion-input>
-    </ion-item>
-    <ion-item class="item-input">
-      <ion-input class="input-cadastro" type="text" name="email2" [(ngModel)]="email2" placeholder="Confirme seu e-mail"></ion-input>
-    </ion-item>
-    <ion-item class="item-input">
-      <ion-input class="input-cadastro" type="text" name="senha" [(ngModel)]="senha" placeholder="Sua senha"></ion-input>
-    </ion-item>
-    <ion-item class="item-input">
-      <ion-input class="input-cadastro" type="text" name="senha2" [(ngModel)]="senha2" placeholder="Confirme sua senha"></ion-input>
-    </ion-item>
-    <ion-item class="item-label" style="justify-content: center; display: flex;">
-      <ion-checkbox id="termos" checked="false"></ion-checkbox>
-      <ion-label class="font" style="font-size: 12px; margin-left: 1rem;">Aceito os <a>termos e condições</a></ion-label>
-    </ion-item>
-    <ion-item class="item-label">
-      <ion-button class="btn-default" style="width: 100%; height: 3rem; font-size: 12px;" (click)="cadastrar()">CADASTRAR</ion-button>
-    </ion-item>
+    </div>
+    <form #fregister="ngForm">
+      <div class="item-input">
+        <ion-label class="font" style="font-size: 14px;"><b>Dados pessoais</b></ion-label>
+      </div>
+      <div class="item-input">
+        <ion-input class="input-cadastro" type="text" name="nome" [(ngModel)]="nome" placeholder="Nome completo" required></ion-input>
+      </div>
+      <div class="item-input">
+        <ion-input class="input-cadastro" type="text" name="telefone" [(ngModel)]="telefone" placeholder="Telefone" required></ion-input>
+      </div>
+      <div class="item-input">
+        <ion-label class="font" style="font-size: 14px;"><b>Dados de acesso</b></ion-label>
+      </div>
+      <div class="item-input">
+        <ion-input class="input-cadastro" type="text" name="email" [(ngModel)]="email" placeholder="Seu e-mail" required></ion-input>
+      </div>
+      <div class="item-input">
+        <ion-input class="input-cadastro" type="text" name="email2" [(ngModel)]="email2" placeholder="Confirme seu e-mail" required></ion-input>
+      </div>
+      <div class="item-input">
+        <ion-input class="input-cadastro" type="text" name="senha" [(ngModel)]="senha" placeholder="Sua senha" required></ion-input>
+      </div>
+      <div class="item-input">
+        <ion-input class="input-cadastro" type="text" name="senha2" [(ngModel)]="senha2" placeholder="Confirme sua senha" required></ion-input>
+      </div>
+      <div class="item-label" style="justify-content: center; display: flex; margin: 1rem;">
+        <ion-checkbox id="termos" checked="false" required></ion-checkbox>
+        <ion-label class="font" style="font-size: 12px; margin-left: 1rem;">Aceito os <a>termos e condições</a></ion-label>
+      </div>
+    </form>
+    <div class="item-label" style="margin: 0 1rem 1rem;">
+      <ion-button type="submit" class="btn-default" style="width: 100%; height: 3rem; font-size: 12px; -webkit-appearance: none;" 
+      (click)="cadastrar()" [disabled]="fregister.invalid">CADASTRAR</ion-button>
+    </div>
   </ion-content>
   
