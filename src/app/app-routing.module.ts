@@ -22,7 +22,8 @@ const routes: Routes = [
   },
   {
     path: 'modalone', loadChildren: './modalone/modalone.module#ModalonePageModule'
-  }
+  },  { path: 'map', loadChildren: './map/map.module#MapPageModule' }
+
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-import { LoginService } from './login.service';
+import { LoginService, Usu } from './login.service';
 import { LoginPageModule } from './login.module';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,6 +15,7 @@ export class LoginPage implements OnInit {
   loading;
   usuario: string;
   senha: string;
+  ususu: Usu;
 
   constructor(
     private service: LoginService,
@@ -30,12 +31,11 @@ export class LoginPage implements OnInit {
       .subscribe(data => {
         console.log(data);
       });*/
-    this.service.login(this.usuario, this.senha).subscribe(dados => {
-      this.login = dados;
-      if (this.login.Permissao) {
-        this.session.create(this.login.objeto);
-        this.router.navigate(['/home']);
-      }
+    this.service.login(this.usuario, this.senha).subscribe((ususu: Usu[]) => {
+      ususu = ususu;
+      console.log(ususu);
+      console.log(this.ususu.Permissao);
+      this.router.navigate(['/home']);
     });
   }
 

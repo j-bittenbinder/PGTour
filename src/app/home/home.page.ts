@@ -43,9 +43,9 @@ export class HomePage {
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
-    this.service.getListaPontos().subscribe( dados => {
-      this.pontos = dados;
-    });
+    // this.service.getListaPontos().subscribe( dados => {
+    //   this.pontos = dados;
+    // });
 
     // this.session.get()
     //     .then(res => {
@@ -59,6 +59,10 @@ export class HomePage {
 
   visualizarPonto(id) {
     this.router.navigate(['/ponto-turistico', id], { relativeTo: this.route });
+  }
+
+  teste() {
+    this.router.navigate(['/map']);
   }
 
 }

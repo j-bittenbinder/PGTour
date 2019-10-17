@@ -12,6 +12,8 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { Session } from './sessions';
+import { GoogleMaps } from '@ionic-native/google-maps';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -20,7 +22,7 @@ import { Session } from './sessions';
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
-   
+
     HttpClientModule
   ],
   providers: [
@@ -28,7 +30,8 @@ import { Session } from './sessions';
     StatusBar,
     Session,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    GoogleMaps
   ],
   bootstrap: [AppComponent]
 })
