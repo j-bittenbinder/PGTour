@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Platform, LoadingController } from '@ionic/angular';
 import { Environment,
         GoogleMap,
@@ -7,7 +7,6 @@ import { Environment,
         GoogleMapsEvent,
         MyLocation,
         GoogleMapsAnimation } from '@ionic-native/google-maps';
-import { Geolocation } from '@ionic-native/geolocation';
 
 @Component({
   selector: 'app-map',
@@ -16,12 +15,12 @@ import { Geolocation } from '@ionic-native/geolocation';
 })
 export class MapPage implements OnInit {
 
-  @ViewChild('map', {static: true}) mapElement: any;
+  @ViewChild('map', { static: true }) mapElement: any;
 
   private loading: any;
   private map: GoogleMap;
 
-  constructor(private platform: Platform, private loadingCtrl: LoadingController, private geolocation: Geolocation) { }
+  constructor(private platform: Platform, private loadingCtrl: LoadingController) { }
 
   ngOnInit() {
     this.mapElement = this.mapElement.nativeElement;
@@ -34,7 +33,7 @@ export class MapPage implements OnInit {
   async loadMap() {
     this.loading = await this.loadingCtrl.create({
       spinner: 'crescent',
-      message: 'Por favor, aguarde...',
+      message: 'Localizando...',
       translucent: true,
       cssClass: 'custom-class custom-loading'
     });
@@ -57,12 +56,10 @@ export class MapPage implements OnInit {
 
     try {
       await this.map.one(GoogleMapsEvent.MAP_READY);
-
       this.addOriginMarker();
     } catch (error) {
       console.log(error);
     }
-
   }
 
   async addOriginMarker() {
@@ -84,6 +81,5 @@ export class MapPage implements OnInit {
     } finally {
       this.loading.dismiss();
     }
-
   }
 }

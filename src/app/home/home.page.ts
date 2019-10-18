@@ -33,7 +33,7 @@ export class HomePage {
   async presentLoadingWithOptions() {
     this.loading = await this.loadingController.create({
       spinner: 'crescent',
-      message: 'Carregando...',
+      message: 'Carregando pontos...',
       translucent: true,
       cssClass: 'custom-class custom-loading'
     });
@@ -58,11 +58,6 @@ export class HomePage {
   }
 
   visualizarPonto(id) {
-    this.router.navigate(['/ponto-turistico', id], { relativeTo: this.route });
+    // this.router.navigate(['/ponto-turistico', id], { relativeTo: this.route });
   }
-
-  teste() {
-    this.router.navigate(['/map']);
-  }
-
 }

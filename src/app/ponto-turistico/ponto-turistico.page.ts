@@ -39,26 +39,26 @@ export class PontoTuristicoPage implements OnInit {
 
   ngOnInit() {
 
-    this.route.params.subscribe((params: any) => {
-      const id = params.id;
-      console.log(id);
-      this.presentLoadingWithOptions();
+    // this.route.params.subscribe((params: any) => {
+    //   const id = params.id;
+    //   console.log(id);
+    //   this.presentLoadingWithOptions();
 
-      this.service.getPonto(id).subscribe(dados => {
-        this.ponto = dados;
-        console.log('ponto:');
-        console.log(this.ponto);
-      });
-      this.service.getFotos(id).subscribe(datap => {
-        this.urls = datap;
-        console.log('fotos:');
-        console.log(this.urls);
+    //   this.service.getPonto(id).subscribe(dados => {
+    //     this.ponto = dados;
+    //     console.log('ponto:');
+    //     console.log(this.ponto);
+    //   });
+    //   this.service.getFotos(id).subscribe(datap => {
+    //     this.urls = datap;
+    //     console.log('fotos:');
+    //     console.log(this.urls);
 
-        this.loading.dismiss();
-      });
+    //     this.loading.dismiss();
+    //   });
 
 
-    });
+    // });
   }
 
   async showQuiz() {
@@ -67,5 +67,9 @@ export class PontoTuristicoPage implements OnInit {
     });
 
     modal.present();
+  }
+
+  maps() {
+    this.router.navigate(['/map']);
   }
 }
