@@ -22,7 +22,6 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
-
     HttpClientModule
   ],
   providers: [

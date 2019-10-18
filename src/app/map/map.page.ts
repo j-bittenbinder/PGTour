@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Platform, LoadingController } from '@ionic/angular';
+import { Platform, LoadingController, ModalController } from '@ionic/angular';
 import { Environment,
         GoogleMap,
         GoogleMaps,
@@ -20,7 +20,7 @@ export class MapPage implements OnInit {
   private loading: any;
   private map: GoogleMap;
 
-  constructor(private platform: Platform, private loadingCtrl: LoadingController) { }
+  constructor(private platform: Platform, private loadingCtrl: LoadingController, private modal: ModalController) { }
 
   ngOnInit() {
     this.mapElement = this.mapElement.nativeElement;
@@ -81,5 +81,9 @@ export class MapPage implements OnInit {
     } finally {
       this.loading.dismiss();
     }
+  }
+
+  close() {
+    this.modal.dismiss();
   }
 }

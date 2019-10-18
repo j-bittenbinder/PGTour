@@ -1,3 +1,4 @@
+import { MapPage } from './../map/map.page';
 import { ModalonePage } from './../modalone/modalone.page';
 import { PontoTuristicoService, DadosPonto } from './ponto-turistico.service';
 import { Component, OnInit } from '@angular/core';
@@ -65,11 +66,13 @@ export class PontoTuristicoPage implements OnInit {
     const modal = await this.modal.create({
       component: ModalonePage
     });
-
     modal.present();
   }
 
-  maps() {
-    this.router.navigate(['/map']);
+  async maps() {
+    const modal = await this.modal.create({
+      component: MapPage
+    });
+    modal.present();
   }
 }

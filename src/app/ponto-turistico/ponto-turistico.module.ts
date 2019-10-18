@@ -1,3 +1,5 @@
+import { AutoHideDirective } from './../auto-hide.directive';
+import { MapPage } from './../map/map.page';
 import { ModalonePage } from './../modalone/modalone.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,8 +24,8 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PontoTuristicoPage, ModalonePage],
-  entryComponents: [ModalonePage]
+  declarations: [PontoTuristicoPage, ModalonePage, MapPage, AutoHideDirective],
+  entryComponents: [ModalonePage, MapPage]
 })
 export class PontoTuristicoPageModule {}
 export class PontoTuristicoImg {}
