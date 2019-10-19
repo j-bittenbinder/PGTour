@@ -18,8 +18,3 @@ export class LoginService {
     return this.http.post<LoginPageModule[]>((this.API + '/login'), { email: user, senha: pass }, this.headerHttp);
   }
 }
-
-export interface Usu {
-  Permissao?: string;
-  nome?: string;
-}
