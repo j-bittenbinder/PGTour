@@ -22,12 +22,16 @@ export class MapPage implements OnInit {
 
   constructor(private platform: Platform, private loadingCtrl: LoadingController, private modal: ModalController) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewDidEnter() {
     this.mapElement = this.mapElement.nativeElement;
     this.mapElement.style.width = this.platform.width() + 'px';
     this.mapElement.style.height = this.platform.height() + 'px';
 
-    this.loadMap();
+    this.platform.ready().then(() => {
+      this.loadMap();
+    });
   }
 
   async loadMap() {
@@ -53,10 +57,10 @@ export class MapPage implements OnInit {
     };
 
     this.map = GoogleMaps.create(this.mapElement, mapOptions);
-
     try {
       await this.map.one(GoogleMapsEvent.MAP_READY);
       this.addOriginMarker();
+      
     } catch (error) {
       console.log(error);
     }

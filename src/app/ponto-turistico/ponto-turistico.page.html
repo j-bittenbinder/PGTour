@@ -15,8 +15,8 @@
       <ion-icon name="locate"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <ion-item style="--border-color: transparent" *ngFor="let ponto of ponto">
-    <div class="place">{{ ponto.nome }}</div>
+  <ion-item style="--border-color: transparent">
+    <div class="place">{{ point.nome }}</div>
   </ion-item>
   <div *ngFor="let urls of urls; let i=index">
     <div class="photo" *ngIf="i<=0">
@@ -27,12 +27,12 @@
     <ion-col *ngFor="let urls of urls" class="col-prov"><img id="img-prov" src="{{ urls.url_img }}"/></ion-col>
   </ion-row>
   <div class="desc-ponto">Histórico</div>
-  <div class="text" *ngFor="let ponto of ponto">
+  <div class="text">
     <p>
-      {{ ponto.descricao }}
+      {{ point.descricao }}
     </p>
     <p>
-      {{ ponto.endereco }}
+      {{ point.endereco }}
     </p>
   </div>
   <div class="rating">

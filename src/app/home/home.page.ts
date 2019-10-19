@@ -18,6 +18,7 @@ export class HomePage {
   loading: any;
   usuario = {};
   apikey = 'AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw';
+  buscar: any;
 
   constructor(
     private service: PontoTuristicoService,
@@ -43,9 +44,9 @@ export class HomePage {
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
-    // this.service.getListaPontos().subscribe( dados => {
-    //   this.pontos = dados;
-    // });
+    this.service.getListaPontos().subscribe( dados => {
+      this.pontos = dados;
+    });
 
     // this.session.get()
     //     .then(res => {
@@ -58,6 +59,14 @@ export class HomePage {
   }
 
   visualizarPonto(id) {
-    // this.router.navigate(['/ponto-turistico', id], { relativeTo: this.route });
+    this.router.navigate(['/ponto-turistico', id], { relativeTo: this.route });
+  }
+
+  buscarPonto() {
+    let aux = '%'+this.buscar+'%';
+    this.service.getPesquisa(aux).subscribe( data => {
+      this.pontos = data;
+    });
+
   }
 }

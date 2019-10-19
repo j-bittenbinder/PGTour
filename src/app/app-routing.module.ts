@@ -12,8 +12,8 @@ const routes: Routes = [
     path: 'list', loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
   {
-    // path: 'ponto-turistico/:id', loadChildren: './ponto-turistico/ponto-turistico.module#PontoTuristicoPageModule'
-    path: 'ponto-turistico', loadChildren: './ponto-turistico/ponto-turistico.module#PontoTuristicoPageModule'
+    path: 'ponto-turistico/:id', loadChildren: './ponto-turistico/ponto-turistico.module#PontoTuristicoPageModule'
+    // path: 'ponto-turistico', loadChildren: './ponto-turistico/ponto-turistico.module#PontoTuristicoPageModule'
   },
   {
     path: 'login', loadChildren: './login/login.module#LoginPageModule'

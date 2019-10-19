@@ -16,7 +16,6 @@ import { LoadingController, ModalController } from '@ionic/angular';
 export class PontoTuristicoPage implements OnInit {
   loading: any;
   point: DadosPonto;
-  ponto: PontoTuristicoPageModule[];
   urls: PontoTuristicoImg[];
 
   constructor(
@@ -39,27 +38,34 @@ export class PontoTuristicoPage implements OnInit {
   }
 
   ngOnInit() {
+    this.route.params.subscribe((params: any) => {
+      this.presentLoadingWithOptions();
+      const id = params.id;
 
-    // this.route.params.subscribe((params: any) => {
-    //   const id = params.id;
-    //   console.log(id);
-    //   this.presentLoadingWithOptions();
+      let dados ={
+        nome: "",
+        descricao: "",
+        endereco: "",
+        latitude: "",
+        longitude: "",
+        quantidade_visita: "",
+        id_ponto: ""
+      };
 
-    //   this.service.getPonto(id).subscribe(dados => {
-    //     this.ponto = dados;
-    //     console.log('ponto:');
-    //     console.log(this.ponto);
-    //   });
-    //   this.service.getFotos(id).subscribe(datap => {
-    //     this.urls = datap;
-    //     console.log('fotos:');
-    //     console.log(this.urls);
+      this.point = dados;
+      this.service.getPonto(id).subscribe(dados => {
+        this.point = dados[0];
+        console.log('point: ',this.point);
+      });
+      
+      this.service.getFotos(id).subscribe(datap => {
+        this.urls = datap;
+        console.log('fotos:');
+        console.log(this.urls);
 
-    //     this.loading.dismiss();
-    //   });
-
-
-    // });
+        this.loading.dismiss();
+      });
+    });
   }
 
   async showQuiz() {

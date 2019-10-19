@@ -13,7 +13,8 @@
 
 <ion-content>
   <div>
-    <ion-searchbar class="busca" showCancelButton="focus" placeholder="Buscar"></ion-searchbar>
+    <ion-searchbar class="busca" showCancelButton="focus" placeholder="Buscar" 
+    [(ngModel)]="buscar" (ionChange)="buscarPonto()" name="buscar"></ion-searchbar>
     <img id="mapa-home" src="https://maps.googleapis.com/maps/api/staticmap?center=-24.0022245,-46.4814905&zoom=12&size=600x500&maptype=roadmap&key={{ apikey }}"/>
   </div>
   <ion-list lines="none" style="margin: 0 0 12px; padding: 0; ">

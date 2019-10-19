@@ -1,6 +1,7 @@
 import { PontoTuristicoPageModule, PontoTuristicoImg } from './ponto-turistico.module';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -15,11 +16,15 @@ export class PontoTuristicoService {
 
   constructor(private http: HttpClient) { }
 
+  getPesquisa(text) {
+    return this.http.post<PontoTuristicoPageModule[]>((this.API + '/buscaPontoTuristico'), { nomePonto: text }, this.headerHttp);
+  }
+
   getListaPontos() {
     return this.http.get<PontoTuristicoPageModule[]>(this.API + '/getPontoTuristico');
   }
 
-  getPonto(idPonto) {
+  getPonto(idPonto) : Observable<PontoTuristicoPageModule>{
     return this.http.post<PontoTuristicoPageModule[]>((this.API + '/getDadosPontoTuristico'), { id: idPonto }, this.headerHttp);
   }
 
@@ -37,3 +42,5 @@ export interface DadosPonto {
   endereco: string;
   quantidade_visita: string;
 }
+
+
