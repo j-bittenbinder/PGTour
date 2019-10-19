@@ -5,9 +5,22 @@
     </ion-row>
     <form #flogin="ngForm">
       <ion-row class="row-login">
-        <div class="div-form">
+        <div class="div-form" name="usuario">
           <ion-label class="label-form" >Usuário</ion-label><br/>
-          <ion-input class="input-login" type="email" name="usuario" [(ngModel)]="usuario" required></ion-input>
+          <ion-input class="input-login" type="email" name="usuario" [(ngModel)]="usuario" required minlength="4" ngModel [email]="true" #mailform="ngModel"></ion-input>
+          <hr/>
+            <div *ngIf="mailform.invalid && (mailform.touched)" class="alert alert-danger">
+                <div *ngIf="mailform.errors.required">
+                    O email é obrigatório.
+                  </div>
+                  <div *ngIf="mailform.errors.minlength">
+                    Tamanho deve ser maior que 4 caracteres.
+                  </div>
+                  <div *ngIf="mailform.errors.email">
+                      Tipo de email inválido.
+                    </div>
+                </div>      
+
         </div>  
         <br/>
         <div class="div-form">

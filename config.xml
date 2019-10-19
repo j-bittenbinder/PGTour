@@ -102,4 +102,5 @@
     <allow-navigation href="http://localhost:8100" sessionid="177d2fe8" />
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw" />
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw" />
+    <engine name="browser" spec="~6.0.0" />
 </widget>
