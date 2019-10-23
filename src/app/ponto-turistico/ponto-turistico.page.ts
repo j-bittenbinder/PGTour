@@ -3,17 +3,17 @@ import { ModalonePage } from './../modalone/modalone.page';
 import { PontoTuristicoService, DadosPonto } from './ponto-turistico.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { PontoTuristicoImg, PontoTuristicoPageModule } from './ponto-turistico.module';
+import { PontoTuristicoImg } from './ponto-turistico.module';
 import { LoadingController, ModalController } from '@ionic/angular';
-
 
 @Component({
   selector: 'app-ponto-turistico',
   templateUrl: './ponto-turistico.page.html',
   styleUrls: ['./ponto-turistico.page.scss'],
 })
+
 export class PontoTuristicoPage implements OnInit {
+
   loading: any;
   point: DadosPonto;
   urls: PontoTuristicoImg[];
@@ -21,11 +21,9 @@ export class PontoTuristicoPage implements OnInit {
   constructor(
     private service: PontoTuristicoService,
     private route: ActivatedRoute,
-    private router: Router,
-    private http: HttpClient,
+    // private router: Router,
     private modal: ModalController,
-    public loadingController: LoadingController) {
-  }
+    public loadingController: LoadingController) {}
 
   async presentLoadingWithOptions() {
     this.loading = await this.loadingController.create({
@@ -42,26 +40,26 @@ export class PontoTuristicoPage implements OnInit {
       this.presentLoadingWithOptions();
       const id = params.id;
 
-      let dados ={
-        nome: "",
-        descricao: "",
-        endereco: "",
-        latitude: "",
-        longitude: "",
-        quantidade_visita: "",
-        id_ponto: ""
+      const dados = {
+        nome: '',
+        descricao: '',
+        endereco: '',
+        latitude: '',
+        longitude: '',
+        quantidade_visita: '',
+        id_ponto: ''
       };
 
       this.point = dados;
+      // tslint:disable-next-line: no-shadowed-variable
       this.service.getPonto(id).subscribe(dados => {
         this.point = dados[0];
-        console.log('point: ',this.point);
+        console.log('point: ', this.point);
       });
-      
+
       this.service.getFotos(id).subscribe(datap => {
         this.urls = datap;
-        console.log('fotos:');
-        console.log(this.urls);
+        console.log('fotos: ', this.urls);
 
         this.loading.dismiss();
       });
@@ -75,7 +73,7 @@ export class PontoTuristicoPage implements OnInit {
     modal.present();
   }
 
-  async maps() {
+  async showMap() {
     const modal = await this.modal.create({
       component: MapPage
     });

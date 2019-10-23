@@ -1,5 +1,4 @@
-import { LoginService} from './login.service';
-import { LoginPageModule } from './login.module';
+import { LoginService, DataUser} from './login.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Session } from '../sessions';
@@ -12,19 +11,18 @@ import { ToastController, LoadingController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  login: LoginPageModule[];
+  dataUser: DataUser;
   usuario: string;
   senha: string;
   loading: any;
 
   constructor(
     private service: LoginService,
-    private route: ActivatedRoute,
+    // private route: ActivatedRoute,
     private router: Router,
     public session: Session,
     public toastController: ToastController,
-    public loadingController: LoadingController ) {
-  }
+    public loadingController: LoadingController ) {}
 
   async presentToastWithOptions() {
     const toast = await this.toastController.create({
@@ -55,28 +53,23 @@ export class LoginPage implements OnInit {
   }
 
   logar() {
-    // Função de busca de dados do ponto turistico
-    /*this.http.post((this.url + '/login'), { email: this.usuario, senha: this.senha },
-      { headers: new HttpHeaders({'Content-Type': 'application/json'}) })
-      .subscribe(data => {
-        console.log(data);
-      });*/
     this.presentLoadingWithOptions();
-    this.service.login(this.usuario, this.senha).subscribe(data  => {
-      console.log(data.Permissao);
-      if(data.Permissao){
-      this.loading.dismiss();
-      this.router.navigate(['/home']);} 
-      else { 
+    this.service.login(this.usuario, this.senha).subscribe((data: DataUser)  => {
+      this.dataUser = data;
+      console.log('permissao: ', this.dataUser.Permissao);
+      if (this.dataUser.Permissao === true) {
+        this.loading.dismiss();
+        this.router.navigate(['/home']);
+        // pega o nome do usuario pelo objeto
+        // console.log(this.dataUser.objeto['nome']);
+      } else {
         this.loading.dismiss();
         this.presentToastWithOptions();
       }
     });
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
 }
 

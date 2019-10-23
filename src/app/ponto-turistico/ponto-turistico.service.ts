@@ -24,7 +24,7 @@ export class PontoTuristicoService {
     return this.http.get<PontoTuristicoPageModule[]>(this.API + '/getPontoTuristico');
   }
 
-  getPonto(idPonto) : Observable<PontoTuristicoPageModule>{
+  getPonto(idPonto): Observable<PontoTuristicoPageModule> {
     return this.http.post<PontoTuristicoPageModule[]>((this.API + '/getDadosPontoTuristico'), { id: idPonto }, this.headerHttp);
   }
 
