@@ -29,3 +29,4 @@ const routes: Routes = [
 })
 export class PontoTuristicoPageModule {}
 export class PontoTuristicoImg {}
+export class PontoTuristicoComentario {}

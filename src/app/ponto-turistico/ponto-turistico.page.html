@@ -48,23 +48,29 @@
           </ion-row>
         </ion-col>
         <ion-col id="note">
-          Nº
+          {{nota}}
         </ion-col>
       </ion-row>
     </div>
     <hr style="height: 1px; margin: 0rem 1rem; background-color: white;">
     <div class="content-rating">
-      <ion-row>
+      <ion-row style="margin: 0 0 1rem;" *ngFor="let item of avaliacoes">
         <ion-col class="user-img">
           <img src="../../assets/limdo.jpg" style="max-width: 50px; max-height: 50px; border-radius: 2rem;"/>
         </ion-col>
+
+        <!-- <rating [(ngModel)]="rate" readonly="false" size="default"></rating> -->
+        
         <ion-col class="user-rating">
           <div class="user-name">
-            <p>Guilherme Silveira</p>
+            <p>{{ item.nome }}</p>
           </div>
           <div class="user-comment">
-            <p>Ótimo lugar para visitar com a família.</p>
+            <p>{{ item.comentario }}</p>
           </div>
+            <div class="user-comment">
+              <p>Nota: {{ item.nota }}</p>   
+            </div>
         </ion-col>
       </ion-row>
     </div>
