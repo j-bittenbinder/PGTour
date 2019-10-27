@@ -1,12 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Platform, LoadingController, ModalController } from '@ionic/angular';
-import { Environment,
-        GoogleMap,
-        GoogleMaps,
-        GoogleMapOptions,
-        GoogleMapsEvent,
-        MyLocation,
-        GoogleMapsAnimation } from '@ionic-native/google-maps';
+import {
+  Environment,
+  GoogleMap,
+  GoogleMaps,
+  GoogleMapOptions,
+  GoogleMapsEvent,
+  MyLocation,
+  GoogleMapsAnimation
+} from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-map',
@@ -20,9 +23,9 @@ export class MapPage implements OnInit {
   private loading: any;
   private map: GoogleMap;
 
-  constructor(private platform: Platform, private loadingCtrl: LoadingController, private modal: ModalController) { }
+  constructor(private platform: Platform, private loadingCtrl: LoadingController, private modal: ModalController, private geolocation: Geolocation) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ionViewDidEnter() {
     this.mapElement = this.mapElement.nativeElement;
@@ -60,7 +63,7 @@ export class MapPage implements OnInit {
     try {
       await this.map.one(GoogleMapsEvent.MAP_READY);
       this.addOriginMarker();
-      
+
     } catch (error) {
       console.log(error);
     }
@@ -68,18 +71,32 @@ export class MapPage implements OnInit {
 
   async addOriginMarker() {
     try {
-      const myLocation: MyLocation = await this.map.getMyLocation();
 
-      await this.map.moveCamera({
-        target: myLocation.latLng,
-        zoom: 18
+      this.geolocation.getCurrentPosition().then(async (resp) => {
+        
+        let dados = {
+          lat: resp.coords.latitude,
+          lng: resp.coords.longitude
+        }
+        console.log(dados)
+
+        await this.map.moveCamera({
+          target: dados,
+          zoom: 18
+        });
+        
+        this.map.addMarkerSync({
+          title: 'Você está aqui!',
+          icon: '#5D4B9D',
+          animation: GoogleMapsAnimation.DROP,
+          position: dados
+        });
+
+      }).catch((error) => {
+        console.log('Error getting location', error);
       });
-      this.map.addMarkerSync({
-        title: 'Você está aqui!',
-        icon: '#5D4B9D',
-        animation: GoogleMapsAnimation.DROP,
-        position: myLocation.latLng
-      });
+
+      //const myLocation: MyLocation = await this.map.getMyLocation();
     } catch (error) {
       console.log(error);
     } finally {
