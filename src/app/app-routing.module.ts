@@ -22,11 +22,13 @@ const routes: Routes = [
     path: 'cadastro', loadChildren: './cadastro/cadastro.module#CadastroPageModule'
   },
   {
-    path: 'modalone', loadChildren: './modalone/modalone.module#ModalonePageModule'
+    path: 'map', loadChildren: './map/map.module#MapPageModule'
   },
   {
-    path: 'map', loadChildren: './map/map.module#MapPageModule'
-  }
+    path: 'modal-quiz', loadChildren: './modal-quiz/modal-quiz.module#ModalQuizPageModule'
+  },  { path: 'modal-rating', loadChildren: './modal-rating/modal-rating.module#ModalRatingPageModule' }
+
+
 
 ];
 

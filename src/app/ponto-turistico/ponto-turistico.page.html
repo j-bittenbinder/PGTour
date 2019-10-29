@@ -20,11 +20,11 @@
   </ion-item>
   <div *ngFor="let urls of urls; let i=index">
     <div class="photo" *ngIf="i<=0">
-      <img class="first-photo" src="{{ urls.url_img }}"/>
+      <img class="first-photo" src=""/>
     </div>
   </div>
   <ion-row style="padding-left: 10px; padding-right: 10px;">
-    <ion-col *ngFor="let urls of urls" class="col-prov"><img id="img-prov" src="{{ urls.url_img }}"/></ion-col>
+    <ion-col *ngFor="let urls of urls" class="col-prov"><img id="img-prov" src=""/></ion-col>
   </ion-row>
   <div class="desc-ponto">Histórico</div>
   <div class="text">
@@ -69,7 +69,7 @@
       </ion-row>
     </div>
     <div class="footer-rating">
-      <ion-button id="btn-rating">Avaliar</ion-button>
+      <ion-button id="btn-rating" (click)="showRating()">Avaliar</ion-button>
     </div>
   </div>
   <div class="btn-quiz">

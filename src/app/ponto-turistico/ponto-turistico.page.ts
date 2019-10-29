@@ -1,5 +1,6 @@
 import { MapPage } from './../map/map.page';
-import { ModalonePage } from './../modalone/modalone.page';
+import { ModalQuizPage } from './../modal-quiz/modal-quiz.page';
+import { ModalRatingPage } from './../modal-rating/modal-rating.page';
 import { PontoTuristicoService, DadosPonto } from './ponto-turistico.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,7 +33,7 @@ export class PontoTuristicoPage implements OnInit {
       translucent: true,
       cssClass: 'custom-class custom-loading'
     });
-    return this.loading.present();
+    // return this.loading.present();
   }
 
   ngOnInit() {
@@ -68,7 +69,14 @@ export class PontoTuristicoPage implements OnInit {
 
   async showQuiz() {
     const modal = await this.modal.create({
-      component: ModalonePage
+      component: ModalQuizPage
+    });
+    modal.present();
+  }
+
+  async showRating() {
+    const modal = await this.modal.create({
+      component: ModalRatingPage
     });
     modal.present();
   }

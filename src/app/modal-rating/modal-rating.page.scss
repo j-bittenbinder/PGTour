@@ -1,0 +1,75 @@
+.font {font-family: "Open Sans", sans-serif;}
+
+.font-awnser {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    align-self: center;
+    width: 100%;
+}
+
+.name {
+    justify-content: center;
+    display: flex;
+    color: #5D4B9D;
+    font-size: 1rem;
+    height: 5rem;
+    place-items: flex-end;
+    margin: 1rem;
+    font-weight: bolder;
+}
+
+.question {
+    justify-content: center;
+    display: flex;
+    color: black;
+    font-size: 13px;
+    margin: 1rem;
+}
+
+.awnser {
+    margin: 1rem;
+}
+
+#awnser {
+    display: flex;
+    --border-color: transparent;
+}
+
+.buttons {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
+
+.btns {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    margin: 1rem 1rem;
+}
+
+#btn-ask {
+    --background: #5D4B9D;
+    --border-radius: 2rem;
+    --color: white;
+    font-size: 12px;
+    width: 50%;
+    text-transform: none;
+}
+
+#btn-cancel {
+    color: #00AAE2;
+    font-size: 12px;
+}
+
+.radio-awnser {
+    margin: 1rem;
+    --color: #3880ff;
+}
+
+#text {
+    background-color: #F0F1F3;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem 2rem;
+}

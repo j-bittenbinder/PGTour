@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Avaliação</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="font">
+  <div class="name">Avaliar - Nome do Ponto</div>
+  <div style="display: flex; justify-content: center;">
+    <div class="question" style="display: inline;">Conte-nos como foi sua experiência <div style="display: inline; color: #00AAE2;"> :)</div></div>
+  </div>
+  <div id="awnser">
+    <ion-textarea id="text" class="font" placeholder="Digite sua experiência" rows="4"></ion-textarea>
+  </div>
+  <ion-row class="buttons">
+    <ion-row class="btns">
+      <ion-button class="font" id="btn-ask">Confirmar</ion-button>
+    </ion-row>
+    <ion-row class="btns">
+      <div id="btn-cancel" (click)="close()">Cancelar</div>
+    </ion-row>
+  </ion-row>
+</ion-content>

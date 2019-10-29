@@ -16,7 +16,6 @@ export class HomePage {
 
   pontos: any;
   loading: any;
-  usuario = {};
   apikey = 'AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw';
   buscar: any;
 
