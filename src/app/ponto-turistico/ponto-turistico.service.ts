@@ -1,4 +1,4 @@
-import { PontoTuristicoPageModule, PontoTuristicoImg } from './ponto-turistico.module';
+import { PontoTuristicoPageModule, PontoTuristicoImg, PontoTuristicoComentario } from './ponto-turistico.module';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -30,6 +30,9 @@ export class PontoTuristicoService {
 
   getFotos(idPonto) {
     return this.http.post<PontoTuristicoImg[]>((this.API + '/getImagensPonto'), { id: idPonto }, this.headerHttp);
+  }
+  getAvaliacoes(idPonto){
+    return this.http.post<PontoTuristicoComentario>((this.API + '/getAvaliacoes'), { id: idPonto }, this.headerHttp);
   }
 }
 

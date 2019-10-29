@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { Session } from './sessions';
 import { GoogleMaps } from '@ionic-native/google-maps';
+import { IonicRatingModule } from 'ionic4-rating';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +25,8 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    IonicRatingModule
   ],
   providers: [
     HTTP,
@@ -30,7 +34,8 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     Session,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    GoogleMaps
+    GoogleMaps,
+    Geolocation 
   ],
   bootstrap: [AppComponent]
 })
