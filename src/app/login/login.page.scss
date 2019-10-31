@@ -74,3 +74,17 @@ ion-content{
     animation-name: fadeInUp;
     -webkit-animation-name: fadeInUp;
 }
+
+.error {
+    margin: 0px 2rem;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    text-align: center;
+}
+
+#btn-entrar.button-disabled {
+    --color: white;
+    --background: #C8D0DA;
+    --opacity: 0.8;
+}

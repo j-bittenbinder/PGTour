@@ -3,16 +3,16 @@
     <ion-menu type="overlay">
       <ion-header>
         <ion-toolbar>
-          <ion-title class="hello">Olá, [usuario]</ion-title>
+          <ion-title class="hello">Olá, {{ userData.objeto.nome }}</ion-title>
         </ion-toolbar>
       </ion-header>
       <ion-content>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-item style="--border-color: transparent;" [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon style="color: #00AAE2;" slot="start" [name]="p.icon"></ion-icon>
               <ion-label class="menu-list">
-                {{p.title}}
+                {{ p.title }}
               </ion-label>
             </ion-item>
           </ion-menu-toggle>

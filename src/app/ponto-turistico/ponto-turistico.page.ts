@@ -58,17 +58,17 @@ export class PontoTuristicoPage implements OnInit {
       // tslint:disable-next-line: no-shadowed-variable
       this.service.getPonto(id).subscribe(dados => {
         this.point = dados[0];
-        //console.log('point: ', this.point);
+        // console.log('point: ', this.point);
       });
 
       this.service.getFotos(id).subscribe(datap => {
         this.urls = datap;
-        //console.log('fotos: ', this.urls);
+        // console.log('fotos: ', this.urls);
       });
 
       this.service.getAvaliacoes(id).subscribe(dataCom => {
         this.avaliacoes = dataCom;
-        //console.log('Comentarios', this.avaliacoes);
+        // console.log('Comentarios', this.avaliacoes);
         if (this.avaliacoes.length > 0) {
           for (let item of this.avaliacoes) {
             this.nota = this.nota + parseInt(item.nota);
@@ -82,21 +82,35 @@ export class PontoTuristicoPage implements OnInit {
 
   async showQuiz() {
     const modal = await this.modal.create({
-      component: ModalQuizPage
+      component: ModalQuizPage,
+      cssClass: 'modal-wh',
+      componentProps: {
+        ponto: this.point.nome,
+        id: this.point.id_ponto
+      }
     });
     modal.present();
   }
 
   async showRating() {
     const modal = await this.modal.create({
-      component: ModalRatingPage
+      component: ModalRatingPage,
+      cssClass: 'modal-wh',
+      componentProps: {
+        ponto: this.point.nome,
+        id: this.point.id_ponto
+      }
     });
     modal.present();
   }
 
   async showMap() {
     const modal = await this.modal.create({
-      component: MapPage
+      component: MapPage,
+      componentProps: {
+        latitude: this.point.latitude,
+        longitude: this.point.longitude
+      }
     });
     modal.present();
   }

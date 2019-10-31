@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { DataUser } from './login/login.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
+  userData: DataUser;
+
   public appPages = [
     {
       title: 'Home',
@@ -17,7 +21,7 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'Loja',
+      title: 'PGStore',
       url: '/list',
       icon: 'card'
     },
@@ -44,6 +48,7 @@ export class AppComponent {
     private statusBar: StatusBar
   ) {
     this.initializeApp();
+    this.userData = JSON.parse(localStorage.getItem('DadosUsuario'));
   }
 
   initializeApp() {

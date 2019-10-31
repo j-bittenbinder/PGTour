@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal-quiz',
@@ -8,7 +8,12 @@ import { ModalController } from '@ionic/angular';
 })
 export class ModalQuizPage implements OnInit {
 
-  constructor(private modal: ModalController) { }
+  ponto: string;
+
+  constructor(private modal: ModalController, private navParams: NavParams) {
+    this.ponto = this.navParams.get('ponto');
+    console.log(this.navParams.get('id')); // id do ponto pra puxar questão relacionada
+  }
 
   ngOnInit() {
   }

@@ -7,22 +7,20 @@
       <ion-row class="row-login">
         <div class="div-form" name="usuario">
           <ion-label class="label-form" >Usuário</ion-label><br/>
-          <ion-input class="input-login" type="email" name="usuario" [(ngModel)]="usuario" required minlength="4" ngModel [email]="true" #mailform="ngModel"></ion-input>
-          <hr/>
-            <div *ngIf="mailform.invalid && (mailform.touched)" class="alert alert-danger">
-                <div *ngIf="mailform.errors.required">
-                    O email é obrigatório.
-                  </div>
-                  <div *ngIf="mailform.errors.minlength">
-                    Tamanho deve ser maior que 4 caracteres.
-                  </div>
-                  <div *ngIf="mailform.errors.email">
-                      Tipo de email inválido.
-                    </div>
-                </div>      
-
-        </div>  
-        <br/>
+          <ion-input class="input-login" type="email" name="usuario" [(ngModel)]="usuario" required 
+          minlength="4" ngModel [email]="true" #mailform="ngModel"></ion-input>      
+        </div>
+        <div *ngIf="mailform.invalid && (mailform.touched)" class="alert alert-danger error animatedFadeInUp fadeInUp animated">
+          <div *ngIf="mailform.errors.required">
+            O e-mail é obrigatório.
+          </div>
+          <div *ngIf="mailform.errors.minlength">
+            Tamanho deve ser maior que 4 caracteres.
+          </div>
+          <div *ngIf="mailform.errors.email">
+            Tipo de e-mail inválido.
+          </div>
+        </div>
         <div class="div-form">
           <ion-label class="label-form">Senha</ion-label><br/>
           <ion-input class="input-login" type="password" name="senha" [(ngModel)]="senha" required></ion-input>
@@ -31,10 +29,11 @@
       <ion-row class="row-login">
         <div class="label-form" style="width: 100%; text-align: right; padding: 1rem 2rem; font-size: 13px;">Esqueci a senha</div>
         <div class="div-form">
-          <ion-button type="submit" class="btn-default" style="-webkit-appearance: none; width: 100%; height: 2.5rem; font-size: 12px;" 
-          (click)="logar()" [disabled]="flogin.invalid">ENTRAR</ion-button>
+          <ion-button type="submit" id="btn-entrar" class="btn-default" style="-webkit-appearance: none; width: 100%; 
+          height: 2.5rem; font-size: 12px; --background-activated: #028DBB;" (click)="logar()" [disabled]="flogin.invalid">ENTRAR</ion-button>
         </div>
-        <div class="label-form" style="width: 100%; font-size: 1rem; padding: 2rem; text-align: center;">Cadastre-se</div>
+        <div class="label-form" style="width: 100%; font-size: 1rem; padding: 2rem; text-align: center;"
+          (click)="navCadastro()">Cadastre-se</div>
       </ion-row>
     </form>
   </div>

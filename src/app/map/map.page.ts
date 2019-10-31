@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Platform, LoadingController, ModalController } from '@ionic/angular';
+import { Platform, LoadingController, ModalController, NavParams } from '@ionic/angular';
 import {
   Environment,
   GoogleMap,
@@ -22,8 +22,21 @@ export class MapPage implements OnInit {
 
   private loading: any;
   private map: GoogleMap;
+  private point: any;
 
-  constructor(private platform: Platform, private loadingCtrl: LoadingController, private modal: ModalController, private geolocation: Geolocation) { }
+  constructor(
+    private platform: Platform,
+    private loadingCtrl: LoadingController,
+    private modal: ModalController,
+    private geolocation: Geolocation,
+    private navParams: NavParams
+  ) {
+    this.point = {
+      lat: this.navParams.get('latitude'),
+      lng: this.navParams.get('longitude')
+    };
+    console.log('ponto: ', this.point);
+  }
 
   ngOnInit() { }
 
@@ -71,32 +84,29 @@ export class MapPage implements OnInit {
 
   async addOriginMarker() {
     try {
-
       this.geolocation.getCurrentPosition().then(async (resp) => {
-        
-        let dados = {
+        const dados = {
           lat: resp.coords.latitude,
           lng: resp.coords.longitude
-        }
-        console.log(dados)
+        };
+        console.log('meu local:', dados);
 
         await this.map.moveCamera({
           target: dados,
           zoom: 18
         });
-        
+
         this.map.addMarkerSync({
           title: 'Você está aqui!',
           icon: '#5D4B9D',
           animation: GoogleMapsAnimation.DROP,
           position: dados
         });
-
       }).catch((error) => {
-        console.log('Error getting location', error);
+        console.log('Ocorreu um erro ao localizar o dispositivo.', error);
       });
 
-      //const myLocation: MyLocation = await this.map.getMyLocation();
+      // const myLocation: MyLocation = await this.map.getMyLocation();
     } catch (error) {
       console.log(error);
     } finally {
