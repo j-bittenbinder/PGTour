@@ -7,9 +7,12 @@ import {
   GoogleMapOptions,
   GoogleMapsEvent,
   MyLocation,
-  GoogleMapsAnimation
+  GoogleMapsAnimation,
+  Marker
 } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+
+declare var google: any;
 
 @Component({
   selector: 'app-map',
@@ -22,7 +25,8 @@ export class MapPage implements OnInit {
 
   private loading: any;
   private map: GoogleMap;
-  private point: any;
+  private originMarker: Marker;
+  private destination: any;
 
   constructor(
     private platform: Platform,
@@ -31,11 +35,11 @@ export class MapPage implements OnInit {
     private geolocation: Geolocation,
     private navParams: NavParams
   ) {
-    this.point = {
-      lat: this.navParams.get('latitude'),
-      lng: this.navParams.get('longitude')
+    const point = {
+      lat: this.navParams.get('lat'),
+      lng: this.navParams.get('lng')
     };
-    console.log('ponto: ', this.point);
+    // console.log('ponto: ', this.point);
   }
 
   ngOnInit() { }
@@ -76,7 +80,6 @@ export class MapPage implements OnInit {
     try {
       await this.map.one(GoogleMapsEvent.MAP_READY);
       this.addOriginMarker();
-
     } catch (error) {
       console.log(error);
     }
@@ -89,18 +92,39 @@ export class MapPage implements OnInit {
           lat: resp.coords.latitude,
           lng: resp.coords.longitude
         };
-        console.log('meu local:', dados);
+        // console.log('meu local:', dados);
 
         await this.map.moveCamera({
           target: dados,
           zoom: 18
         });
 
-        this.map.addMarkerSync({
+        this.originMarker = this.map.addMarkerSync({
           title: 'Você está aqui!',
           icon: '#5D4B9D',
           animation: GoogleMapsAnimation.DROP,
           position: dados
+        });
+
+        console.log('origin:', this.originMarker.getPosition());
+        const point = {
+          lat: this.navParams.get('lat'),
+          lng: this.navParams.get('lng')
+        };
+
+        const markerDestination: Marker = this.map.addMarkerSync({
+          title: 'nome-ponto',
+          icon: '#5D4B9D',
+          animation: GoogleMapsAnimation.DROP,
+          position: point
+        });
+
+        console.log('dest:', markerDestination.getPosition());
+
+        this.map.addPolyline({
+          points: [this.originMarker.getPosition(), markerDestination.getPosition()],
+          color: '#5D4B9D',
+          width: 3
         });
       }).catch((error) => {
         console.log('Ocorreu um erro ao localizar o dispositivo.', error);

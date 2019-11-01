@@ -108,8 +108,8 @@ export class PontoTuristicoPage implements OnInit {
     const modal = await this.modal.create({
       component: MapPage,
       componentProps: {
-        latitude: this.point.latitude,
-        longitude: this.point.longitude
+        lat: this.point.latitude,
+        lng: this.point.longitude
       }
     });
     modal.present();
