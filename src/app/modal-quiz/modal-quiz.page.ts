@@ -12,7 +12,8 @@ export class ModalQuizPage implements OnInit {
 
   constructor(private modal: ModalController, private navParams: NavParams) {
     this.ponto = this.navParams.get('ponto');
-    console.log(this.navParams.get('id')); // id do ponto pra puxar questão relacionada
+    // id do ponto pra puxar questão relacionada
+    // console.log(this.navParams.get('id'));
   }
 
   ngOnInit() {

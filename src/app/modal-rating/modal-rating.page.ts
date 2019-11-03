@@ -12,7 +12,8 @@ export class ModalRatingPage implements OnInit {
 
   constructor(private modal: ModalController, private navParams: NavParams) {
     this.ponto = this.navParams.get('ponto');
-    console.log(this.navParams.get('id')); // id do ponto pra relacionar avaliação
+    // id do ponto pra relacionar avaliação
+    // console.log(this.navParams.get('id'));
   }
 
   ngOnInit() {

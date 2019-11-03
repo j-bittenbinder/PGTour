@@ -109,7 +109,8 @@ export class PontoTuristicoPage implements OnInit {
       component: MapPage,
       componentProps: {
         lat: this.point.latitude,
-        lng: this.point.longitude
+        lng: this.point.longitude,
+        nomePonto: this.point.nome
       }
     });
     modal.present();

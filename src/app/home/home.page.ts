@@ -30,10 +30,14 @@ export class HomePage {
     public storage: Storage,
     public loadingController: LoadingController
   ) {
-    if (localStorage.getItem('DadosUsuario') === null) {
-      console.log('n tá logado');
-    } else {
-      this.userData = JSON.parse(localStorage.getItem('DadosUsuario'));
+    try {
+      if (localStorage.getItem('DadosUsuario') === null) {
+        console.log('n tá logado');
+      } else {
+        this.userData = JSON.parse(localStorage.getItem('DadosUsuario'));
+      }
+    } catch (error) {
+      console.log('erro: ', error);
     }
   }
 
@@ -50,7 +54,7 @@ export class HomePage {
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
-    this.service.getListaPontos().subscribe( dados => {
+    this.service.getListaPontos().subscribe(dados => {
       this.pontos = dados;
     });
 
@@ -68,7 +72,7 @@ export class HomePage {
 
   buscarPonto() {
     const aux = '%' + this.buscar + '%';
-    this.service.getPesquisa(aux).subscribe( data => {
+    this.service.getPesquisa(aux).subscribe(data => {
       this.pontos = data;
     });
   }

@@ -6,9 +6,10 @@ import {
   GoogleMaps,
   GoogleMapOptions,
   GoogleMapsEvent,
-  MyLocation,
+  // MyLocation,
   GoogleMapsAnimation,
-  Marker
+  Marker,
+  ILatLng
 } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
@@ -26,7 +27,8 @@ export class MapPage implements OnInit {
   private loading: any;
   private map: GoogleMap;
   private originMarker: Marker;
-  private destination: any;
+  private nome: string;
+  private googleDirectionsService = new google.maps.DirectionsService();
 
   constructor(
     private platform: Platform,
@@ -35,11 +37,7 @@ export class MapPage implements OnInit {
     private geolocation: Geolocation,
     private navParams: NavParams
   ) {
-    const point = {
-      lat: this.navParams.get('lat'),
-      lng: this.navParams.get('lng')
-    };
-    // console.log('ponto: ', this.point);
+    this.nome = this.navParams.get('nomePonto');
   }
 
   ngOnInit() { }
@@ -69,11 +67,234 @@ export class MapPage implements OnInit {
       'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw'
     });
 
+    // https://mapstyle.withgoogle.com/
+    const styleNight = [
+      {
+        elementType: 'geometry',
+        stylers: [{
+          color: '#242f3e'
+        }]
+      },
+      {
+        elementType: 'labels.text.fill',
+        stylers: [{
+            color: '#746855'
+          }]
+      },
+      {
+        elementType: 'labels.text.stroke',
+        stylers: [
+          {
+            color: '#242f3e'
+          }
+        ]
+      },
+      {
+        featureType: 'administrative',
+        elementType: 'geometry',
+        stylers: [
+          {
+            visibility: 'off'
+          }
+        ]
+      },
+      {
+        featureType: 'administrative.locality',
+        elementType: 'labels.text.fill',
+        stylers: [
+          {
+            color: '#d59563'
+          }
+        ]
+      },
+      {
+        featureType: 'poi',
+        stylers: [
+          {
+            visibility: 'off'
+          }
+        ]
+      },
+      {
+        featureType: 'poi',
+        elementType: 'labels.text.fill',
+        stylers: [
+          {
+            color: '#d59563'
+          }
+        ]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#263c3f'
+          }
+        ]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'labels.text.fill',
+        stylers: [
+          {
+            color: '#6b9a76'
+          }
+        ]
+      },
+      {
+        featureType: 'road',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#38414e'
+          }
+        ]
+      },
+      {
+        featureType: 'road',
+        elementType: 'geometry.stroke',
+        stylers: [
+          {
+            color: '#212a37'
+          }
+        ]
+      },
+      {
+        featureType: 'road',
+        elementType: 'labels.icon',
+        stylers: [
+          {
+            visibility: 'off'
+          }
+        ]
+      },
+      {
+        featureType: 'road',
+        elementType: 'labels.text.fill',
+        stylers: [
+          {
+            color: '#9ca5b3'
+          }
+        ]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#746855'
+          }
+        ]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry.stroke',
+        stylers: [
+          {
+            color: '#1f2835'
+          }
+        ]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'labels.text.fill',
+        stylers: [
+          {
+            color: '#f3d19c'
+          }
+        ]
+      },
+      {
+        featureType: 'transit',
+        stylers: [
+          {
+            visibility: 'off'
+          }
+        ]
+      },
+      {
+        featureType: 'transit',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#2f3948'
+          }
+        ]
+      },
+      {
+        featureType: 'transit.station',
+        elementType: 'labels.text.fill',
+        stylers: [
+          {
+            color: '#d59563'
+          }
+        ]
+      },
+      {
+        featureType: 'water',
+        elementType: 'geometry',
+        stylers: [
+          {
+            color: '#17263c'
+          }
+        ]
+      },
+      {
+        featureType: 'water',
+        elementType: 'labels.text.fill',
+        stylers: [
+          {
+            color: '#515c6d'
+          }
+        ]
+      },
+      {
+        featureType: 'water',
+        elementType: 'labels.text.stroke',
+        stylers: [
+          {
+            color: '#17263c'
+          }
+        ]
+      }
+    ];
+
+    const styleMap = [
+      {
+        featureType: 'administrative',
+        elementType: 'geometry',
+        stylers: [{
+          visibility: 'off'
+        }]
+      },
+      {
+        featureType: 'poi',
+        stylers: [{
+          visibility: 'off'
+        }]
+      },
+      {
+        featureType: 'road',
+        elementType: 'labels.icon',
+        stylers: [{
+          visibility: 'off'
+        }]
+      },
+      {
+        featureType: 'transit',
+        stylers: [{
+          visibility: 'off'
+        }]
+      }
+    ];
+
     const mapOptions: GoogleMapOptions = {
       controls: {
         // botões de zoom no canto da page
         zoom: false
-      }
+      },
+      styles: styleNight
     };
 
     this.map = GoogleMaps.create(this.mapElement, mapOptions);
@@ -92,12 +313,6 @@ export class MapPage implements OnInit {
           lat: resp.coords.latitude,
           lng: resp.coords.longitude
         };
-        // console.log('meu local:', dados);
-
-        await this.map.moveCamera({
-          target: dados,
-          zoom: 18
-        });
 
         this.originMarker = this.map.addMarkerSync({
           title: 'Você está aqui!',
@@ -106,26 +321,45 @@ export class MapPage implements OnInit {
           position: dados
         });
 
-        console.log('origin:', this.originMarker.getPosition());
         const point = {
           lat: this.navParams.get('lat'),
           lng: this.navParams.get('lng')
         };
 
         const markerDestination: Marker = this.map.addMarkerSync({
-          title: 'nome-ponto',
+          title: this.nome,
           icon: '#5D4B9D',
           animation: GoogleMapsAnimation.DROP,
           position: point
         });
 
-        console.log('dest:', markerDestination.getPosition());
+        this.googleDirectionsService.route({
+          origin: this.originMarker.getPosition(),
+          destination: point,
+          travelMode: 'DRIVING'
+        }, async results => {
 
-        this.map.addPolyline({
-          points: [this.originMarker.getPosition(), markerDestination.getPosition()],
-          color: '#5D4B9D',
-          width: 3
+          const routePoints = new Array<ILatLng>();
+          const routes = results.routes[0].overview_path;
+
+          for (let i = 0; i < routes.length; i++) {
+            routePoints[i] = {
+              lat: routes[i].lat(),
+              lng: routes[i].lng()
+            };
+          }
+
+          await this.map.addPolyline({
+            points: routePoints,
+            color: '#5D4B9D',
+            width: 3
+          });
+
+          this.map.moveCamera({
+            target: routePoints
+          });
         });
+
       }).catch((error) => {
         console.log('Ocorreu um erro ao localizar o dispositivo.', error);
       });
