@@ -29,6 +29,7 @@ export class MapPage implements OnInit {
   private originMarker: Marker;
   private nome: string;
   private googleDirectionsService = new google.maps.DirectionsService();
+  private now: any;
 
   constructor(
     private platform: Platform,
@@ -37,6 +38,7 @@ export class MapPage implements OnInit {
     private geolocation: Geolocation,
     private navParams: NavParams
   ) {
+    this.now = new Date().getHours() + ':' + new Date().getMinutes();
     this.nome = this.navParams.get('nomePonto');
   }
 
@@ -63,8 +65,8 @@ export class MapPage implements OnInit {
 
     // setando chave para usar no browser
     Environment.setEnv({
-      'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw',
-      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw'
+      API_KEY_FOR_BROWSER_RELEASE: 'AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw',
+      API_KEY_FOR_BROWSER_DEBUG: 'AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw'
     });
 
     // https://mapstyle.withgoogle.com/
@@ -260,7 +262,7 @@ export class MapPage implements OnInit {
       }
     ];
 
-    const styleMap = [
+    const styleDay = [
       {
         featureType: 'administrative',
         elementType: 'geometry',
@@ -294,7 +296,7 @@ export class MapPage implements OnInit {
         // botões de zoom no canto da page
         zoom: false
       },
-      styles: styleNight
+      styles: styleDay
     };
 
     this.map = GoogleMaps.create(this.mapElement, mapOptions);

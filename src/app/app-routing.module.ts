@@ -26,10 +26,16 @@ const routes: Routes = [
   },
   {
     path: 'modal-quiz', loadChildren: './modal-quiz/modal-quiz.module#ModalQuizPageModule'
-  },  { path: 'modal-rating', loadChildren: './modal-rating/modal-rating.module#ModalRatingPageModule' }
-
-
-
+  },
+  {
+    path: 'modal-rating', loadChildren: './modal-rating/modal-rating.module#ModalRatingPageModule'
+  },
+  {
+    path: 'store', loadChildren: './store/store.module#StorePageModule'
+  },
+  {
+    path: 'config', loadChildren: './config/config.module#ConfigPageModule'
+  }
 ];
 
 @NgModule({

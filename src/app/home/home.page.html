@@ -42,7 +42,7 @@
     </ion-item>
     <ion-item *ngFor="let ponto of pontos" routerDirection="root">
       <img src="../../assets/local.png"/>
-      <ion-label class="label-ponto" (click)="visualizarPonto(ponto.id_ponto)">Visitar {{ponto.nome}}</ion-label>
+      <ion-label class="label-ponto" (click)="visualizarPonto(ponto.id_ponto)">Visitar {{ ponto.nome }}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

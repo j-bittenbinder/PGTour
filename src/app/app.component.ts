@@ -21,8 +21,8 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'PGStore',
-      url: '/list',
+      title: 'PG Store',
+      url: '/store',
       icon: 'card'
     },
     {
@@ -39,6 +39,12 @@ export class AppComponent {
       title: 'Cadastro',
       url: '/cadastro',
       icon: 'person-add'
+    }
+    ,
+    {
+      title: 'Configurações',
+      url: '/config',
+      icon: 'construct'
     }
   ];
 

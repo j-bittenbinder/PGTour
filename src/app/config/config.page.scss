@@ -1,0 +1,59 @@
+#logo {
+    max-width: 5rem;
+    max-height: 100%;
+    display: flex;
+}
+
+.col-logo {
+    display: flex; 
+    justify-content: center;
+}
+
+.row-logo {
+    margin-right: 48px;
+    padding: 0 8px 0 0;
+}
+
+ion-content {
+    font-family: 'Open Sans', sans-serif;
+    text-transform: none;
+}
+
+#hello {
+    color: #00AAE2;
+    text-align: start;
+    font-weight: bolder;
+    margin: 1rem 1rem 0;
+    font-size: 18px;
+}
+
+#text {
+    color: #5D4B9D;
+    margin: 0 1rem;
+    text-align: justify;
+    font-size: 13px;
+}
+
+.font {
+    font-family: 'Open Sans', sans-serif;
+    color: #091E42;
+}
+
+.input-cadastro {
+    border-radius: 7px;
+    --padding-start: 1rem!important;
+    --padding-end: 0.6rem;
+    --padding-top: 1rem;
+    --padding-bottom: 1rem;
+    background-color: #F0F1F3;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+}
+
+.item-input {
+    margin: 1rem;
+}
+
+.item-label {
+    --border-color: transparent;
+}

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: #00AAE2;"></ion-menu-button>
+    </ion-buttons>
+    <ion-row class="row-logo">
+      <ion-col class="col-logo">
+        <img id="logo" src="../../assets/logo.svg"/>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="hello">Olá, {{ userData.objeto.nome }}</div>
+  <div id="text">Aqui você pode consultar todos os nossos parceiros e trocar seus pontos por experiências incríveis.</div>
+  <ion-row style="margin: 1rem;">
+    <ion-col class="medal">
+      <img src="../../assets/trophy.png" style="width: 50px;"/>
+    </ion-col>
+    <ion-col class="points">
+      <ion-row id="my-pnts">Meus Pontos</ion-row>
+      <ion-row id="pnts">{{ userData.objeto.pontos }}</ion-row>
+    </ion-col>
+  </ion-row>  
+  <hr style="height: 1px; border-width: 1px; margin: 10px;">
+  <ion-row id="info">
+    <ion-col style="text-align: start;">PG Store</ion-col>
+    <ion-col style="text-align: end; font-weight: normal;">Extrato de Pontos</ion-col>
+  </ion-row>
+  <div style="margin: 1rem; display: flex; justify-content: center;">
+    <div class="benefits" *ngFor="let number of [0,1]">
+      <img class="img-benefit" src="../../assets/trophy.png"/>
+      <div id="benefit">Lorem ipsum {{ number }}</div>
+    </div>
+  </div>
+</ion-content>

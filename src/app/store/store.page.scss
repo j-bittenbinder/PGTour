@@ -1,0 +1,79 @@
+#logo {
+    max-width: 5rem;
+    max-height: 100%;
+    display: flex;
+}
+
+.col-logo {
+    display: flex; 
+    justify-content: center;
+}
+
+.row-logo {
+    margin-right: 48px;
+    padding: 0 8px 0 0;
+}
+
+ion-content {
+    font-family: 'Open Sans', sans-serif;
+    text-transform: none;
+}
+
+#hello {
+    color: #00AAE2;
+    text-align: start;
+    font-weight: bolder;
+    margin: 1rem 1rem 0;
+    font-size: 18px;
+}
+
+#text {
+    color: #5D4B9D;
+    margin: 0 1rem;
+    text-align: justify;
+    font-size: 13px;
+}
+
+#my-pnts {
+    font-size: 12px;
+    color: #5D4B9D;
+    font-weight: bolder;
+}
+
+#pnts {
+    color: #00AAE2;
+    font-weight: bolder;
+    font-size: 1rem;
+}
+
+.medal {
+    max-width: 50px;
+    max-height: 50px;
+    justify-content: center;
+    display: flex;
+}
+
+#info {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+    color: #5D4B9D;
+    font-weight: bolder;
+}
+
+.benefits {
+    max-width: 100%;
+    margin: 10px;
+}
+
+#benefit {
+    justify-content: center; 
+    display: flex;
+    color: #5D4B9D;
+}
+
+.img-benefit {
+    width: 9rem;
+    border: solid 1px;
+    width: 100%;
+}
