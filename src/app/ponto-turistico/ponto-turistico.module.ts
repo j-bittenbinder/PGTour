@@ -1,3 +1,4 @@
+import { ModalImagePage } from './../modal-image/modal-image.page';
 import { AutoHideDirective } from './../auto-hide.directive';
 import { MapPage } from './../map/map.page';
 import { NgModule } from '@angular/core';
@@ -25,8 +26,8 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PontoTuristicoPage, MapPage, ModalQuizPage, ModalRatingPage, AutoHideDirective],
-  entryComponents: [MapPage, ModalQuizPage, ModalRatingPage]
+  declarations: [PontoTuristicoPage, MapPage, ModalQuizPage, ModalRatingPage, ModalImagePage, AutoHideDirective],
+  entryComponents: [MapPage, ModalQuizPage, ModalRatingPage, ModalImagePage]
 })
 export class PontoTuristicoPageModule {}
 export class PontoTuristicoImg {}

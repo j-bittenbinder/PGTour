@@ -1,3 +1,4 @@
+import { ModalImagePage } from './../modal-image/modal-image.page';
 import { MapPage } from './../map/map.page';
 import { ModalQuizPage } from './../modal-quiz/modal-quiz.page';
 import { ModalRatingPage } from './../modal-rating/modal-rating.page';
@@ -20,6 +21,13 @@ export class PontoTuristicoPage implements OnInit {
   urls: PontoTuristicoImg[];
   avaliacoes: any;
   nota = 0;
+
+  sliderOpts = {
+    zoom: false,
+    slidesPerView: 1.5,
+    centeredSlides: true,
+    spaceBetween: 20
+  };
 
   constructor(
     private service: PontoTuristicoService,
@@ -111,6 +119,16 @@ export class PontoTuristicoPage implements OnInit {
         lat: this.point.latitude,
         lng: this.point.longitude,
         nomePonto: this.point.nome
+      }
+    });
+    modal.present();
+  }
+
+  async openPreview(img) {
+    const modal = await this.modal.create({
+      component: ModalImagePage,
+      componentProps: {
+        img: img
       }
     });
     modal.present();

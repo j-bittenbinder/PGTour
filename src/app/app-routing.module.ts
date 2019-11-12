@@ -35,7 +35,8 @@ const routes: Routes = [
   },
   {
     path: 'config', loadChildren: './config/config.module#ConfigPageModule'
-  }
+  },  { path: 'modal-image', loadChildren: './modal-image/modal-image.module#ModalImagePageModule' }
+
 ];
 
 @NgModule({

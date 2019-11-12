@@ -1,0 +1,31 @@
+<ion-content fullscreen>
+
+  <ion-item class="close-fake" lines="none">
+    <ion-col>
+      <ion-button id="btnOpts" (click)="close()" fill="clear" color="light">
+        <ion-icon name="close" slot="start"></ion-icon>
+        Voltar
+      </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button id="btnOpts" (click)="zoom(true)" fill="clear" color="light">
+        <ion-icon name="add" slot="start"></ion-icon>
+        Zoom
+      </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button id="btnOpts" (click)="zoom(false)" fill="clear" color="light">
+        <ion-icon name="remove" slot="start"></ion-icon>
+        Zoom
+      </ion-button>
+    </ion-col>
+  </ion-item>
+
+  <ion-slides [options]="sliderOpts">
+    <ion-slide>
+      <div class="swiper-zoom-container" #slider>
+        <img src="../../assets/shapes.svg"/>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
