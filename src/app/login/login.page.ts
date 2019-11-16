@@ -56,6 +56,7 @@ export class LoginPage implements OnInit {
     this.presentLoadingWithOptions();
     this.service.login(this.usuario, this.senha).subscribe((data: DataUser)  => {
       this.dataUser = data;
+      console.log(data);
       if (this.dataUser.Permissao === true) {
         this.loading.dismiss();
         this.router.navigate(['/home']);

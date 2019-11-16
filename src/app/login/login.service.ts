@@ -23,18 +23,10 @@ export class LoginService {
 export interface DataUser {
   Permissao: boolean;
   Usuario: string;
-  objeto: Objeto[];
+  objeto: Objeto;
 }
 
 export interface Objeto {
-  0: string;
-  1: string;
-  2: string;
-  3: string;
-  4: string;
-  5: string;
-  6: string;
-  7: string;
   cpf: string;
   senha: string;
   pontos: string;
