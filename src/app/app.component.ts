@@ -51,7 +51,7 @@ export class AppComponent {
     private events: Events
   ) {
     this.initializeApp();
-    this.events.subscribe('user:changed', user => { // evento para atualizar appcomponent
+    this.events.subscribe('user:changed', user => { // recebe evento para atualizar img e nome no app-component
       this.userData = user;
     });
   }

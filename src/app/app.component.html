@@ -3,9 +3,12 @@
     <ion-menu type="overlay">
       <ion-header>
         <ion-toolbar>
-          <ion-row>
-            <img style="max-width: 5rem; height: 5rem; display: flex; border-radius: 50%; margin: 1rem; object-fit: cover;" [src]="userData.objeto.img"/>
-            <img style="max-width: 5rem; height: 5rem; display: flex; border-radius: 50%; margin: 1rem; object-fit: cover;" *ngIf="userData.objeto.img==''" src="../../assets/user.png" />
+          <ion-row *ngIf="userData.objeto.img==''">
+            <img style="max-width: 5rem; height: 5rem; display: flex; border-radius: 50%; margin: 1rem; object-fit: cover;" src="../../assets/user.png">
+            <ion-title class="hello">Olá, {{ userData.objeto.nome }}</ion-title>
+          </ion-row>
+          <ion-row *ngIf="userData.objeto.img !== null">
+            <img style="max-width: 5rem; height: 5rem; display: flex; border-radius: 50%; margin: 1rem; object-fit: cover;" [src]="userData.objeto.img">
             <ion-title class="hello">Olá, {{ userData.objeto.nome }}</ion-title>
           </ion-row>
         </ion-toolbar>

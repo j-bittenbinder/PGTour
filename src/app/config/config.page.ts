@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataUser } from '../login/login.service';
-import * as cordovaGallery from 'cordova-gallery-access';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+// import * as cordovaGallery from 'cordova-gallery-access';
+// import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 (window as any).global = window;
 // @ts-ignore
 window.Buffer = window.Buffer || require('buffer').Buffer;
@@ -15,7 +15,7 @@ export class ConfigPage implements OnInit {
 
   userData: DataUser;
 
-  constructor(private camera: Camera) {
+  constructor() {
     try {
       if (localStorage.getItem('DadosUsuario') === null) {
         console.log('n tá logado');
@@ -40,7 +40,6 @@ export class ConfigPage implements OnInit {
     // }
     // console.log(options)
     // this.camera.getPicture(options).then((imageData) => {
-      
     //   let base64Image = 'data:image/jpeg;base64,' + imageData;
     //   uploadImagem(base64Image)
     //  }, (err) => {
