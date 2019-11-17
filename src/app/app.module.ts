@@ -16,7 +16,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { IonicRatingModule } from 'ionic4-rating';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LogoutPage } from './logout/logout.page';
-
+// import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @NgModule({
   declarations: [AppComponent, LogoutPage],
@@ -37,6 +37,7 @@ import { LogoutPage } from './logout/logout.page';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     GoogleMaps,
     Geolocation
+    // Camera
   ],
   bootstrap: [AppComponent]
 })

@@ -10,13 +10,12 @@
       </ion-row>
     </ion-toolbar>
   </ion-header>
-
 <ion-content>
   <div id="hello">Olá, {{ userData.objeto.nome }}</div>
   <div id="text">Aqui você pode alterar sua foto, rever seus dados pessoais, definir a distância entre você e os pontos, etc.</div>
   <div style="justify-content: center; display: flex; margin: 1rem;">
     <div style="width: 13rem; height: 13rem;">
-      <img style="width: 100%; border-radius: 50%; height: 100%; object-fit: cover;" src="{{ userData.objeto.img }}">
+      <img id="imagem" name="imagem" type="file" style="width: 100%; border-radius: 50%; height: 100%; object-fit: cover;" (click)="uploadFoto()" [src]="userData.objeto.img"/>
     </div>
   </div>
   <div class="item-input">
