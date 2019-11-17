@@ -10,12 +10,11 @@
       </ion-row>
     </ion-toolbar>
   </ion-header>
-
 <ion-content>
   <div id="hello">Olá, {{ userData.objeto.nome }}</div>
   <div id="text">Aqui você pode alterar sua foto, rever seus dados pessoais, definir a distância entre você e os pontos, etc.</div>
   <div style="justify-content: center; display: flex; margin: 1rem;">
-    <img style="max-width: 60%; border-radius: 50%;" src="../../assets/limdo.jpg"/>
+    <img id="imagem" name="imagem" type="file" style="max-width: 60%; border-radius: 50%;" (click)="uploadFoto()" [src]="userData.objeto.img"/>
   </div>
   <div class="item-input">
     <ion-label class="font" style="font-size: 14px;"><b>Dados pessoais</b></ion-label>

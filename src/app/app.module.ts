@@ -15,6 +15,7 @@ import { Session } from './sessions';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { IonicRatingModule } from 'ionic4-rating';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     GoogleMaps,
-    Geolocation 
+    Geolocation,
+    Camera,
   ],
   bootstrap: [AppComponent]
 })

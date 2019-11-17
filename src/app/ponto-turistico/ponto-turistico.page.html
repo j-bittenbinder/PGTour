@@ -63,7 +63,8 @@
     <div class="content-rating">
       <ion-row style="margin: 0 0 1rem;" *ngFor="let item of avaliacoes">
         <ion-col class="user-img">
-          <img src="../../assets/limdo.jpg" style="max-width: 50px; max-height: 50px; border-radius: 2rem;"/>
+          <img *ngIf="item.img==''" src="../../assets/user.png" style="max-width: 50px; max-height: 50px; border-radius: 2rem;"/>
+          <img [src]="item.img" style="max-width: 50px; max-height: 50px; border-radius: 2rem;"/>
         </ion-col>
 
         <!-- <rating [(ngModel)]="rate" readonly="false" size="default"></rating> -->
