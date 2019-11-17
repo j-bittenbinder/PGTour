@@ -158,3 +158,16 @@
     font-weight: bolder;
     text-align: right;
 }
+
+.swiper-container {
+    margin: 0 1rem;
+}
+
+.swiper-wrapper {
+    margin-left: -1rem;
+}
+
+ion-slide >:first-child {
+    height: 10rem;
+    object-fit: cover;
+}

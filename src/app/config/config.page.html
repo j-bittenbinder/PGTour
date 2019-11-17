@@ -15,7 +15,9 @@
   <div id="hello">Olá, {{ userData.objeto.nome }}</div>
   <div id="text">Aqui você pode alterar sua foto, rever seus dados pessoais, definir a distância entre você e os pontos, etc.</div>
   <div style="justify-content: center; display: flex; margin: 1rem;">
-    <img style="max-width: 60%; border-radius: 50%;" src="../../assets/limdo.jpg"/>
+    <div style="width: 13rem; height: 13rem;">
+      <img style="width: 100%; border-radius: 50%; height: 100%; object-fit: cover;" src="{{ userData.objeto.img }}">
+    </div>
   </div>
   <div class="item-input">
     <ion-label class="font" style="font-size: 14px;"><b>Dados pessoais</b></ion-label>

@@ -2,7 +2,7 @@ import { LoginService, DataUser} from './login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Session } from '../sessions';
-import { ToastController, LoadingController } from '@ionic/angular';
+import { ToastController, LoadingController, MenuController, Events } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -22,8 +22,12 @@ export class LoginPage implements OnInit {
     private router: Router,
     public session: Session,
     public toastController: ToastController,
-    public loadingController: LoadingController
-  ) {}
+    public loadingController: LoadingController,
+    public menu: MenuController,
+    private events: Events
+  ) {
+     this.menu.enable(false);
+  }
 
   async presentToastWithOptions() {
     this.toast = await this.toastController.create({
@@ -61,6 +65,7 @@ export class LoginPage implements OnInit {
         this.loading.dismiss();
         this.router.navigate(['/home']);
         localStorage.setItem('DadosUsuario', JSON.stringify(this.dataUser));
+        this.events.publish('user:changed', this.dataUser); // seta evento do appcomponent
       } else {
         this.loading.dismiss();
         this.presentToastWithOptions();
@@ -72,7 +77,8 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/cadastro']);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }
 

@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: 'home', pathMatch: 'full'
+    path: '', redirectTo: 'login', pathMatch: 'full'
   },
   {
     path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
@@ -35,7 +35,9 @@ const routes: Routes = [
   },
   {
     path: 'config', loadChildren: './config/config.module#ConfigPageModule'
-  },  { path: 'modal-image', loadChildren: './modal-image/modal-image.module#ModalImagePageModule' }
+  },
+  { path: 'modal-image', loadChildren: './modal-image/modal-image.module#ModalImagePageModule' },
+  { path: 'logout', loadChildren: './logout/logout.module#LogoutPageModule' }
 
 ];
 

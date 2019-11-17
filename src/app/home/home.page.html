@@ -18,7 +18,7 @@
     <img id="mapa-home" src="https://maps.googleapis.com/maps/api/staticmap?center=-24.0022245,-46.4814905&zoom=12&size=600x500&maptype=roadmap&key={{ apikey }}"/>
   </div>
   <ion-list lines="none" style="margin: 0 0 12px; padding: 0; ">
-    <ion-list-header class="name-user">
+    <ion-list-header class="name-user"  *ngIf="userData != null">
       <ion-label class="hello-user" style="font-size: 1rem;">Olá, {{ userData.objeto.nome }} ;)</ion-label>
     </ion-list-header>
     <p class="text-list">Que tal descobrir um pouco mais sua cidade?</p>

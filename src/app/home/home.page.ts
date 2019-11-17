@@ -5,7 +5,7 @@ import { NavController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Session } from '../sessions';
 import { Storage } from '@ionic/storage';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -28,7 +28,8 @@ export class HomePage {
     private route: ActivatedRoute,
     public session: Session,
     public storage: Storage,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    private menu: MenuController
   ) {
     try {
       if (localStorage.getItem('DadosUsuario') === null) {
@@ -53,7 +54,8 @@ export class HomePage {
   }
 
   // tslint:disable-next-line: use-lifecycle-interface
-  ngOnInit() {
+  async ngOnInit() {
+    await this.menu.enable(true);
     this.service.getListaPontos().subscribe(dados => {
       this.pontos = dados;
     });

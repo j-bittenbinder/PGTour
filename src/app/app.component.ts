@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, ModalController, Events } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { DataUser } from './login/login.service';
+import { LogoutPage } from './logout/logout.page';
 
 @Component({
   selector: 'app-root',
@@ -26,9 +27,9 @@ export class AppComponent {
       icon: 'card'
     },
     {
-      title: 'Pontos',
-      url: '/ponto-turistico',
-      icon: 'map'
+      title: 'Configurações',
+      url: '/config',
+      icon: 'construct'
     },
     {
       title: 'Login',
@@ -40,21 +41,19 @@ export class AppComponent {
       url: '/cadastro',
       icon: 'person-add'
     }
-    ,
-    {
-      title: 'Configurações',
-      url: '/config',
-      icon: 'construct'
-    }
   ];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private modal: ModalController,
+    private events: Events
   ) {
     this.initializeApp();
-    this.userData = JSON.parse(localStorage.getItem('DadosUsuario'));
+    this.events.subscribe('user:changed', user => { // evento para atualizar appcomponent
+      this.userData = user;
+    });
   }
 
   initializeApp() {
@@ -62,5 +61,18 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngOnInit() {
+  }
+
+  async logout() {
+    this.initializeApp();
+    const modal = await this.modal.create({
+      component: LogoutPage,
+      cssClass: 'modal-logout',
+    });
+    modal.present();
   }
 }

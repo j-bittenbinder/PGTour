@@ -15,11 +15,12 @@ import { Session } from './sessions';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { IonicRatingModule } from 'ionic4-rating';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { LogoutPage } from './logout/logout.page';
 
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, LogoutPage],
+  entryComponents: [LogoutPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -35,7 +36,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     GoogleMaps,
-    Geolocation 
+    Geolocation
   ],
   bootstrap: [AppComponent]
 })
