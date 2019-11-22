@@ -62,18 +62,18 @@ ion-content {
 }
 
 .benefits {
-    max-width: 100%;
+    max-width: 150px;
     margin: 10px;
 }
 
 #benefit {
     justify-content: center; 
-    display: flex;
     color: #5D4B9D;
+    max-width: 100%;
 }
 
 .img-benefit {
-    width: 9rem;
     border: solid 1px;
-    width: 100%;
+    width: 120px;
+    max-width: 120px;
 }

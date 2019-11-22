@@ -19,15 +19,10 @@ export class LogoutPage implements OnInit {
     this.modal.dismiss();
   }
 
-  async logout() {
-    await this.fecharessecaralho();
-    await localStorage.clear();
-    this.router.navigateByUrl('/login');
+  logout() {
+    this.menu.enable(false);
+    localStorage.clear();
+    this.router.navigate(['login']);
     this.modal.dismiss();
   }
-
-  fecharessecaralho() {
-    this.menu.enable(false);
-  }
-
 }

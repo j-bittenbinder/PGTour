@@ -65,6 +65,7 @@ export class LoginPage implements OnInit {
         this.loading.dismiss();
         this.router.navigate(['/home']);
         localStorage.setItem('DadosUsuario', JSON.stringify(this.dataUser));
+        this.menu.enable(true);
         this.events.publish('user:changed', this.dataUser); // altera evento no app-component
       } else {
         this.loading.dismiss();

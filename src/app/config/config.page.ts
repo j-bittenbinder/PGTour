@@ -5,12 +5,14 @@ import { DataUser } from '../login/login.service';
 (window as any).global = window;
 // @ts-ignore
 window.Buffer = window.Buffer || require('buffer').Buffer;
-const uploadImagem = require('./uploadImage/uploadImage')
+// const uploadImagem = require('./uploadImage/uploadImage')
+
 @Component({
   selector: 'app-config',
   templateUrl: './config.page.html',
   styleUrls: ['./config.page.scss'],
 })
+
 export class ConfigPage implements OnInit {
 
   userData: DataUser;
@@ -30,8 +32,8 @@ export class ConfigPage implements OnInit {
   ngOnInit() {
   }
 
-  uploadFoto(){
-    console.log("foi")
+  uploadFoto() {
+    console.log('foi');
     // const options: CameraOptions = {
     //   quality: 70,
     //   destinationType: this.camera.DestinationType.DATA_URL,

@@ -65,6 +65,15 @@ export class AppComponent {
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
+    try {
+      if (localStorage.getItem('DadosUsuario') === null) {
+        console.log('eita');
+      } else {
+        this.userData = JSON.parse(localStorage.getItem('DadosUsuario'));
+      }
+    } catch (error) {
+      console.log('erro: ', error);
+    }
   }
 
   async logout() {

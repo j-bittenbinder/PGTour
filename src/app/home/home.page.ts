@@ -1,7 +1,7 @@
 import { DataUser } from './../login/login.service';
 import { PontoTuristicoService } from './../ponto-turistico/ponto-turistico.service';
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, Events } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Session } from '../sessions';
 import { Storage } from '@ionic/storage';
@@ -29,7 +29,8 @@ export class HomePage {
     public session: Session,
     public storage: Storage,
     public loadingController: LoadingController,
-    private menu: MenuController
+    private menu: MenuController,
+    private events: Events
   ) {
     try {
       if (localStorage.getItem('DadosUsuario') === null) {
@@ -54,8 +55,11 @@ export class HomePage {
   }
 
   // tslint:disable-next-line: use-lifecycle-interface
-  async ngOnInit() {
-    await this.menu.enable(true);
+  ngOnInit() {
+    this.events.subscribe('user:changed', user => { // recebe evento para atualizar img e nome no app-component
+      this.userData = user;
+    });
+
     this.service.getListaPontos().subscribe(dados => {
       this.pontos = dados;
     });
