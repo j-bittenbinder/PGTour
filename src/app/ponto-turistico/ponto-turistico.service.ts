@@ -34,6 +34,15 @@ export class PontoTuristicoService {
   getAvaliacoes(idPonto){
     return this.http.post<PontoTuristicoComentario>((this.API + '/getAvaliacoes'), { id: idPonto }, this.headerHttp);
   }
+  getPerguntas(idPonto){
+    return this.http.post<PontoTuristicoComentario>((this.API + '/getPerguntas'), { id: idPonto }, this.headerHttp);
+  }
+  getResposta(idPonto){
+    return this.http.post<PontoTuristicoComentario>((this.API + '/getResposta'), { id: idPonto }, this.headerHttp);
+  }
+  responder(idPonto, email){
+    return this.http.post<PontoTuristicoComentario>((this.API + '/responder'), { id: idPonto, usuario_email: email }, this.headerHttp);
+  }
 }
 
 export interface DadosPonto {
