@@ -12,10 +12,11 @@
     display: flex;
     color: #5D4B9D;
     font-size: 1rem;
-    height: 5rem;
+    height: 3rem;
     place-items: flex-end;
     margin: 1rem;
     font-weight: bolder;
+    width: 100%;
 }
 
 .question {
@@ -23,11 +24,13 @@
     display: flex;
     color: black;
     font-size: 14px;
-    margin: 1rem;
+    margin: 0 2rem;
+    text-align: center;
 }
 
 .awnser {
     margin: 1rem;
+    width: 100%;
 }
 
 #awnser {
@@ -45,7 +48,6 @@
     justify-content: center;
     display: flex;
     width: 100%;
-    margin: 1rem 1rem;
 }
 
 #btn-ask {
@@ -63,6 +65,6 @@
 }
 
 .radio-awnser {
-    margin: 1rem;
+    margin: 1rem 1rem 1rem 0;
     --color: #3880ff;
 }

@@ -17,12 +17,16 @@ export class ModalQuizPage implements OnInit {
   user: any;
   point: DadosPonto;
 
-  constructor(private modal: ModalController, private navParams: NavParams, private service: PontoTuristicoService, public loadingController: LoadingController) {
-    this.ponto = this.navParams.get('ponto');
-    this.user = JSON.parse(localStorage.getItem('DadosUsuario'))
-    // id do ponto pra puxar questão relacionada
-
-  }
+  constructor(
+      private modal: ModalController,
+      private navParams: NavParams,
+      private service: PontoTuristicoService,
+      public loadingController: LoadingController
+    ) {
+      this.ponto = this.navParams.get('ponto');
+      this.user = JSON.parse(localStorage.getItem('DadosUsuario'));
+      // id do ponto pra puxar questão relacionada
+    }
 
   async presentLoadingWithOptions() {
     this.loading = await this.loadingController.create({
@@ -37,33 +41,30 @@ export class ModalQuizPage implements OnInit {
   ngOnInit() {
     this.service.getPerguntas(this.navParams.get('id')).subscribe(dados => {
       this.presentLoadingWithOptions();
-      if(dados.length>0){
+      if (dados.length > 0) {
         this.questao = dados[Math.floor(Math.random() * dados.length)];
-
-        this.service.getResposta(this.questao.id_perg).subscribe(dados =>{
+        // tslint:disable-next-line: no-shadowed-variable
+        this.service.getResposta(this.questao.id_perg).subscribe(dados => {
           this.respostas = dados;
           this.loading.dismiss();
-        })
+        });
       }
     });
-
   }
 
   close() {
     this.modal.dismiss();
   }
 
-  async responder(){
-    if(this.alternativa == this.questao.resposta){
-      
-      console.log(this.user.Usuario)
-      alert("Certa resposta !");
+  async responder() {
+    if (this.alternativa === this.questao.resposta) {
+      console.log(this.user.Usuario);
+      alert('Certa resposta !');
       // this.service.responder(this.questao.id_perg,this.user.Usuario).subscribe(dados =>{
       //   console.log(dados)
       // })
-      
-    }else{
-      alert("EROOOU");
+    } else {
+      alert('EROOOU');
     }
   }
 }

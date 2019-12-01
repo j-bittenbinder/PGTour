@@ -1,20 +1,27 @@
 <ion-content class="font">
-  <div class="name">{{ ponto }}</div>
-  <div class="question">{{questao.texto}}</div>
-  <ion-list class="awnser">
-    <ion-radio-group [(ngModel)]="alternativa">        
-      <ion-item *ngFor="let resposta of respostas " id="awnser">
-        <ion-radio class="radio-awnser" value="{{resposta.alternativa}}"  name="alternativa" ></ion-radio>
-        <ion-label class="font-awnser">{{resposta.alternativa}}</ion-label>
-      </ion-item>
-    </ion-radio-group>
-  </ion-list>
-  <ion-row class="buttons">
-    <ion-row class="btns">
-      <ion-button class="font" id="btn-ask" (click)="responder()">Responder</ion-button>
-    </ion-row>
-    <ion-row class="btns">
-      <div id="btn-cancel" (click)="close()">Cancelar</div>
-    </ion-row>
+  <ion-row style="height: 25%;">
+    <div class="name">{{ ponto }}</div>
+    <div class="question">{{ questao?.texto }}</div>
   </ion-row>
+  <ion-row style="height: 55%; align-items: center;">
+    <ion-list class="awnser">
+      <ion-radio-group [(ngModel)]="alternativa">        
+        <ion-item *ngFor="let resposta of respostas " id="awnser">
+          <ion-radio class="radio-awnser" value="{{ resposta.alternativa }}"  name="alternativa" ></ion-radio>
+          <ion-label class="font-awnser ion-text-wrap">{{ resposta.alternativa }}</ion-label>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </ion-row>
+  <ion-row style="height: 20%;">
+    <ion-row class="buttons">
+      <ion-row class="btns">
+        <ion-button class="font" id="btn-ask" (click)="responder()">Responder</ion-button>
+      </ion-row>
+      <ion-row class="btns">
+        <div id="btn-cancel" (click)="close()">Cancelar</div>
+      </ion-row>
+    </ion-row>
+  </ion-row>  
+
 </ion-content>
