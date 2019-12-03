@@ -21,7 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ModalQuizPage],
   exports: [ModalQuizPage]
 })
 
