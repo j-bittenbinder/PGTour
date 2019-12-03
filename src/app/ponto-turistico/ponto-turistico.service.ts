@@ -43,6 +43,10 @@ export class PontoTuristicoService {
   responder(idPonto, email){
     return this.http.post<PontoTuristicoComentario>((this.API + '/responder'), { id: idPonto, usuario_email: email }, this.headerHttp);
   }
+
+  atribuirPonto(email,pontos){
+    return this.http.post<PontoTuristicoComentario>((this.API + '/atribuirPonto'), { email, pontos }, this.headerHttp);
+  }
 }
 
 export interface DadosPonto {

@@ -11,6 +11,7 @@ export class ModalQuizPage implements OnInit {
 
   ponto: string;
   questao: any;
+  pontuacao: any;
   respostas: any;
   loading: any;
   alternativa: string;
@@ -38,33 +39,68 @@ export class ModalQuizPage implements OnInit {
     return this.loading.present();
   }
 
-  ngOnInit() {
-    this.service.getPerguntas(this.navParams.get('id')).subscribe(dados => {
+ async ngOnInit() {
+     this.service.getPerguntas(this.navParams.get('id')).subscribe(async dados => {
       this.presentLoadingWithOptions();
       if (dados.length > 0) {
         this.questao = dados[Math.floor(Math.random() * dados.length)];
         // tslint:disable-next-line: no-shadowed-variable
-        this.service.getResposta(this.questao.id_perg).subscribe(dados => {
-          this.respostas = dados;
+        await this.service.getResposta(this.questao.id_perg).subscribe(async dados => {
+          this.respostas = await this.embaralhar(dados);
           this.loading.dismiss();
         });
       }
     });
   }
 
+  embaralhar(array) {
+    let indice_atual = array.length;
+    let valor_temporario;
+    let indice_aleatorio;
+    
+    while (0 !== indice_atual) {
+ 
+        indice_aleatorio = Math.floor(Math.random() * indice_atual);
+        indice_atual -= 1;
+ 
+        valor_temporario = array[indice_atual];
+        array[indice_atual] = array[indice_aleatorio];
+        array[indice_aleatorio] = valor_temporario;
+    }
+ 
+    return array;
+}
+
   close() {
     this.modal.dismiss();
   }
 
   async responder() {
-    if (this.alternativa === this.questao.resposta) {
-      console.log(this.user.Usuario);
-      alert('Certa resposta !');
-      // this.service.responder(this.questao.id_perg,this.user.Usuario).subscribe(dados =>{
-      //   console.log(dados)
-      // })
-    } else {
-      alert('EROOOU');
+    switch(this.questao.tipo_pergunta){
+      case 'dificil':
+        this.pontuacao = 50;
+        break;
+      case 'facil':
+        this.pontuacao = 10;
+        break;
+      case 'medio':
+          this.pontuacao = 30;
+        break;
+      default:
+          this.pontuacao = 0;
     }
+
+    this.service.responder(this.questao.id_perg,this.user.Usuario).subscribe(async dados =>{
+      if (this.alternativa === this.questao.resposta) {
+        this.service.atribuirPonto(this.user.Usuario,this.pontuacao).subscribe(dados =>{
+          alert('Certa resposta !');
+        });
+       
+      } else {
+        alert('EROOOU');
+      }
+      console.log(dados)
+   });
+    
   }
 }
