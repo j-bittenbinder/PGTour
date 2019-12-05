@@ -1,19 +1,28 @@
 <ion-content class="font">
-  <div style="height: 54%;">
+  <ion-row>
     <div class="name">Avaliar - {{ ponto }}</div>
-    <div style="display: flex; justify-content: center;">
+    <div style="display: flex; justify-content: center; width: 100%;">
       <div class="question" style="display: inline;">Conte-nos como foi sua experiência <div style="display: inline; color: #00AAE2;"> :)</div></div>
     </div>
-    <div id="awnser">
-      <ion-textarea id="text" class="font" placeholder="Digite sua experiência" rows="4"></ion-textarea>
-    </div>
-  </div>
-  <ion-row class="buttons" style="height: 28%;">
-    <ion-row class="btns">
-      <ion-button class="font" id="btn-ask">Confirmar</ion-button>
+  </ion-row>  
+  <ion-row style="align-items: center; width: 100%;">
+
+      <div id="awnser" style="width: 100%;">
+        <ion-textarea id="text" class="font" placeholder="Digite sua experiência" rows="4"></ion-textarea>
+      </div>
+
+    <ion-row style="justify-content: center; width: 100%;">
+      <ion-icon name="star" *ngFor="let num of [1,2,3,4,5]" (click)="rate(num)" [ngStyle]="{'color':getColor(num)}" style="width: 2rem; height: 2rem;"></ion-icon>
     </ion-row>
-    <ion-row class="btns">
-      <div id="btn-cancel" (click)="close()">Cancelar</div>
+  </ion-row> 
+  <ion-row>
+      <ion-row class="buttons">
+        <ion-row class="btns">
+          <ion-button class="font" id="btn-ask">Confirmar</ion-button>
+        </ion-row>
+        <ion-row class="btns">
+          <div id="btn-cancel" (click)="close()">Cancelar</div>
+        </ion-row>
+      </ion-row>
     </ion-row>
-  </ion-row>
 </ion-content>

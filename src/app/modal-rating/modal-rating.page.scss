@@ -17,6 +17,7 @@
     place-items: flex-end;
     margin: 1rem;
     font-weight: bolder;
+    width: 100%;
 }
 
 .question {
@@ -34,6 +35,7 @@
 #awnser {
     display: flex;
     --border-color: transparent;
+    width: 100%;
 }
 
 .buttons {

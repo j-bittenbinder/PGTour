@@ -9,6 +9,8 @@ import { PontoTuristicoService, DadosPonto } from '../ponto-turistico/ponto-turi
 })
 export class ModalQuizPage implements OnInit {
 
+  htmlToAdd: any;
+
   ponto: string;
   questao: any;
   pontuacao: any;
@@ -94,10 +96,12 @@ export class ModalQuizPage implements OnInit {
       if (this.alternativa === this.questao.resposta) {
         this.service.atribuirPonto(this.user.Usuario,this.pontuacao).subscribe(dados =>{
           alert('Certa resposta !');
+          this.htmlToAdd = '<div class="two">A C E R T O U</div>';
         });
        
       } else {
         alert('EROOOU');
+        this.htmlToAdd = '<div class="two">E R R O U</div>';
       }
       console.log(dados)
    });
