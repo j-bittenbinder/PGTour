@@ -24,6 +24,7 @@ export class ConfigPage implements OnInit {
         console.log('n tá logado');
       } else {
         this.userData = JSON.parse(localStorage.getItem('DadosUsuario'));
+        console.log(this.userData)
       }
     } catch (error) {
       console.log('erro: ', error);
@@ -31,6 +32,9 @@ export class ConfigPage implements OnInit {
   }
 
   ngOnInit() {
+    if(localStorage.getItem('distancia') !== null){
+      this.distancia = localStorage.getItem('distancia');
+    }
   }
 
   uploadFoto() {
@@ -61,5 +65,7 @@ export class ConfigPage implements OnInit {
 
   alterarDistancia(){
     console.log(this.distancia)
+    localStorage.setItem('distancia', this.distancia);
+    alert("Salvo")
   }
 }

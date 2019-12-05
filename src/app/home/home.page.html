@@ -30,11 +30,11 @@
       </ion-col>
       <ion-col class="col-home">
         <ion-button class="btn-default" style="--background: #D5E3F8!important; 
-          --color: #796F93!important;" (click)="getPontosRank()">Próximos</ion-button>
+          --color: #796F93!important;" (click)="getPontosProximos()">Próximos</ion-button>
       </ion-col>
       <ion-col class="col-home">
         <ion-button class="btn-default" style="--background: #D5E3F8!important; 
-          --color: #796F93!important;">Mais visitados</ion-button>
+          --color: #796F93!important;" (click)="getPontosRank()">Mais visitados</ion-button>
       </ion-col>
     </ion-row>
     <ion-item>
@@ -43,6 +43,7 @@
     <ion-item *ngFor="let ponto of pontos" routerDirection="root">
       <img src="../../assets/local.png"/>
       <ion-label class="label-ponto" (click)="visualizarPonto(ponto.id_ponto)">Visitar {{ ponto.nome }}</ion-label>
+      <ion-label *ngIf="distancia">{{ponto.distancia}} Km</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
