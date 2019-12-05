@@ -147,7 +147,7 @@ export class HomePage {
           alert("Falha ao buscar localização atual");
           console.log('Error getting location', error);
        });
-    }else{
+    } else {
       this.loading.dismiss();
       alert("Defina um raio mínimo de busca nas configurações.")
     }

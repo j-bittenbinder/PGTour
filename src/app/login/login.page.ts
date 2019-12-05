@@ -27,6 +27,15 @@ export class LoginPage implements OnInit {
     private events: Events
   ) {
      this.menu.enable(false);
+     try {
+      if (localStorage.getItem('DadosUsuario')) {
+        console.log('tá logado');
+        this.router.navigate(['/home']);
+        this.menu.enable(true);
+      }
+    } catch (error) {
+      console.log('tinha no localstorage, mas n tá mais');
+    }
   }
 
   async presentToastWithOptions() {
