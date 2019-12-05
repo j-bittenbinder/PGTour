@@ -27,8 +27,17 @@
   <div class="item-input">
     <ion-input class="input-cadastro" type="text" name="nome" placeholder="{{ userData.objeto.telefone }}"></ion-input>
   </div>
+  <div class="item-input">
+    <ion-label class="font" style="font-size: 14px;"><b>Distância de busca</b></ion-label>
+  </div>
+  <ion-item>
+    <ion-range min="1" max="10" [(ngModel)]="distancia" pin="true" color="secondary">
+      <ion-label slot="start">1 Km</ion-label>
+      <ion-label slot="end">10 Km</ion-label>
+    </ion-range>
+  </ion-item>
   <div class="item-label" style="margin: 0 1rem 1rem;">
     <ion-button style="width: 100%; height: 3rem; font-size: 12px; -webkit-appearance: none;" 
-      type="submit" class="btn-default">SALVAR</ion-button>
+      type="submit" class="btn-default" (click)="alterarDistancia()">SALVAR</ion-button>
   </div>
 </ion-content>

@@ -82,4 +82,20 @@ export class HomePage {
       this.pontos = data;
     });
   }
+
+  getPontos(){
+    this.presentLoadingWithOptions();
+    this.service.getListaPontos().subscribe(dados => {
+      this.pontos = dados;
+      this.loading.dismiss();
+    });
+  }
+
+  getPontosRank(){
+    this.presentLoadingWithOptions();
+    this.service.getRankPontos().subscribe(dados => {
+      this.pontos = dados;
+      this.loading.dismiss();
+    });
+  }
 }

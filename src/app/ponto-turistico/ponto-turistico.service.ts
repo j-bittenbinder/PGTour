@@ -23,7 +23,9 @@ export class PontoTuristicoService {
   getListaPontos() {
     return this.http.get<PontoTuristicoPageModule[]>(this.API + '/getPontoTuristico');
   }
-
+  getRankPontos() {
+    return this.http.get<PontoTuristicoPageModule[]>(this.API + '/getRank');
+  }
   getPonto(idPonto): Observable<PontoTuristicoPageModule> {
     return this.http.post<PontoTuristicoPageModule[]>((this.API + '/getDadosPontoTuristico'), { id: idPonto }, this.headerHttp);
   }
@@ -43,9 +45,11 @@ export class PontoTuristicoService {
   responder(idPonto, email){
     return this.http.post<PontoTuristicoComentario>((this.API + '/responder'), { id: idPonto, usuario_email: email }, this.headerHttp);
   }
-
   atribuirPonto(email,pontos){
     return this.http.post<PontoTuristicoComentario>((this.API + '/atribuirPonto'), { email, pontos }, this.headerHttp);
+  }
+  avaliarPonto(dados){
+    return this.http.post<PontoTuristicoComentario>((this.API + '/avaliarPonto'), dados, this.headerHttp);
   }
 }
 

@@ -16,6 +16,7 @@ window.Buffer = window.Buffer || require('buffer').Buffer;
 export class ConfigPage implements OnInit {
 
   userData: DataUser;
+  distancia: any;
 
   constructor() {
     try {
@@ -56,5 +57,9 @@ export class ConfigPage implements OnInit {
     //     document.getElementById("imagem").innerHTML = html;
     // }).catch(e => console.error(e));
     // }
+  }
+
+  alterarDistancia(){
+    console.log(this.distancia)
   }
 }

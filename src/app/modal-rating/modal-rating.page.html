@@ -5,12 +5,12 @@
       <div class="question" style="display: inline;">Conte-nos como foi sua experiência <div style="display: inline; color: #00AAE2;"> :)</div></div>
     </div>
     <div id="awnser">
-      <ion-textarea id="text" class="font" placeholder="Digite sua experiência" rows="4"></ion-textarea>
+      <ion-textarea id="text" class="font" [(ngModel)]="comentario" placeholder="Digite sua experiência" rows="4"></ion-textarea>
     </div>
   </div>
   <ion-row class="buttons" style="height: 28%;">
     <ion-row class="btns">
-      <ion-button class="font" id="btn-ask">Confirmar</ion-button>
+      <ion-button class="font" id="btn-ask" (click)="avaliar()">Comentar</ion-button>
     </ion-row>
     <ion-row class="btns">
       <div id="btn-cancel" (click)="close()">Cancelar</div>

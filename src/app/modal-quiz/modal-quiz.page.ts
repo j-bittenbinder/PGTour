@@ -89,7 +89,7 @@ export class ModalQuizPage implements OnInit {
       default:
           this.pontuacao = 0;
     }
-
+    console.log(this.questao.id_perg,this.user.Usuario)
     this.service.responder(this.questao.id_perg,this.user.Usuario).subscribe(async dados =>{
       if (this.alternativa === this.questao.resposta) {
         this.service.atribuirPonto(this.user.Usuario,this.pontuacao).subscribe(dados =>{
@@ -103,4 +103,5 @@ export class ModalQuizPage implements OnInit {
    });
     
   }
+
 }
