@@ -19,9 +19,14 @@
     <div class="place">{{ point.nome }}</div>
   </ion-item>
 
-  <ion-slides [options]="sliderOpts">
+  <ion-slides [options]="sliderOpts" *ngIf="urls === null">
     <ion-slide *ngFor="let img of [1,2,3]">
       <img src="../../assets/shapes.svg" tappable (click)="openPreview(img)"/>
+    </ion-slide>
+  </ion-slides>
+  <ion-slides [options]="sliderOpts" *ngIf="urls != null">
+    <ion-slide *ngFor="let url of urls">
+      <img src="{{ url.url_img }}" tappable (click)="openPreview(url.url_img)"/>
     </ion-slide>
   </ion-slides>
   <div class="desc-ponto">Histórico</div>

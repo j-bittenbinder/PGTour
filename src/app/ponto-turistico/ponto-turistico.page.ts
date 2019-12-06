@@ -75,19 +75,20 @@ export class PontoTuristicoPage implements OnInit {
 
       this.service.getFotos(id).subscribe(datap => {
         this.urls = datap;
-        console.log('fotos: ', this.urls);
+        // console.log('fotos: ', this.urls);
       });
 
       this.service.getAvaliacoes(id).subscribe(dataCom => {
         this.avaliacoes = dataCom;
-        console.log('Comentarios', this.avaliacoes);
+        // console.log('Comentarios', this.avaliacoes);
         if (this.avaliacoes.length > 0) {
           for (let item of this.avaliacoes) {
             this.nota = this.nota + parseInt(item.nota);
-            this.rateUser = item.nota;
+            // this.rateUser = item.nota;
             // console.log(this.rateUser);
           }
           this.nota = this.nota / this.avaliacoes.length;
+          this.nota = parseInt(this.nota.toFixed(1))
         }
         this.loading.dismiss();
       });
@@ -96,12 +97,13 @@ export class PontoTuristicoPage implements OnInit {
         this.nota = 0;
         this.service.getAvaliacoes(id).subscribe(dataCom => {
           this.avaliacoes = dataCom;
-          console.log('Comentarios', this.avaliacoes);
+          // console.log('Comentarios', this.avaliacoes);
           if (this.avaliacoes.length > 0) {
             for (let item of this.avaliacoes) {
               this.nota = this.nota + parseInt(item.nota);
             }
             this.nota = this.nota / this.avaliacoes.length;
+            this.nota = parseInt(this.nota.toFixed(1))
           }
           this.loading.dismiss();
         });
@@ -145,11 +147,11 @@ export class PontoTuristicoPage implements OnInit {
     modal.present();
   }
 
-  async openPreview(img) {
+  async openPreview(url) {
     const modal = await this.modal.create({
       component: ModalImagePage,
       componentProps: {
-        img: img
+        img: url
       }
     });
     modal.present();
