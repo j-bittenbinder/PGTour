@@ -4,9 +4,9 @@ import { ModalQuizPage } from './../modal-quiz/modal-quiz.page';
 import { ModalRatingPage } from './../modal-rating/modal-rating.page';
 import { PontoTuristicoService, DadosPonto } from './ponto-turistico.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { PontoTuristicoImg, PontoTuristicoComentario } from './ponto-turistico.module';
-import { LoadingController, ModalController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+import { PontoTuristicoImg } from './ponto-turistico.module';
+import { LoadingController, ModalController, Events } from '@ionic/angular';
 
 @Component({
   selector: 'app-ponto-turistico',
@@ -16,6 +16,8 @@ import { LoadingController, ModalController } from '@ionic/angular';
 
 export class PontoTuristicoPage implements OnInit {
 
+  rateUser: number;
+  rating: number;
   loading: any;
   point: DadosPonto;
   urls: PontoTuristicoImg[];
@@ -34,7 +36,9 @@ export class PontoTuristicoPage implements OnInit {
     private route: ActivatedRoute,
     // private router: Router,
     private modal: ModalController,
-    public loadingController: LoadingController) { }
+    public loadingController: LoadingController,
+    private events: Events
+  ) {}
 
   async presentLoadingWithOptions() {
     this.loading = await this.loadingController.create({
@@ -71,19 +75,36 @@ export class PontoTuristicoPage implements OnInit {
 
       this.service.getFotos(id).subscribe(datap => {
         this.urls = datap;
-        // console.log('fotos: ', this.urls);
+        console.log('fotos: ', this.urls);
       });
 
       this.service.getAvaliacoes(id).subscribe(dataCom => {
         this.avaliacoes = dataCom;
-        // console.log('Comentarios', this.avaliacoes);
+        console.log('Comentarios', this.avaliacoes);
         if (this.avaliacoes.length > 0) {
           for (let item of this.avaliacoes) {
             this.nota = this.nota + parseInt(item.nota);
+            this.rateUser = item.nota;
+            // console.log(this.rateUser);
           }
           this.nota = this.nota / this.avaliacoes.length;
         }
         this.loading.dismiss();
+      });
+
+      this.events.subscribe('rating:changed', data => { // recebe evento do modal-rating pra atualizar comentários
+        this.nota = 0;
+        this.service.getAvaliacoes(id).subscribe(dataCom => {
+          this.avaliacoes = dataCom;
+          console.log('Comentarios', this.avaliacoes);
+          if (this.avaliacoes.length > 0) {
+            for (let item of this.avaliacoes) {
+              this.nota = this.nota + parseInt(item.nota);
+            }
+            this.nota = this.nota / this.avaliacoes.length;
+          }
+          this.loading.dismiss();
+        });
       });
     });
   }
@@ -132,5 +153,32 @@ export class PontoTuristicoPage implements OnInit {
       }
     });
     modal.present();
+  }
+
+  // NOTA PONTO
+  getColor(index: number) {
+    enum COLORS {
+      GREY = '#E0E0E0',
+      GOLD = 'gold'
+    }
+
+    if (this.isAboveRatingPonto(index)) {
+      return COLORS.GREY;
+    }
+    switch (this.rating) {
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+        return COLORS.GOLD;
+      default:
+        return COLORS.GREY;
+    }
+  }
+
+  isAboveRatingPonto(index: number): boolean {
+    this.rating = this.nota;
+    return index > this.rating;
   }
 }

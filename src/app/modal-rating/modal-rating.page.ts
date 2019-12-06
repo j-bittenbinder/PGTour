@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
-import { PontoTuristicoService, DadosPonto } from '../ponto-turistico/ponto-turistico.service';
+import { ToastController, ModalController, NavParams, Events } from '@ionic/angular';
+import { PontoTuristicoService } from '../ponto-turistico/ponto-turistico.service';
 
 @Component({
   selector: 'app-modal-rating',
@@ -14,19 +14,41 @@ export class ModalRatingPage implements OnInit {
   ponto: string;
   comentario: string;
   userData: any;
+  toast: any;
 
-  constructor(private modal: ModalController, private navParams: NavParams, private service: PontoTuristicoService) {
+  constructor(
+    private modal: ModalController,
+    private navParams: NavParams,
+    private service: PontoTuristicoService,
+    private events: Events,
+    private toastController: ToastController
+  ) {
     this.userData = JSON.parse(localStorage.getItem('DadosUsuario'));
     // id do ponto pra relacionar avaliação
     // console.log(this.navParams.get('id'));
+  }
+
+  async presentToastWithOptions() {
+    this.toast = await this.toastController.create({
+      header: 'Sucesso!',
+      message: 'Seu comentário foi cadastrado ;)',
+      duration: 5000,
+      position: 'top',
+      buttons: [{
+        text: 'Ok',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    return this.toast.present();
   }
 
   rate(index: number) {
     console.log(index);
     this.rating = index;
     this.ratingChange.emit(this.rating);
-    // function used to change the value of our rating 
-    // triggered when user, clicks a star to change the rating
   }
 
   getColor(index: number) {
@@ -48,32 +70,19 @@ export class ModalRatingPage implements OnInit {
       default:
         return COLORS.GREY;
     }
-    /* function to return the color of a star based on what
-     index it is. All stars greater than the index are assigned
-     a grey color , while those equal or less than the rating are
-     assigned a color depending on the rating. Using the following criteria:
-
-          1-2 stars: red
-          3 stars  : yellow
-          4-5 stars: green
-    */
   }
 
   isAboveRating(index: number): boolean {
     return index > this.rating;
-    // returns whether or not the selected index is above ,the current rating
-    // function is called from the getColor function.
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   close() {
     this.modal.dismiss();
   }
 
-  
-  async avaliar(){
+  async avaliar() {
     let dados = {
       usuario_email: this.userData.objeto.email,
       comentario: this.comentario,
@@ -83,11 +92,10 @@ export class ModalRatingPage implements OnInit {
 
     this.service.avaliarPonto(dados).subscribe(async data=>{
       if(data){
-        alert("Comentário cadastrado !");
+        this.presentToastWithOptions();
         this.modal.dismiss();
+        this.events.publish('rating:changed', data); // manda evento p ponto-turistico.page atualizar comentários
       }
     })
   }
-
-
 }

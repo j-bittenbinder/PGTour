@@ -41,8 +41,9 @@
         </ion-col>
         <ion-col>
           <ion-row>Avaliação dos Visitantes</ion-row>
-          <ion-row style="color: gold;">
-            e*s*t*r*e*l*a*s
+          <ion-row>
+            <ion-icon name="star" *ngFor="let num of [1,2,3,4,5]" [ngStyle]="{'color':getColor(num)}"
+              style="width: 20px; height: 20px; margin-left: -3px;"></ion-icon>
           </ion-row>
         </ion-col>
         <ion-col id="note">
@@ -57,9 +58,6 @@
           <img *ngIf="item.img==''" src="../../assets/user.png" style="max-width: 50px; max-height: 50px; border-radius: 2rem; height: 50px; object-fit: cover;"/>
           <img [src]="item.img" style="max-width: 50px; max-height: 50px; border-radius: 2rem; height: 50px; object-fit: cover;"/>
         </ion-col>
-
-        <!-- <rating [(ngModel)]="rate" readonly="false" size="default"></rating> -->
-        
         <ion-col class="user-rating">
           <div class="user-name">
             <p>{{ item.nome }}</p>
@@ -67,9 +65,10 @@
           <div class="user-comment">
             <p>{{ item.comentario }}</p>
           </div>
-            <div class="user-comment">
-              <p>Nota: {{ item.nota }}</p>   
-            </div>
+          <div class="user-comment">
+            <!-- <ion-icon name="star" *ngFor="let num of [1,2,3,4,5]" [ngStyle]="{'color':getColorRate(num)}"></ion-icon>   -->
+            <p>Nota: {{item.nota}}</p>
+          </div>
         </ion-col>
       </ion-row>
     </div>
