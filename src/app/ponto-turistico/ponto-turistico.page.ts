@@ -23,6 +23,7 @@ export class PontoTuristicoPage implements OnInit {
   urls: PontoTuristicoImg[];
   avaliacoes: any;
   nota = 0;
+  notaInt = 0;
 
   sliderOpts = {
     zoom: false,
@@ -88,7 +89,7 @@ export class PontoTuristicoPage implements OnInit {
             // console.log(this.rateUser);
           }
           this.nota = this.nota / this.avaliacoes.length;
-          this.nota = parseInt(this.nota.toFixed(1))
+          this.notaInt = parseInt(this.nota.toFixed(1));
         }
         this.loading.dismiss();
       });
@@ -103,7 +104,7 @@ export class PontoTuristicoPage implements OnInit {
               this.nota = this.nota + parseInt(item.nota);
             }
             this.nota = this.nota / this.avaliacoes.length;
-            this.nota = parseInt(this.nota.toFixed(1))
+            this.notaInt = parseInt(this.nota.toFixed(1));
           }
           this.loading.dismiss();
         });
@@ -180,7 +181,7 @@ export class PontoTuristicoPage implements OnInit {
   }
 
   isAboveRatingPonto(index: number): boolean {
-    this.rating = this.nota;
+    this.rating = this.notaInt;
     return index > this.rating;
   }
 }
