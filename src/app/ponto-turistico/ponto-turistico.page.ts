@@ -104,17 +104,12 @@ export class PontoTuristicoPage implements OnInit {
         this.nota = 0;
         this.service.getAvaliacoes(id).subscribe(dataCom => {
           this.avaliacoes = dataCom;
-          // console.log('Comentarios', this.avaliacoes);
           if (this.avaliacoes.length > 0) {
             for (let item of this.avaliacoes) {
               this.nota = this.nota + parseInt(item.nota);
             }
             this.nota = this.nota / this.avaliacoes.length;
-<<<<<<< HEAD
             this.nota = parseInt(this.nota.toFixed())
-=======
-            this.notaInt = parseInt(this.nota.toFixed(1));
->>>>>>> b06b3f72b73c0547c3b52cc9c3ba65a1149118ef
           }
           this.loading.dismiss();
         });

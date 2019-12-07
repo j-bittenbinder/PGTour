@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataUser } from '../login/login.service';
+import { PontoTuristicoService } from './../ponto-turistico/ponto-turistico.service';
+import { Events } from '@ionic/angular';
 // import * as cordovaGallery from 'cordova-gallery-access';
 // import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 (window as any).global = window;
@@ -17,14 +19,22 @@ export class ConfigPage implements OnInit {
 
   userData: DataUser;
   distancia: any;
+  nome:any;
+  rg:any;
+  cpf:any;
+  telefone:any;
+  senha:any;
 
-  constructor() {
+  constructor(private service: PontoTuristicoService, private events: Events) {
     try {
       if (localStorage.getItem('DadosUsuario') === null) {
         console.log('n tá logado');
       } else {
         this.userData = JSON.parse(localStorage.getItem('DadosUsuario'));
-        console.log(this.userData)
+        this.nome = this.userData.objeto.nome;
+        this.rg = this.userData.objeto.rg;
+        this.cpf = this.userData.objeto.cpf;
+        this.telefone = this.userData.objeto.telefone;
       }
     } catch (error) {
       console.log('erro: ', error);
@@ -66,6 +76,29 @@ export class ConfigPage implements OnInit {
   alterarDistancia(){
     console.log(this.distancia)
     localStorage.setItem('distancia', this.distancia);
-    alert("Salvo")
+  }
+
+  alterarDados(){
+    let dados = {
+      nome: this.nome,
+      rg: this.rg,
+      cpf: this.cpf,
+      telefone: this.telefone,
+      email:this.userData.objeto.email
+    }
+
+    console.log(dados)
+    this.service.alterarUsuario(dados).subscribe(dados=>{
+      console.log('ANTES', this.userData);
+      this.userData = JSON.parse(localStorage.getItem('DadosUsuario'));
+      this.userData.objeto.nome = this.nome;
+      this.userData.objeto.rg = this.rg;
+      this.userData.objeto.cpf = this.cpf;
+      this.userData.objeto.telefone = this.telefone;
+      console.log('alterado', this.userData);
+      localStorage.setItem('DadosUsuario', JSON.stringify(this.userData));
+      this.events.publish('user:changed', this.userData);
+      alert("Alterado com sucesso !")
+    })
   }
 }

@@ -5,13 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { StorePage } from './store.page';
-import { ModalDischargePage } from '../modal-discharge/modal-discharge.page';
+import { ModalDischargePage } from './modal-discharge.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: StorePage
+    component: ModalDischargePage
   }
 ];
 
@@ -21,8 +20,6 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
-  ],
-  declarations: [StorePage, ModalDischargePage],
-  entryComponents: [ModalDischargePage]
+  ]
 })
-export class StorePageModule {}
+export class ModalDischargePageModule {}

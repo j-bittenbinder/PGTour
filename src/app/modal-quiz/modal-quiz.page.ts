@@ -9,7 +9,7 @@ import { PontoTuristicoService, DadosPonto } from '../ponto-turistico/ponto-turi
 })
 export class ModalQuizPage implements OnInit {
 
-  htmlToAdd: any;
+  response = false;
 
   ponto: string;
   questao: any;
@@ -42,7 +42,7 @@ export class ModalQuizPage implements OnInit {
   }
 
  async ngOnInit() {
-     this.service.getPerguntas(this.navParams.get('id')).subscribe(async dados => {
+     this.service.getPerguntas(this.navParams.get('id'),this.user.objeto.email).subscribe(async dados => {
       this.presentLoadingWithOptions();
       if (dados.length > 0) {
         this.questao = dados[Math.floor(Math.random() * dados.length)];
@@ -91,19 +91,14 @@ export class ModalQuizPage implements OnInit {
       default:
           this.pontuacao = 0;
     }
-    console.log(this.questao.id_perg,this.user.Usuario)
     this.service.responder(this.questao.id_perg,this.user.Usuario).subscribe(async dados =>{
       if (this.alternativa === this.questao.resposta) {
         this.service.atribuirPonto(this.user.Usuario,this.pontuacao).subscribe(dados =>{
-          alert('Certa resposta !');
-          this.htmlToAdd = '<div class="two">A C E R T O U</div>';
         });
-       
+        this.response = true;
       } else {
-        alert('EROOOU');
-        this.htmlToAdd = '<div class="two">E R R O U</div>';
+        this.response = true;
       }
-      console.log(dados)
    });
     
   }
