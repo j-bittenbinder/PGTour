@@ -1,6 +1,21 @@
 <ion-content>
-  <ion-button class="btn-default" (click)="close()">Voltar</ion-button>
-  <ion-row style="place-content: center;">Resgatar pontos</ion-row>
+      <div *ngIf="!response">
+    <ion-row style="place-content: center;">Resgatar pontos</ion-row>
+    <br>
+    Você está adquirindo o <Strong>{{ nome }}</Strong>. 
+    Para utilizar seu prêmio, apresente um documento com foto na bilheteria do Evento.
+    <br>
+    Confirmar resgate: {{ valor }}
+    <br>
+    <ion-button class="btn-default" (click)="trocar()" >Ok</ion-button>
+    <ion-button class="btn-default" (click)="close()">Cancelar</ion-button>
+  </div>
+  <div *ngIf="response">
+      <ion-row style="place-content: center;">Resgatar pontos</ion-row>
+    
+      <strong>RESGATE CONFIRMADO</strong>
+      <ion-button class="btn-default" >Voltar para a Home</ion-button>
+    </div>
+ </ion-content>
 
 
-</ion-content>

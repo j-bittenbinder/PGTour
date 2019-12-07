@@ -71,6 +71,7 @@ export class PontoTuristicoPage implements OnInit {
       // tslint:disable-next-line: no-shadowed-variable
       this.service.getPonto(id).subscribe(dados => {
         this.point = dados[0];
+        
         // console.log('point: ', this.point);
       });
 
