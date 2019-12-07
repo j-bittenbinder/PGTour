@@ -87,7 +87,7 @@ export class ModalRatingPage implements OnInit {
       usuario_email: this.userData.objeto.email,
       comentario: this.comentario,
       ponto_turistico_id:this.navParams.get('id'),
-      nota: 4
+      nota: this.rating
     }
 
     this.service.avaliarPonto(dados).subscribe(async data=>{

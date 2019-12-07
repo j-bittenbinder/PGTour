@@ -88,6 +88,7 @@ export class PontoTuristicoPage implements OnInit {
             // console.log(this.rateUser);
           }
           this.nota = this.nota / this.avaliacoes.length;
+          this.nota = parseInt(this.nota.toFixed(1))
         }
         this.loading.dismiss();
       });
@@ -102,6 +103,7 @@ export class PontoTuristicoPage implements OnInit {
               this.nota = this.nota + parseInt(item.nota);
             }
             this.nota = this.nota / this.avaliacoes.length;
+            this.nota = parseInt(this.nota.toFixed())
           }
           this.loading.dismiss();
         });
