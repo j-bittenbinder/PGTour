@@ -56,6 +56,15 @@ export class PontoTuristicoService {
   addvisita(id){
     return this.http.post<PontoTuristicoComentario>((this.API + '/addVisita'), {id}, this.headerHttp);
   }
+  getProdutos(){
+    return this.http.get<PontoTuristicoComentario>((this.API + '/getProdutos'), this.headerHttp);
+  }
+  trocaPonto(dados){
+    return this.http.post<PontoTuristicoComentario>((this.API + '/trocaPonto'),dados, this.headerHttp);
+  }
+  getHistoricoTransacao(dados){
+    return this.http.post<PontoTuristicoComentario>((this.API + '/getHistoricoTransacao'),dados, this.headerHttp);
+  }
 }
 
 export interface DadosPonto {

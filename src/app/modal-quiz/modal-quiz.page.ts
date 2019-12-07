@@ -10,11 +10,14 @@ import { PontoTuristicoService, DadosPonto } from '../ponto-turistico/ponto-turi
 export class ModalQuizPage implements OnInit {
 
   response = false;
+  acertou = false;
+  errou = false;
 
   ponto: string;
   questao: any;
   pontuacao: any;
   respostas: any;
+  motivo:any;
   loading: any;
   alternativa: string;
   user: any;
@@ -45,6 +48,7 @@ export class ModalQuizPage implements OnInit {
      this.service.getPerguntas(this.navParams.get('id'),this.user.objeto.email).subscribe(async dados => {
       this.presentLoadingWithOptions();
       if (dados.length > 0) {
+        console.log(dados)
         this.questao = dados[Math.floor(Math.random() * dados.length)];
         // tslint:disable-next-line: no-shadowed-variable
         await this.service.getResposta(this.questao.id_perg).subscribe(async dados => {
@@ -96,8 +100,10 @@ export class ModalQuizPage implements OnInit {
         this.service.atribuirPonto(this.user.Usuario,this.pontuacao).subscribe(dados =>{
         });
         this.response = true;
+        this.acertou = true;
       } else {
         this.response = true;
+        this.errou = true;
       }
    });
     

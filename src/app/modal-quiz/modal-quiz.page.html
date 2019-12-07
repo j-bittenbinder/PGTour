@@ -24,6 +24,9 @@
     </ion-row>
   </ion-row>
 </ion-content>
-<ion-content *ngIf="response">P A R A B E N S
+<ion-content *ngIf="acertou">P A R A B E N S
  {{pontuacao}}
+</ion-content>
+<ion-content *ngIf="errou"><strong> K K K K K K K K SE FUDEU </strong><br>
+  {{ questao.motivo }}
 </ion-content>

@@ -28,9 +28,11 @@
     <ion-col style="text-align: end; font-weight: normal;"><div (click)="extract()">Extrato de Pontos</div></ion-col>
   </ion-row>
   <ion-row style="margin: 1rem; text-align: center; place-content: center;">
-    <ion-col (click)="modalDischarge()" class="benefits" *ngFor="let number of [0,1,2,3,4]">
-      <img class="img-benefit" src="../../assets/trophy.png"/>
-      <ion-label id="benefit">Lorem ipsum {{ number }}</ion-label>
+    <ion-col (click)="modalDischarge(premio)" class="benefits" *ngFor="let premio of premios">
+      <img class="img-benefit" [src]="premio.img_produto"/>
+      <ion-label id="benefit">{{premio.nome}}</ion-label>
+      <br>
+      <ion-label id="benefit">{{premio.valor}} pontos</ion-label>
     </ion-col>
   </ion-row>
 </ion-content>

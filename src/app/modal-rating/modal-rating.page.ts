@@ -89,13 +89,16 @@ export class ModalRatingPage implements OnInit {
       ponto_turistico_id: this.navParams.get('id'),
       nota: this.rating
     }
-
-    this.service.avaliarPonto(dados).subscribe(async data=>{
-      if(data){
-        this.presentToastWithOptions();
-        this.modal.dismiss();
-        this.events.publish('rating:changed', data); // manda evento p ponto-turistico.page atualizar comentários
-      }
-    })
+    if(this.rating>0){
+      this.service.avaliarPonto(dados).subscribe(async data=>{
+        if(data){
+          this.presentToastWithOptions();
+          this.modal.dismiss();
+          this.events.publish('rating:changed', data); // manda evento p ponto-turistico.page atualizar comentários
+        }
+      })
+    }else{
+      alert("Por favor, selecione uma nota mínima.");
+    }
   }
 }
