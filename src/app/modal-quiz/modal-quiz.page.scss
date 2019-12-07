@@ -68,3 +68,28 @@
     margin: 1rem 1rem 1rem 0;
     --color: #3880ff;
 }
+
+.head {
+    place-content: center;
+    color: #5B489C;
+}
+
+.congrats-img {
+    place-content: center;
+    margin: 2rem;
+}
+
+.congrats-text {
+    color: #5B489C;
+    font-size: 14px;
+}
+
+.leave {
+    --background: #5D4B9D;
+    --border-radius: 2rem;
+    --color: white;
+    width: 200px;
+    font-size: 14px;
+    text-transform: none;
+    height: 35px;
+}
