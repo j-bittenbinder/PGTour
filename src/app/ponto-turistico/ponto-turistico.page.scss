@@ -160,7 +160,8 @@
 }
 
 .swiper-container {
-    margin: 0 1rem;
+    height: 200px;
+    width: 93%;
 }
 
 .swiper-wrapper {
@@ -168,6 +169,7 @@
 }
 
 ion-slide >:first-child {
-    height: 10rem;
+    height: 200px;
+    width: 100%;
     object-fit: cover;
 }

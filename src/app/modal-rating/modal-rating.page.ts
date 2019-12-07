@@ -86,7 +86,7 @@ export class ModalRatingPage implements OnInit {
     let dados = {
       usuario_email: this.userData.objeto.email,
       comentario: this.comentario,
-      ponto_turistico_id:this.navParams.get('id'),
+      ponto_turistico_id: this.navParams.get('id'),
       nota: this.rating
     }
 

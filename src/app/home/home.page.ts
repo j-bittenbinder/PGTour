@@ -1,7 +1,7 @@
 import { DataUser } from './../login/login.service';
 import { PontoTuristicoService } from './../ponto-turistico/ponto-turistico.service';
 import { Component } from '@angular/core';
-import { NavController, Events } from '@ionic/angular';
+import { NavController, Events, ToastController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Session } from '../sessions';
 import { Storage } from '@ionic/storage';
@@ -20,6 +20,7 @@ export class HomePage {
   usuario: any;
   pontos: any;
   loading: any;
+  toast: any;
   apikey = 'AIzaSyApraQZJsNRq75tOtJgC3R5nS_EsC73QZw';
   buscar: any;
   distancia = false;
@@ -34,7 +35,8 @@ export class HomePage {
     public loadingController: LoadingController,
     private menu: MenuController,
     private events: Events,
-    private geolocation: Geolocation
+    private geolocation: Geolocation,
+    private toastController: ToastController
   ) {
     try {
       if (localStorage.getItem('DadosUsuario') === null) {
@@ -113,6 +115,23 @@ export class HomePage {
     return dis;
   }
 
+  async presentToastWithOptions() {
+    this.toast = await this.toastController.create({
+      header: 'Atenção!',
+      message: 'Defina um raio mínimo de busca no menu Configurações.',
+      duration: 5000,
+      position: 'top',
+      buttons: [{
+        text: 'Ok',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    return this.toast.present();
+  }
+
   async getPontosProximos(){
     await this.presentLoadingWithOptions();
     if(localStorage.getItem('distancia') !== null) {
@@ -149,7 +168,7 @@ export class HomePage {
        });
     } else {
       this.loading.dismiss();
-      alert("Defina um raio mínimo de busca nas configurações.")
+      this.presentToastWithOptions();
     }
   }
 }

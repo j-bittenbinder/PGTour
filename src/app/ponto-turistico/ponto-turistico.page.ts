@@ -23,6 +23,7 @@ export class PontoTuristicoPage implements OnInit {
   urls: PontoTuristicoImg[];
   avaliacoes: any;
   nota = 0;
+  notaInt = 0;
 
   sliderOpts = {
     zoom: false,
@@ -73,22 +74,28 @@ export class PontoTuristicoPage implements OnInit {
         // console.log('point: ', this.point);
       });
 
+      // const photos = {
+      //   url_img: '',
+      //   ponto_turistico_id_ponto: ''
+      // };
+
+      // this.urls = photos;
       this.service.getFotos(id).subscribe(datap => {
         this.urls = datap;
-        console.log('fotos: ', this.urls);
+        // console.log('fotos: ', this.urls);
       });
 
       this.service.getAvaliacoes(id).subscribe(dataCom => {
         this.avaliacoes = dataCom;
-        console.log('Comentarios', this.avaliacoes);
+        // console.log('Comentarios', this.avaliacoes);
         if (this.avaliacoes.length > 0) {
           for (let item of this.avaliacoes) {
             this.nota = this.nota + parseInt(item.nota);
-            this.rateUser = item.nota;
+            // this.rateUser = item.nota;
             // console.log(this.rateUser);
           }
           this.nota = this.nota / this.avaliacoes.length;
-          this.nota = parseInt(this.nota.toFixed(1))
+          this.notaInt = parseInt(this.nota.toFixed(1));
         }
         this.loading.dismiss();
       });
@@ -97,13 +104,17 @@ export class PontoTuristicoPage implements OnInit {
         this.nota = 0;
         this.service.getAvaliacoes(id).subscribe(dataCom => {
           this.avaliacoes = dataCom;
-          console.log('Comentarios', this.avaliacoes);
+          // console.log('Comentarios', this.avaliacoes);
           if (this.avaliacoes.length > 0) {
             for (let item of this.avaliacoes) {
               this.nota = this.nota + parseInt(item.nota);
             }
             this.nota = this.nota / this.avaliacoes.length;
+<<<<<<< HEAD
             this.nota = parseInt(this.nota.toFixed())
+=======
+            this.notaInt = parseInt(this.nota.toFixed(1));
+>>>>>>> b06b3f72b73c0547c3b52cc9c3ba65a1149118ef
           }
           this.loading.dismiss();
         });
@@ -147,11 +158,11 @@ export class PontoTuristicoPage implements OnInit {
     modal.present();
   }
 
-  async openPreview(img) {
+  async openPreview(url) {
     const modal = await this.modal.create({
       component: ModalImagePage,
       componentProps: {
-        img: img
+        img: url
       }
     });
     modal.present();
@@ -180,7 +191,7 @@ export class PontoTuristicoPage implements OnInit {
   }
 
   isAboveRatingPonto(index: number): boolean {
-    this.rating = this.nota;
+    this.rating = this.notaInt;
     return index > this.rating;
   }
 }

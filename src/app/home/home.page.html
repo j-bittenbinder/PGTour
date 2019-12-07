@@ -43,7 +43,9 @@
     <ion-item *ngFor="let ponto of pontos" routerDirection="root">
       <img src="../../assets/local.png"/>
       <ion-label class="label-ponto" (click)="visualizarPonto(ponto.id_ponto)">Visitar {{ ponto.nome }}</ion-label>
-      <ion-label *ngIf="distancia">{{ponto.distancia}} Km</ion-label>
+      <ion-col style="max-width: 55px; padding: 0;" *ngIf="distancia">
+        <ion-label class="label-ponto" style="text-align: end;">{{ ponto.distancia }} km</ion-label>
+      </ion-col>
     </ion-item>
   </ion-list>
 </ion-content>

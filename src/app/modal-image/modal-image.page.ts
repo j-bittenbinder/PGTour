@@ -14,7 +14,7 @@ export class ModalImagePage implements OnInit {
 
   sliderOpts = {
     zoom: {
-      maxRatio: 5
+      maxRatio: 3
     }
   };
 
