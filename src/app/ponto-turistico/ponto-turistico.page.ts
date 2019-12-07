@@ -74,6 +74,12 @@ export class PontoTuristicoPage implements OnInit {
         // console.log('point: ', this.point);
       });
 
+      // const photos = {
+      //   url_img: '',
+      //   ponto_turistico_id_ponto: ''
+      // };
+
+      // this.urls = photos;
       this.service.getFotos(id).subscribe(datap => {
         this.urls = datap;
         // console.log('fotos: ', this.urls);
