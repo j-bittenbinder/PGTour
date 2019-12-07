@@ -1,4 +1,4 @@
-<ion-content class="font">
+<ion-content *ngIf="!response" class="font">
   <ion-row style="height: 25%;">
     <div class="name">{{ ponto }}</div>
     <div class="question">{{ questao?.texto }}</div>
@@ -25,10 +25,10 @@
   </ion-row>
 </ion-content>
 
-<!-- <ion-content class="font">
+<!-- <ion-content *ngIf="response" class="font">
   <ion-row style="height: 25%;" class="head">
     <div style="font-weight: bolder;">Parabéns!</div>
-    <div style="padding: 0 2rem; text-align: center;">Você ganhou [pontuacao] pontos</div>
+    <div style="padding: 0 2rem; text-align: center;">Você ganhou {{pontuacao}} pontos</div>
   </ion-row>
   <ion-row style="height: 25%;" class="congrats-img">
     <img class="checked-img" src="../../assets/checked.svg">

@@ -79,6 +79,8 @@ export class HomePage {
   }
 
   visualizarPonto(id) {
+    this.service.addvisita(id).subscribe(dados =>{
+    });
     this.router.navigate(['/ponto-turistico', id], { relativeTo: this.route });
   }
 

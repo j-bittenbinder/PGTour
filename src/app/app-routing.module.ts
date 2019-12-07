@@ -41,7 +41,9 @@ const routes: Routes = [
   },
   {
     path: 'logout', loadChildren: './logout/logout.module#LogoutPageModule'
-  }
+  },  { path: 'extract', loadChildren: './extract/extract.module#ExtractPageModule' },
+  { path: 'modal-discharge', loadChildren: './modal-discharge/modal-discharge.module#ModalDischargePageModule' }
+
 
 ];
 

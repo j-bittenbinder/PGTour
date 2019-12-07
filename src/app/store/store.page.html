@@ -25,10 +25,10 @@
   <hr style="height: 1px; border-width: 1px; margin: 10px;">
   <ion-row id="info">
     <ion-col style="text-align: start;">PG Store</ion-col>
-    <ion-col style="text-align: end; font-weight: normal;">Extrato de Pontos</ion-col>
+    <ion-col style="text-align: end; font-weight: normal;"><div (click)="extract()">Extrato de Pontos</div></ion-col>
   </ion-row>
   <ion-row style="margin: 1rem; text-align: center; place-content: center;">
-    <ion-col class="benefits" *ngFor="let number of [0,1,2,3,4]">
+    <ion-col (click)="modalDischarge()" class="benefits" *ngFor="let number of [0,1,2,3,4]">
       <img class="img-benefit" src="../../assets/trophy.png"/>
       <ion-label id="benefit">Lorem ipsum {{ number }}</ion-label>
     </ion-col>

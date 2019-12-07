@@ -30,16 +30,6 @@ export class AppComponent {
       title: 'Configurações',
       url: '/config',
       icon: 'construct'
-    },
-    {
-      title: 'Login',
-      url: '/login',
-      icon: 'log-in'
-    },
-    {
-      title: 'Cadastro',
-      url: '/cadastro',
-      icon: 'person-add'
     }
   ];
 

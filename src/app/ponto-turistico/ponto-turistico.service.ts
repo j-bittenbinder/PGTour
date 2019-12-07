@@ -29,15 +29,14 @@ export class PontoTuristicoService {
   getPonto(idPonto): Observable<PontoTuristicoPageModule> {
     return this.http.post<PontoTuristicoPageModule[]>((this.API + '/getDadosPontoTuristico'), { id: idPonto }, this.headerHttp);
   }
-
   getFotos(idPonto) {
     return this.http.post<PontoTuristicoImg[]>((this.API + '/getImagensPonto'), { id: idPonto }, this.headerHttp);
   }
   getAvaliacoes(idPonto) {
     return this.http.post<PontoTuristicoComentario>((this.API + '/getAvaliacoes'), { id: idPonto }, this.headerHttp);
   }
-  getPerguntas(idPonto) {
-    return this.http.post<PontoTuristicoPerguntas[]>((this.API + '/getPerguntas'), { id: idPonto }, this.headerHttp);
+  getPerguntas(idPonto, email) {
+    return this.http.post<PontoTuristicoPerguntas[]>((this.API + '/getPerguntas'), { id: idPonto, email }, this.headerHttp);
   }
   getResposta(idPonto) {
     return this.http.post<PontoTuristicoComentario>((this.API + '/getResposta'), { id: idPonto }, this.headerHttp);
@@ -50,6 +49,12 @@ export class PontoTuristicoService {
   }
   avaliarPonto(dados) {
     return this.http.post<PontoTuristicoComentario>((this.API + '/avaliarPonto'), dados, this.headerHttp);
+  }
+  alterarUsuario(dados) {
+    return this.http.post<PontoTuristicoComentario>((this.API + '/alterUser'), dados, this.headerHttp);
+  }
+  addvisita(id){
+    return this.http.post<PontoTuristicoComentario>((this.API + '/addVisita'), {id}, this.headerHttp);
   }
 }
 
