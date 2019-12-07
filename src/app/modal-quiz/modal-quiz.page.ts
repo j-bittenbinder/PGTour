@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LoadingController, ModalController, NavParams } from '@ionic/angular';
+import {LoadingController, ModalController, NavParams, ToastController } from '@ionic/angular';
 import { PontoTuristicoService, DadosPonto } from '../ponto-turistico/ponto-turistico.service';
 
 @Component({
@@ -11,6 +11,7 @@ export class ModalQuizPage implements OnInit {
 
   response = false;
 
+  toast: any;
   ponto: string;
   questao: any;
   pontuacao: any;
@@ -24,7 +25,8 @@ export class ModalQuizPage implements OnInit {
       private modal: ModalController,
       private navParams: NavParams,
       private service: PontoTuristicoService,
-      public loadingController: LoadingController
+      public loadingController: LoadingController,
+      private toastCtrl: ToastController
     ) {
       this.ponto = this.navParams.get('ponto');
       this.user = JSON.parse(localStorage.getItem('DadosUsuario'));
@@ -41,9 +43,26 @@ export class ModalQuizPage implements OnInit {
     return this.loading.present();
   }
 
+  async presentToastWithOptions() {
+    this.toast = await this.toastCtrl.create({
+      header: 'Atenção!',
+      message: 'Você atingiu sua cota de perguntas para responder até o momento.',
+      duration: 5000,
+      position: 'top',
+      buttons: [{
+        text: 'Ok',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    return this.toast.present();
+  }
+
  async ngOnInit() {
      this.service.getPerguntas(this.navParams.get('id'),this.user.objeto.email).subscribe(async dados => {
-      this.presentLoadingWithOptions();
+      await this.presentLoadingWithOptions();
       if (dados.length > 0) {
         this.questao = dados[Math.floor(Math.random() * dados.length)];
         // tslint:disable-next-line: no-shadowed-variable
@@ -52,6 +71,9 @@ export class ModalQuizPage implements OnInit {
           this.loading.dismiss();
         });
       }
+      this.loading.dismiss();
+      this.modal.dismiss();
+      this.presentToastWithOptions();
     });
   }
 

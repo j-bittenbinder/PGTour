@@ -10,6 +10,30 @@
     </ion-row>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
-<div>CONTEUDO BICHO</div>
+  <ion-row class="back">
+
+  </ion-row>
+  <ion-row class="infos">
+    <ion-col class="medal">
+      <img src="../../assets/trophy.svg" style="width: 50px;"/>
+    </ion-col>
+    <ion-col class="points">
+      <ion-row id="my-pnts">Meus Pontos</ion-row>
+      <ion-row id="pnts">{{ userData.objeto.pontos }}</ion-row>
+    </ion-col>
+  </ion-row>
+  <hr style="height: 1px; border-width: 1px; margin: 10px;">
+  <ion-row class="file">
+    <img class="img-file" src="../../assets/file.svg">
+    <div>Extrato de Pontos</div>
+  </ion-row>
+  <ion-row *ngFor="let num of [1,2,3,4,5]">
+          <img src="../../assets/ticket.svg"/>
+          <ion-label class="label-ponto">LOREM PRODUTO BICHO</ion-label>
+          <ion-col style="max-width: 55px; padding: 0;">
+            <ion-label class="label-ponto" style="text-align: end;">1200</ion-label>
+          </ion-col>
+  </ion-row>
 </ion-content>

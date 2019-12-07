@@ -18,3 +18,22 @@ ion-content {
     font-family: 'Open Sans', sans-serif;
     text-transform: none;
 }
+
+#my-pnts {
+    font-size: 12px;
+    color: #5D4B9D;
+    font-weight: bolder;
+}
+
+#pnts {
+    color: #00AAE2;
+    font-weight: bolder;
+    font-size: 1rem;
+}
+
+.medal {
+    max-width: 50px;
+    max-height: 50px;
+    justify-content: center;
+    display: flex;
+}
