@@ -13,9 +13,14 @@ import { Router } from '@angular/router';
 export class ExtractPage implements OnInit {
 
   userData: DataUser;
+  trocas: any;
 
-  constructor(private router: Router, private modal: ModalController, private service: PontoTuristicoService, 
-              public loadingController: LoadingController) {
+  constructor(
+    private router: Router,
+    private modal: ModalController,
+    private service: PontoTuristicoService,
+    public loadingController: LoadingController
+  ) {
     try {
       if (localStorage.getItem('DadosUsuario') === null) {
         console.log('n tá logado');
@@ -27,17 +32,20 @@ export class ExtractPage implements OnInit {
     }
   }
 
+  voltar() {
+    this.router.navigate(['/store']);
+  }
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('DadosUsuario'));
-    
+
     let dados = {
       email: this.userData.objeto.email
     };
 
     this.service.getHistoricoTransacao(dados).subscribe(data => {
-      console.log(data);
+      this.trocas = data;
+      console.log(this.trocas);
     });
   }
-
 }

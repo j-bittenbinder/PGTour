@@ -11,14 +11,13 @@
 
 <ion-content scrollEvents="true" appAutoHide [fab]="fab">
   <ion-fab #fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="showMap()">
-      <ion-icon name="locate"></ion-icon>
+    <ion-fab-button style="--background: white;" (click)="showMap()">
+      <img src="../../assets/map-target.svg">
     </ion-fab-button>
   </ion-fab>
   <ion-item style="--border-color: transparent">
     <div class="place">{{ point.nome }}</div>
   </ion-item>
-
   <ion-slides [options]="sliderOpts" *ngIf="urls == 0">
     <ion-slide *ngFor="let img of [1,2,3]">
       <img src="../../assets/shapes.svg" tappable (click)="openPreview(img)"/>

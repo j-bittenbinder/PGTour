@@ -1,21 +1,42 @@
-<ion-content>
-      <div *ngIf="!response">
-    <ion-row style="place-content: center;">Resgatar pontos</ion-row>
-    <br>
-    Você está adquirindo o <Strong>{{ nome }}</Strong>. 
-    Para utilizar seu prêmio, apresente um documento com foto na bilheteria do Evento.
-    <br>
-    Confirmar resgate: {{ valor }}
-    <br>
-    <ion-button class="btn-default" (click)="trocar()" >Ok</ion-button>
-    <ion-button class="btn-default" (click)="close()">Cancelar</ion-button>
-  </div>
-  <div *ngIf="response">
-      <ion-row style="place-content: center;">Resgatar pontos</ion-row>
-    
-      <strong>RESGATE CONFIRMADO</strong>
-      <ion-button class="btn-default" >Voltar para a Home</ion-button>
+<ion-content *ngIf="!response" class="font">
+  <ion-row style="height: 40%;" class="head">
+    <div class="name" style="font-weight: bolder; font-size: 1.3rem;">Resgatar pontos</div>
+    <div class="question" style="padding: 0 2rem; text-align: center; color: black; margin: 0;">
+      Você está adquirindo o {{ nome }}.
+      Para utilizar seu prêmio, apresente um documento com foto na bilheteria do evento.
     </div>
- </ion-content>
+  </ion-row>
+  <ion-row style="height: 33%;" class="congrats-text">
+    <div class="name" style="padding: 0 2rem; text-align: center;">Confirmar resgate</div>
+    <div class="question" style="padding: 0 2rem; text-align: center; margin: 0;
+      font-size: 1.5rem; color: #00AAE2; width: 100%; font-weight: bolder;">{{ valor }} pontos</div>
+  </ion-row>
+  <ion-row style="height: 27%;">
+    <ion-row class="buttons">
+      <ion-row class="btns">
+        <ion-button class="leave font" (click)="trocar()">Ok</ion-button>
+      </ion-row>
+      <ion-row class="btns">
+        <div id="btn-cancel" (click)="close()">Cancelar</div>
+      </ion-row>
+    </ion-row>
+  </ion-row>
+</ion-content>
 
-
+<ion-content *ngIf="response" class="font">
+  <ion-row style="height: 27%;" class="head">
+    <div class="name" style="font-weight: bolder; font-size: 1.3rem;">Resgatar pontos</div>
+  </ion-row>
+  <ion-row style="height: 40%; place-content: center;">
+    <img class="checked-img" style="margin: 1rem;" src="../../assets/checked.svg">
+    <div style="padding: 0 2rem; text-align: center; width: 100%; 
+      font-size: 1rem; color: #5B489C;">Resgate confirmado</div>
+  </ion-row>
+  <ion-row style="height: 33%; place-content: center;">
+    <ion-row class="buttons">
+      <ion-row class="btns">
+        <ion-button class="leave font" (click)="home()">Ir para Home</ion-button>
+      </ion-row>
+    </ion-row>
+  </ion-row>
+</ion-content>

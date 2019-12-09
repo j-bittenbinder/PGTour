@@ -64,16 +64,21 @@ ion-content {
 .benefits {
     max-width: 150px;
     margin: 10px;
+    padding: 0;
 }
 
 #benefit {
     justify-content: center; 
     color: #5D4B9D;
     max-width: 100%;
+    font-size: 13px;
 }
 
 .img-benefit {
     border: solid 1px;
-    width: 120px;
-    max-width: 120px;
+    width: 142px;
+    max-width: 142px;
+    max-height: 142px;
+    height: 142px;
+    object-fit: cover;
 }

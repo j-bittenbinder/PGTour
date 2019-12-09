@@ -19,7 +19,19 @@
     </div>
   </div>
   <div class="item-input">
-    <ion-label class="font" style="font-size: 14px;"><b>Dados pessoais</b></ion-label>
+    Pontuação: <div style="display: inline; color: #5D4B9D; font-weight: bolder;">{{ userData.objeto.pontos }}</div>
+  </div>
+  <div class="item-input">
+    Distância de busca
+    <ion-item>
+      <ion-range style="padding: 28px 0 0 0;" min="1" max="10" (ionBlur)="alterarDistancia()" [(ngModel)]="distancia" pin="true" color="secondary">
+        <ion-label slot="start">1 km</ion-label>
+        <ion-label slot="end">10 km</ion-label>
+      </ion-range>
+    </ion-item>
+  </div>
+  <div class="item-input">
+    <ion-label class="font" style="font-size: 16px;"><b>Dados pessoais</b></ion-label>
   </div>
   <div class="item-input">
     Nome<ion-input class="input-cadastro" type="text"[(ngModel)]="nome" name="nome" value="{{ userData.objeto.nome }}" placeholder="{{ userData.objeto.nome }}"></ion-input>
@@ -33,18 +45,6 @@
   <div class="item-input">
     Telefone<ion-input class="input-cadastro" type="text" [(ngModel)]="telefone" name="telefone" value="{{ userData.objeto.telefone }}" placeholder="{{ userData.objeto.telefone }}"></ion-input>
   </div>
-  <div class="item-input">
-    Pontos: {{ userData.objeto.pontos }}
-  </div>
-  <div class="item-input">
-    <ion-label class="font" style="font-size: 14px;"><b>Distância de busca</b></ion-label>
-  </div>
-  <ion-item>
-    <ion-range min="1" max="10" (ionBlur)="alterarDistancia()" [(ngModel)]="distancia" pin="true" color="secondary">
-      <ion-label slot="start">1 Km</ion-label>
-      <ion-label slot="end">10 Km</ion-label>
-    </ion-range>
-  </ion-item>
   <div class="item-label" style="margin: 0 1rem 1rem;">
     <ion-button style="width: 100%; height: 3rem; font-size: 12px; -webkit-appearance: none;" 
       type="submit" class="btn-default" (click)="alterarDados()" >SALVAR</ion-button>

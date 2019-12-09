@@ -76,7 +76,7 @@
 
 .congrats-img {
     place-content: center;
-    margin: 2rem;
+    margin: 1rem;
 }
 
 .congrats-text {
@@ -92,4 +92,10 @@
     font-size: 14px;
     text-transform: none;
     height: 35px;
+}
+
+.checked-img {
+    height: 80%;
+    width: auto;
+    color: #00AAE2;
 }

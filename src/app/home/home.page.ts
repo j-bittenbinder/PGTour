@@ -145,23 +145,25 @@ export class HomePage {
         // Variavel auxiliar
         let dataByDistance: any = [];
 
-        //Calcula a distancia entre a latitude/longitude de todos os pontos e a latitude/longitude do usuario
+        // Calcula a distancia entre a latitude/longitude de todos os pontos e a latitude/longitude do usuario
         for(let pontoTuristico of this.pontos) {
-          let distanciaPonto = this.calculateDistance(pontoTuristico.latitude, resp.coords.latitude,pontoTuristico.longitude, resp.coords.longitude);
-          //Caso a distancia seja menor que a "range" definida pelo usuário, salva na variavel auxiliar
-          if(distanciaPonto <= range) {
-            pontoTuristico.distancia = parseInt((distanciaPonto).toString());
+          let distanciaPonto = this.calculateDistance(pontoTuristico.latitude, resp.coords.latitude,
+            pontoTuristico.longitude, resp.coords.longitude);
+          // Caso a distancia seja menor que a "range" definida pelo usuário, salva na variavel auxiliar
+          if (distanciaPonto <= range) {
+            pontoTuristico.distancia = parseFloat((distanciaPonto).toString());
             dataByDistance.push(pontoTuristico);
           }
         }
         // Organiza pela distância
-        if(dataByDistance.length>0){
+        if (dataByDistance.length > 0) {
           this.distancia = true;
         }
         dataByDistance.sort((a, b) => parseFloat(a.distancia) - parseFloat(b.distancia));
 
         // Atribui o array auxiliar para o array de pontos turisticos
         this.pontos = dataByDistance;
+        console.log('p ver',this.pontos)
         this.loading.dismiss();
        }).catch((error) => {
           this.loading.dismiss();

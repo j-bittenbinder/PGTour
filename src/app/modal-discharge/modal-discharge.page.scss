@@ -1,0 +1,77 @@
+.font {
+    font-family: 'Open Sans', sans-serif;
+    text-transform: none;
+}
+
+.head {
+    place-content: center;
+    color: #5B489C;
+}
+
+.name {
+    justify-content: center;
+    display: flex;
+    color: #5D4B9D;
+    font-size: 1rem;
+    height: 3rem;
+    place-items: flex-end;
+    margin: 1rem;
+    font-weight: bolder;
+    width: 100%;
+}
+
+.question {
+    justify-content: center;
+    display: flex;
+    color: black;
+    font-size: 14px;
+    margin: 0 2rem;
+    text-align: center;
+}
+
+.congrats-text {
+    color: #5B489C;
+    font-size: 14px;
+}
+
+.leave {
+    --background: #5D4B9D;
+    --border-radius: 2rem;
+    --color: white;
+    width: 200px;
+    font-size: 14px;
+    text-transform: none;
+    height: 35px;
+}
+
+.buttons {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
+
+.btns {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
+
+#btn-ask {
+    --background: #5D4B9D;
+    --border-radius: 2rem;
+    --color: white;
+    font-size: 12px;
+    width: 50%;
+    text-transform: none;
+}
+
+#btn-cancel {
+    color: #00AAE2;
+    font-size: 12px;
+}
+
+.checked-img {
+    height: 80%;
+    width: auto;
+    color: #00AAE2;
+}

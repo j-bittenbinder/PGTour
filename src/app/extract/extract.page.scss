@@ -14,7 +14,7 @@
     padding: 0 8px 0 0;
 }
 
-ion-content {
+.font {
     font-family: 'Open Sans', sans-serif;
     text-transform: none;
 }
@@ -36,4 +36,24 @@ ion-content {
     max-height: 50px;
     justify-content: center;
     display: flex;
+}
+
+.back {
+    margin: 1rem;
+}
+
+.infos {
+    margin: 1rem;
+}
+
+.file {
+    margin: 0 1rem;
+}
+
+.label-ponto {
+    margin-left: 0.5rem;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-text-stroke-width: thin;
+    align-self: center;
 }

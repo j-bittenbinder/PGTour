@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavParams, Events } from '@ionic/angular';
+import { ModalController, NavParams, Events, ToastController } from '@ionic/angular';
 import { PontoTuristicoService } from './../ponto-turistico/ponto-turistico.service';
 import { DataUser } from '../login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-discharge',
@@ -10,15 +11,23 @@ import { DataUser } from '../login/login.service';
 })
 export class ModalDischargePage implements OnInit {
 
+  toast: any;
   id_prod: any;
   nome: any;
   parceiro_id_parc: any;
   valor: any;
-  response :boolean =  false;
+  response: boolean =  false;
   userData: DataUser;
   pontuacaoAtual: any;
 
-  constructor(private modal: ModalController, private navParams: NavParams, private service: PontoTuristicoService, private events: Events) { }
+  constructor(
+    private modal: ModalController,
+    private navParams: NavParams,
+    private service: PontoTuristicoService,
+    private events: Events,
+    private router: Router,
+    private toastCtrl: ToastController
+  ) { }
 
   close() {
     this.modal.dismiss();
@@ -32,14 +41,31 @@ export class ModalDischargePage implements OnInit {
     this.userData = JSON.parse(localStorage.getItem('DadosUsuario'));
   }
 
-  trocar(){
+  async presentToastWithOptions() {
+    this.toast = await this.toastCtrl.create({
+      header: 'Atenção!',
+      message: 'Você não possui pontuação suficiente :(',
+      duration: 5000,
+      position: 'top',
+      buttons: [{
+        text: 'Ok',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    return this.toast.present();
+  }
+
+  trocar() {
     let dados = {
       email: this.userData.objeto.email,
       ponto_prod: this.valor,
       id: this.id_prod
-    }
+    };
     this.pontuacaoAtual = this.userData.objeto.pontos;
-    if(parseInt(this.userData.objeto.pontos)>=parseInt(this.valor)){
+    if (parseInt(this.userData.objeto.pontos) >= parseInt(this.valor)) {
       this.service.trocaPonto(dados).subscribe(data=>{
         console.log(data)
         this.response = true;
@@ -47,10 +73,14 @@ export class ModalDischargePage implements OnInit {
         this.userData.objeto.pontos = (this.pontuacaoAtual - this.valor).toString();
         localStorage.setItem('DadosUsuario', JSON.stringify(this.userData));
         this.events.publish('user:changed', this.userData);
-      })
-    }else{
-      alert("Você não possui pontuação suficiente :(")
+      });
+    } else {
+      this.modal.dismiss();
+      this.presentToastWithOptions();
     }
   }
 
+  home() {
+    this.router.navigate(['/home']);
+  }
 }

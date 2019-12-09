@@ -14,6 +14,7 @@ import { LogoutPage } from './logout/logout.page';
 export class AppComponent {
 
   userData: DataUser;
+  semfotobicho: '';
 
   public appPages = [
     {

@@ -26,21 +26,44 @@
 </ion-content>
 
 <ion-content *ngIf="acertou" class="font">
-  <ion-row style="height: 25%;" class="head">
-    <div style="font-weight: bolder;">Parabéns!</div>
-    <div style="padding: 0 2rem; text-align: center;">Você ganhou {{pontuacao}} pontos</div>
+  <ion-row style="height: 20%;" class="head">
+    <div class="name" style="font-weight: bolder;">Parabéns!</div>
+    <div class="question" style="padding: 0 2rem; text-align: center; color: #5B489C; margin: 0;">Você ganhou {{pontuacao}} pontos</div>
   </ion-row>
-  <ion-row style="height: 25%;" class="congrats-img">
+  <ion-row style="height: 40%; place-content: center;">
     <img class="checked-img" src="../../assets/checked.svg">
   </ion-row>
-  <ion-row style="height: 25%;" class="congrats-text">
+  <ion-row style="height: 15%;" class="congrats-text">
     <div style="padding: 0 2rem; text-align: center;">Acesse a PGStore e troque seus pontos por prêmios!</div>
   </ion-row>
-  <ion-row style="height: 25%;" style="place-content: center;">
-    <ion-button class="leave btn-default">Ir para PGStore</ion-button>
+  <ion-row style="height: 25%;">
+    <ion-row class="buttons">
+      <ion-row class="btns">
+        <ion-button class="leave font" (click)="pgstore()">Ir para PGStore</ion-button>
+      </ion-row>
+      <ion-row class="btns">
+        <div id="btn-cancel" (click)="close()">Cancelar</div>
+      </ion-row>
+    </ion-row>
   </ion-row>
 </ion-content>
 
-<ion-content *ngIf="errou"><strong> K K K K K K K K SE FUDEU </strong><br>
-  {{ questao.motivo }}
+<ion-content *ngIf="errou" class="font">
+  <ion-row style="height: 20%;" class="head">
+    <div class="name" style="font-weight: bolder;">Que pena :(</div>
+    <div class="question" style="padding: 0 2rem; text-align: center; color: #5B489C; margin: 0;">A resposta certa seria: {{resposta}}</div>
+  </ion-row>
+  <ion-row style="height: 40%; place-content: center;">
+    <img class="checked-img" src="../../assets/error.png">
+  </ion-row>
+  <ion-row style="height: 25%;" class="congrats-text">
+    <div style="padding: 0 2rem; text-align: center;">{{ questao.motivo }}</div>
+  </ion-row>
+  <ion-row style="height: 15%;">
+    <ion-row class="buttons">
+      <ion-row class="btns">
+        <ion-button class="leave font" (click)="close()">Fechar</ion-button>
+      </ion-row>
+    </ion-row>
+  </ion-row>
 </ion-content>

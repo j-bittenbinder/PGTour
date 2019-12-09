@@ -20,7 +20,7 @@ export class PontoTuristicoPage implements OnInit {
   rating: number;
   loading: any;
   point: DadosPonto;
-  urls: PontoTuristicoImg[];
+  urls: any;
   avaliacoes: any;
   nota = 0;
   notaInt = 0;
@@ -71,16 +71,9 @@ export class PontoTuristicoPage implements OnInit {
       // tslint:disable-next-line: no-shadowed-variable
       this.service.getPonto(id).subscribe(dados => {
         this.point = dados[0];
-        
         // console.log('point: ', this.point);
       });
 
-      // const photos = {
-      //   url_img: '',
-      //   ponto_turistico_id_ponto: ''
-      // };
-
-      // this.urls = photos;
       this.service.getFotos(id).subscribe(datap => {
         this.urls = datap;
         // console.log('fotos: ', this.urls);

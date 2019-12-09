@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataUser } from '../login/login.service';
 import { PontoTuristicoService } from './../ponto-turistico/ponto-turistico.service';
-import { Events } from '@ionic/angular';
+import { Events, ToastController } from '@ionic/angular';
 // import * as cordovaGallery from 'cordova-gallery-access';
 // import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 (window as any).global = window;
@@ -17,15 +17,16 @@ window.Buffer = window.Buffer || require('buffer').Buffer;
 
 export class ConfigPage implements OnInit {
 
+  toast: any;
   userData: DataUser;
   distancia: any;
-  nome:any;
-  rg:any;
-  cpf:any;
-  telefone:any;
-  senha:any;
+  nome: any;
+  rg: any;
+  cpf: any;
+  telefone: any;
+  senha: any;
 
-  constructor(private service: PontoTuristicoService, private events: Events) {
+  constructor(private service: PontoTuristicoService, private events: Events, private toastCtrl: ToastController) {
     try {
       if (localStorage.getItem('DadosUsuario') === null) {
         console.log('n tá logado');
@@ -42,13 +43,13 @@ export class ConfigPage implements OnInit {
   }
 
   ngOnInit() {
-    if(localStorage.getItem('distancia') !== null){
+    if (localStorage.getItem('distancia') !== null){
       this.distancia = localStorage.getItem('distancia');
     }
   }
 
   uploadFoto() {
-    console.log('foi');
+    // console.log('foi');
     // const options: CameraOptions = {
     //   quality: 70,
     //   destinationType: this.camera.DestinationType.DATA_URL,
@@ -74,7 +75,7 @@ export class ConfigPage implements OnInit {
   }
 
   alterarDistancia(){
-    console.log(this.distancia)
+    console.log(this.distancia);
     localStorage.setItem('distancia', this.distancia);
   }
 
@@ -84,21 +85,38 @@ export class ConfigPage implements OnInit {
       rg: this.rg,
       cpf: this.cpf,
       telefone: this.telefone,
-      email:this.userData.objeto.email
-    }
+      email: this.userData.objeto.email
+    };
 
     console.log(dados)
-    this.service.alterarUsuario(dados).subscribe(dados=>{
-      console.log('ANTES', this.userData);
+    this.service.alterarUsuario(dados).subscribe(dados => {
+      // console.log('ANTES', this.userData);
       this.userData = JSON.parse(localStorage.getItem('DadosUsuario'));
       this.userData.objeto.nome = this.nome;
       this.userData.objeto.rg = this.rg;
       this.userData.objeto.cpf = this.cpf;
       this.userData.objeto.telefone = this.telefone;
-      console.log('alterado', this.userData);
+      // console.log('alterado', this.userData);
       localStorage.setItem('DadosUsuario', JSON.stringify(this.userData));
       this.events.publish('user:changed', this.userData);
-      alert("Alterado com sucesso !")
-    })
+      this.presentToastWithOptions();
+    });
+  }
+
+  async presentToastWithOptions() {
+    this.toast = await this.toastCtrl.create({
+      header: 'Sucesso!',
+      message: 'Seus dados foram atualizados.',
+      duration: 5000,
+      position: 'top',
+      buttons: [{
+        text: 'Ok',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    return this.toast.present();
   }
 }

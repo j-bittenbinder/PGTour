@@ -11,9 +11,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="font">
   <ion-row class="back">
-
+    <div (click)="voltar()">
+      <img src="../../assets/left-arrow.svg" style="height: 1rem;">
+      <ion-label style="margin: 0 10px; color: #5D4B9D;">Voltar</ion-label>
+    </div>
   </ion-row>
   <ion-row class="infos">
     <ion-col class="medal">
@@ -24,16 +27,18 @@
       <ion-row id="pnts">{{ userData.objeto.pontos }}</ion-row>
     </ion-col>
   </ion-row>
-  <hr style="height: 1px; border-width: 1px; margin: 10px;">
+  <hr style="height: 1px; border-width: 1px; margin: 1rem;">
   <ion-row class="file">
     <img class="img-file" src="../../assets/file.svg">
-    <div>Extrato de Pontos</div>
+    <ion-label style="margin: 0 1rem; color: #5D4B9D; align-self: center;">Extrato de Pontos</ion-label>
   </ion-row>
-  <ion-row *ngFor="let num of [1,2,3,4,5]">
-    <img src="../../assets/ticket.svg"/>
-    <ion-label class="label-ponto">LOREM PRODUTO BICHO</ion-label>
-    <ion-col style="max-width: 55px; padding: 0;">
-      <ion-label class="label-ponto" style="text-align: end;">1200</ion-label>
-    </ion-col>
-  </ion-row>
+<ion-list>
+    <ion-item style="--border-color: transparent;" *ngFor="let troca of trocas">
+      <img src="../../assets/ticket.svg" style="width: 20px; height: 20px;">
+      <ion-label class="label-ponto">{{ troca.nome }}</ion-label>
+      <ion-col style="max-width: 55px; padding: 0;">
+        <ion-label class="label-ponto" style="text-align: end; color: #00AAE2;">{{ troca.valor }}</ion-label>
+      </ion-col>
+    </ion-item>
+  </ion-list>
 </ion-content>

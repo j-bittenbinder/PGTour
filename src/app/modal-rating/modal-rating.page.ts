@@ -98,7 +98,24 @@ export class ModalRatingPage implements OnInit {
         }
       })
     }else{
-      alert("Por favor, selecione uma nota mínima.");
+      this.toastRating();
     }
+  }
+
+  async toastRating() {
+    this.toast = await this.toastController.create({
+      header: 'Atenção!',
+      message: 'Por favor, selecione uma nota mínima.',
+      duration: 5000,
+      position: 'top',
+      buttons: [{
+        text: 'Ok',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    return this.toast.present();
   }
 }
