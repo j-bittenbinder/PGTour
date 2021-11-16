@@ -30,7 +30,7 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.7.1",
     "@ionic/storage": "^2.2.0",
-    "aws-sdk": "^2.573.0",
+    "aws-sdk": "^2.814.0",
     "com.subitolabs.android.cordova.galleryapi": "git+https://github.com/Collaborne/cordova-gallery-api.git",
     "cordova-android": "8.1.0",
     "cordova-browser": "6.0.0",
